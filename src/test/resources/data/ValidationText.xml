@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- invalid login error message -->
+    <text name="Invalid_Login_Error_Message">There is no account associated with +91 9791103115. Click on Sign up to register</text>
+
+    <!-- Activities for limited plan -->
+    <text name="previous_Activity_Limitation">You are in Limited Plan. Upgrade to Capshine Pro to access all the Daily Activities that you have missed or completed</text>
+</resources>
