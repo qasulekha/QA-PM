@@ -65,7 +65,7 @@ public class TestListener implements ITestListener {
 
     private Optional<ExtentTest> getLatestTest() {
         List<ExtentTest> testList = ExtentManager.getTestList();
-        return testList.isEmpty() ? Optional.empty() : Optional.of(testList.getLast());
+        return testList.isEmpty() ? Optional.empty() : Optional.of(testList.get(testList.size() - 1));
     }
 
     private String getCategory(ITestResult result) {
