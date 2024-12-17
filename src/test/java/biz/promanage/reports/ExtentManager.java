@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public class ExtentManager {
     private static final Map<Long, ExtentTest> extentTestMap = new ConcurrentHashMap<>();
@@ -74,7 +75,7 @@ public class ExtentManager {
     public static synchronized void flushReport() {
         List<ExtentTest> nonSkippedTests = allTests.stream()
                 .filter(test -> test.getStatus() != Status.SKIP)
-                .toList();
+                .collect(Collectors.toList());
 
         allTests.clear();
         allTests.addAll(nonSkippedTests);

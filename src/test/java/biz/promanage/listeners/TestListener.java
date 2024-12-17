@@ -50,7 +50,7 @@ public class TestListener implements ITestListener {
     public void onFinish(ITestContext context) {
         List<ExtentTest> nonSkippedTests = ExtentManager.getTestList().stream()
                 .filter(test -> test.getStatus() != Status.SKIP)
-                .toList();
+                .collect(Collectors.toList());
 
         ExtentManager.getTestList().clear();
         nonSkippedTests.forEach(test -> ExtentManager.getReporter().createTest(String.valueOf(test.getModel())));
