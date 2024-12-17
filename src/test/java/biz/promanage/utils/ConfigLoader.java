@@ -12,9 +12,14 @@ public class ConfigLoader {
     private ConfigLoader(){
         String env = System.getProperty("env", String.valueOf(EnvType.DEV));
         switch (EnvType.valueOf(env)) {
-            case DEV -> properties = FileReader.propertyLoader("src/test/resources/dev_config.properties");
-            case PROD -> properties = FileReader.propertyLoader("src/test/resources/prod_config.properties");
-            default -> throw new IllegalStateException("Invalid env type: " + env);
+        case DEV:
+            properties = FileReader.propertyLoader("src/test/resources/dev_config.properties");
+            break;
+        case PROD:
+            properties = FileReader.propertyLoader("src/test/resources/prod_config.properties");
+            break;
+        default:
+            throw new IllegalStateException("Invalid env type: " + env);	
         }
     }
 
