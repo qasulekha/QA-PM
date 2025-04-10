@@ -6,18 +6,20 @@ import java.net.URL;
 import java.util.Objects;
 
 public class Otp {
-    public static String getOTP(String userMobileNumber) throws IOException {
+    public static String getOTP(String userMobileNumber) throws IOException, InterruptedException {
         String otp;
         String otpEndpoint = "https://pmbizapi.promanage.biz/api/promanage/otp/get/" + userMobileNumber + "?otpkey=4466";
         String line;
         String apiResponse = null;
 
         if (!Objects.equals(userMobileNumber, "9380835000")) {
+        	PageLoad.pauseTenSeconds();
             BufferedReader br = new BufferedReader(new InputStreamReader(new URL(otpEndpoint).openStream()));
             while ((line = br.readLine()) != null) {
                 apiResponse = line;
             }
             assert apiResponse != null;
+           
             otp = ExtractNumberFromString(apiResponse);
         } else {
             otp = "9999";

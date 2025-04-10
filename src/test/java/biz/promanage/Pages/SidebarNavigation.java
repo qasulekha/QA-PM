@@ -297,7 +297,7 @@ public class SidebarNavigation extends BasePage {
             menuName = menuItem.getText();
             if(!menuName.equalsIgnoreCase("chat"))
             menuItem.click();
-            new DevToolsHelper(driver).waitForPageLoadAndAsyncCompletion();
+           // new DevToolsHelper(driver).waitForPageLoadAndAsyncCompletion();
             System.out.println("Page title after click: " + driver.getTitle());
         }
     }

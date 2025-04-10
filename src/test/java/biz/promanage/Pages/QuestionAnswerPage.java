@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 public class QuestionAnswerPage extends BasePage {
 
     By QNS_ANS_BTN = By.xpath("//div[@class='question-upload']//span[.='Add question']/parent::button[1]");
-    By STORE_MENU = By.xpath("//li[@id='nav-4-61']/a/span");
+    By STORE_MENU = By.xpath("//li[@id='nav-5-61']/a/span");
     By ENTER_LOCATION = By.xpath("(//div[@class='sk-event-group']//span[.='expand_more'])[4]");
     String SEARCH_LOCATION = "//input[contains(@placeholder,'/Business ID')]";
     By SELECT_LOCATION = By.xpath("//input[@id='chkid 11218756']");

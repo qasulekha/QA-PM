@@ -9,7 +9,7 @@ import java.io.IOException;
 public class QuestionAnswerTest extends BaseTest {
 
     @Test
-    public void postQuestionAndAnswer() throws IOException {
+    public void postQuestionAndAnswer() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
 
         QuestionAnswerPage questionAnswerPage = null;

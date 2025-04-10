@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Post extends BaseTest {
 
     @Test
-    public void createPost() throws IOException {
+    public void createPost() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
         if (new Customer(getDriver(), test).changeCustomer("Sulekha.Com")) {
             PostPage postPage = new PostPage(getDriver(), test);

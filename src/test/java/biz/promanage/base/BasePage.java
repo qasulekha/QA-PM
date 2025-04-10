@@ -177,7 +177,7 @@ public class BasePage {
     }
 
     public void waitForPageLoadToComplete() {
-        new DevToolsHelper(driver).waitForPageLoadAndAsyncCompletion();
+       // new DevToolsHelper(driver).waitForPageLoadAndAsyncCompletion();
         String title = driver.getTitle();
         test.log(Status.INFO, "Page title after load: " + title);
     }
@@ -194,6 +194,20 @@ public class BasePage {
             throw e;
         }
     }
+    public boolean Xpathcheck(String xpathVal) {
+    	boolean val=false;
+    	try
+    	{
+    		val=driver.findElement(By.xpath(xpathVal)).isDisplayed();
+    		
+
+    	}catch(Exception e)
+    	{
+    		val=false;
+    		}
+    	return val;
+
+    	}
 
     public void waitForElementAndClickUsingActions(By locator) {
         try {
@@ -239,6 +253,23 @@ public class BasePage {
                 boolean isVisible = element.isDisplayed() && element.isEnabled();
                 if (isVisible) {
                     element.click();
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        } catch (TimeoutException e) {
+            test.log(Status.FAIL, "Failed to scroll and click element within timeout: " + locator);
+            throw e;
+        }
+    }
+    public void scroll(By locator) {
+        try {
+            fluentWait.until(driver -> {
+                WebElement element = driver.findElement(locator);
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                boolean isVisible = element.isDisplayed() && element.isEnabled();
+                if (isVisible) {
                     return true;
                 } else {
                     return false;

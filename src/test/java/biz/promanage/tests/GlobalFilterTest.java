@@ -6,12 +6,13 @@ import biz.promanage.Pages.LoginPage;
 import biz.promanage.base.BaseTest;
 import org.testng.annotations.Test;
 
+
 import java.io.IOException;
 
 public class GlobalFilterTest extends BaseTest {
 
     @Test
-    public void validateLocationFilter() throws IOException {
+    public void validateLocationFilter() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
         if (new Customer(getDriver(), test).changeCustomer("Aster Pharmacy")) {
             GlobalFilter globalFilterTest = new GlobalFilter(getDriver(), test);

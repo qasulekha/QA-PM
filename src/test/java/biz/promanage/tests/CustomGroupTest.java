@@ -11,7 +11,7 @@ import java.io.IOException;
 public class CustomGroupTest extends BaseTest
 {
     @Test
-    public void CreateCustomGroup() throws IOException {
+    public void CreateCustomGroup() throws IOException, InterruptedException {
 
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
 

@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class ContactPageTest extends BaseTest {
     @Test
-    public void ContactGroupCreation() throws IOException {
+    public void ContactGroupCreation() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
 
         if (new Customer(getDriver(), test).changeCustomer("Sulekha.Com")) {

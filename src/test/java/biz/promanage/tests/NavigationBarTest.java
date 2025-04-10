@@ -10,7 +10,7 @@ import java.io.IOException;
 public class NavigationBarTest extends BaseTest {
 
     @Test
-    public void testSidebarNavigation() throws IOException {
+    public void testSidebarNavigation() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
         SidebarNavigation sidebarPage = new SidebarNavigation(getDriver(), test);
         sidebarPage

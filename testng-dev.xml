@@ -13,7 +13,7 @@
            <!--  <class name="biz.promanage.tests.GlobalFilterTest"/>-->
             <!-- <class name="biz.promanage.tests.QuestionAnswerTest"/>-->
             <!-- <class name="biz.promanage.tests.LeaderBoardPageTest"/>-->
-             <class name="biz.promanage.tests.ContactPageTest"/>
+             <class name="biz.promanage.tests.DiscoveryTab"/>
             <!-- <class name="biz.promanage.tests.CustomGroupTest"/>-->
             <!-- <class name="biz.promanage.tests.NavigationBarTest"/>-->
             <!-- <class name="biz.promanage.tests.SideBarDemo"/>-->

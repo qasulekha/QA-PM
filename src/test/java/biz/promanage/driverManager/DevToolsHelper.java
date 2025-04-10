@@ -3,8 +3,8 @@ package biz.promanage.driverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v126.network.Network;
-import org.openqa.selenium.devtools.v126.page.Page;
+import org.openqa.selenium.devtools.v132.network.Network;
+import org.openqa.selenium.devtools.v132.page.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

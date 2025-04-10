@@ -7,12 +7,10 @@ import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class UserLoginTest extends BaseTest {
 
     @Test
-    public void validateUserLogin() throws IOException {
+    public void validateUserLogin() throws Exception {
         try {
             LoginPage loginPage = new LoginPage(getDriver(), test);
             loginPage

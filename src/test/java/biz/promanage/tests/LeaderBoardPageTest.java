@@ -11,7 +11,7 @@ import java.io.IOException;
 public class LeaderBoardPageTest extends BaseTest {
 
     @Test
-    public void LeaderBoardTest() throws IOException {
+    public void LeaderBoardTest() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
         if (new Customer(getDriver(), test).changeCustomer("Aster Pharmacy")) {
             LeaderBoardPage leaderBoardPage = new LeaderBoardPage(getDriver(), test);
