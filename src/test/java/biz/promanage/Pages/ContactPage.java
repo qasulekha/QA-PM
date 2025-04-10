@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ContactPage extends BasePage {
 
-    By CONTACT = By.cssSelector("li:nth-child(13) > a > .sk-ripple-container");
+    By CONTACT = By.cssSelector("li:nth-child(12) > a > .sk-ripple-container");
     By CONTACT_LIST = By.cssSelector(".sk-show > li:nth-child(1) .sk-ripple-container");
     By CREATE_GROUP = By.cssSelector(".sk-text-end > .sk-mobile-hide > .sk-ripple-container");
     By GROUP_NAME = By.xpath("//div[@class='sk-form-label' and text()='Group Name']/following-sibling::div[1]/input[1]");
