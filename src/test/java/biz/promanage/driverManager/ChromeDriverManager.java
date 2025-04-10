@@ -6,8 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v126.network.Network;
-import org.openqa.selenium.devtools.v126.page.Page;
+import org.openqa.selenium.devtools.v132.network.Network;
+import org.openqa.selenium.devtools.v132.page.Page;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +30,7 @@ public class ChromeDriverManager extends DriverManager {
         chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().driverVersion("134.0.6998.166").setup();
         driver = new ChromeDriver(chromeOptions);
         DevToolsHelper devToolsHelper = new DevToolsHelper(driver);
     }
