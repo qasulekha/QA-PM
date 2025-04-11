@@ -53,6 +53,7 @@ public class BaseTest {
     @Parameters("browser")
     @BeforeMethod
     public synchronized void startDriver(@Optional String browser, Method m) throws Exception {
+    	FileUtils.cleanDirectory(new File("./reports"));
         browser = System.getProperty("browser", browser);
         initializeDriver(browser);
         test = ExtentManager.startTest(m.getName(), "Starting test: " + m.getName());

@@ -19,7 +19,8 @@ public class ExtentManager {
 
     private static final String DIR_NAME = "./reports/";
     private static final String TIMESTAMP = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-    private static final String FILE_NAME = "Promanage_Sanity_Report_" + TIMESTAMP + ".html";
+   // private static final String FILE_NAME = "Promanage_Sanity_Report_" + TIMESTAMP + ".html";
+    private static final String FILE_NAME = "Promanage_Sanity_Report" + ".html";
     private static final String REPORT_DISPLAY_NAME = "Promanage Sanity Report";
 
     private ExtentManager() { }

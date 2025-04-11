@@ -14,7 +14,8 @@ public class ExtentReport {
     static Map<Integer, ExtentTest> extentTestMap = new HashMap<>();
     static Date d = new Date();
     static String dirName = ".\\reports\\";
-    static String fileName =  "Promanage_Sanity_Report" + d.toString().replace(":", "_").replace(" ", "_") + ".html";
+    //static String fileName =  "Promanage_Sanity_Report" + d.toString().replace(":", "_").replace(" ", "_") + ".html";
+    static String fileName =  "Promanage_Sanity_Report" + ".html";
     static String reportDisplayName =  "Promanage Sanity Report" ;
     static String path = dirName + fileName;
     public synchronized static ExtentReports getReporter() {
