@@ -1,0 +1,5 @@
+mvn compile -Pdev
+mvn test -Pdev -Denv=DEV -Dbrowser=CHROME
+
+mvn compile -Pprod
+mvn test -Pprod -Denv=PROD -Dbrowser=CHROME

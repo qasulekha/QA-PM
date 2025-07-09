@@ -1,0 +1,9 @@
+<j:jelly xmlns:j="jelly:core" xmlns:fmt="jelly:fmt" xmlns:x="jelly:xml">
+  <html>
+    <body>
+      <h1>Hello from Jelly Template!</h1>
+      <p>Build Number: ${build.number}</p>
+      <p>Build Status: ${build.result}</p>
+    </body>
+  </html>
+</j:jelly>
