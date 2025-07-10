@@ -1,11 +1,13 @@
 package biz.promanage.driverManager;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
 public abstract class DriverManager {
     protected WebDriver driver;
 
-    protected abstract void startDriver();
+    protected abstract void startDriver() throws IOException;
 
     public void quitDriver(){
         if(driver != null){
@@ -14,7 +16,7 @@ public abstract class DriverManager {
         }
     }
 
-    public WebDriver getDriver(){
+    public WebDriver getDriver() throws IOException{
         if(driver == null){
             startDriver();
         }

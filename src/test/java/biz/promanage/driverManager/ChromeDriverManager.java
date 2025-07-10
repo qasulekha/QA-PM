@@ -9,13 +9,15 @@ import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v132.network.Network;
 import org.openqa.selenium.devtools.v132.page.Page;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 
 public class ChromeDriverManager extends DriverManager {
     @Override
-    protected void startDriver() {
+    protected void startDriver() throws IOException {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--incognito");
         chromeOptions.addArguments("start-maximized"); // open Browser in maximized mode
@@ -28,6 +30,8 @@ public class ChromeDriverManager extends DriverManager {
         chromeOptions.addArguments("--disable-logging");
         chromeOptions.addArguments("--log-level=3");*/
         chromeOptions.addArguments("--remote-allow-origins=*");
+        String uniqueUserDataDir = Files.createTempDirectory("chrome_profile_").toString();
+        chromeOptions.addArguments("--user-data-dir=" + uniqueUserDataDir);
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         WebDriverManager.chromedriver().setup();
         WebDriverManager.chromedriver().driverVersion("138.0.7204.101").setup();

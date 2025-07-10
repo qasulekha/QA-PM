@@ -62,7 +62,7 @@ public class BaseTest {
         Otp.resetMobileNumber(GetUserLoginCred());
     }
 
-    private void initializeDriver(String browser) {
+    private void initializeDriver(String browser) throws IOException {
         setDriverManager(DriverFactory.getDriverManager(DriverType.valueOf(browser)));
         setDriver(getDriverManager().getDriver());
     }
@@ -76,7 +76,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public synchronized void quitDriver(ITestResult result) throws InterruptedException {
+    public synchronized void quitDriver(ITestResult result) throws InterruptedException, IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
             test.log(Status.FAIL, "Test Failed: " + result.getThrowable());
             String screenshotPath = takeScreenshot(result.getName());
