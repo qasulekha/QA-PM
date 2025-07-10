@@ -16,28 +16,32 @@ import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 
 public class ChromeDriverManager extends DriverManager {
-    @Override
-    protected void startDriver() throws IOException {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--incognito");
-        chromeOptions.addArguments("start-maximized"); // open Browser in maximized mode
-        chromeOptions.addArguments("disable-infobars"); // disabling infobars
-        chromeOptions.addArguments("--disable-extensions"); // disabling extensions
-       /* chromeOptions.addArguments("--disable-gpu"); // applicable to Windows os only
-        chromeOptions.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-        chromeOptions.addArguments("--no-sandbox"); // Bypass OS security model
-        chromeOptions.addArguments("--disable-in-process-stack-traces");
-        chromeOptions.addArguments("--disable-logging");
-        chromeOptions.addArguments("--log-level=3");*/
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        String uniqueUserDataDir = Files.createTempDirectory("chrome_profile_").toString();
-        chromeOptions.addArguments("--user-data-dir=" + uniqueUserDataDir);
-        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        WebDriverManager.chromedriver().setup();
-        WebDriverManager.chromedriver().driverVersion("138.0.7204.101").setup();
-        driver = new ChromeDriver(chromeOptions);
-        //DevToolsHelper devToolsHelper = new DevToolsHelper(driver);
-    }
+	@Override
+	protected void startDriver() throws IOException {
+	    ChromeOptions chromeOptions = new ChromeOptions();
+	    chromeOptions.addArguments("--incognito");
+	    chromeOptions.addArguments("start-maximized");
+	    chromeOptions.addArguments("disable-infobars");
+	    chromeOptions.addArguments("--disable-extensions");
+	    chromeOptions.addArguments("--remote-allow-origins=*");
+
+	    String uniqueUserDataDir = Files.createTempDirectory("chrome_profile_").toString();
+	    chromeOptions.addArguments("--user-data-dir=" + uniqueUserDataDir);
+
+	    chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+
+	    WebDriverManager.chromedriver().driverVersion("138.0.7204.101").setup();
+	    driver = new ChromeDriver(chromeOptions);
+
+	    // Clean up temp profile directory after test run
+	    Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+	        try {
+	            org.apache.commons.io.FileUtils.deleteDirectory(new java.io.File(uniqueUserDataDir));
+	        } catch (IOException e) {
+	            System.out.println("Failed to delete Chrome temp profile directory: " + e.getMessage());
+	        }
+	    }));
+	}
 }
 
 
