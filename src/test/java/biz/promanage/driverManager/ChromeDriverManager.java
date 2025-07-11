@@ -30,7 +30,7 @@ public class ChromeDriverManager extends DriverManager {
 
 	    chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-	    WebDriverManager.chromedriver().driverVersion("138.0.7204.101").setup();
+	    WebDriverManager.chromedriver().driverVersion("138.0.7204.102").setup();
 	    driver = new ChromeDriver(chromeOptions);
 
 	    // Clean up temp profile directory after test run
