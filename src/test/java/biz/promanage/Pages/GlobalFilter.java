@@ -46,6 +46,7 @@ public class GlobalFilter extends BasePage {
     }
 
     
+    
     public GlobalFilter selectState() {
         test.log(Status.INFO, state + " state selected");
         wait.until(ExpectedConditions.elementToBeClickable(SELECT_STATE)).click();
