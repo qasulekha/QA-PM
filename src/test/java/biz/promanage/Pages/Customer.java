@@ -28,7 +28,6 @@ public class Customer extends BasePage {
             } catch (InterruptedException ignored) {
                 System.out.println("Error in Send Delayed Keys Method.");
             }
-
             String s = String.valueOf(text.charAt(i));
             element.sendKeys(s);
         }

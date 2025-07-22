@@ -12,7 +12,6 @@ import org.testng.Assert;
 import java.util.List;
 
 public class GlobalFilter extends BasePage {
-
     By FILTER_DDL = By.cssSelector(".sk-group-dropdown:nth-child(3) > .sk-icons");
     By LOCATION_SEARCH_BOX = By.cssSelector(".filter-padding .sk-input");
     By SELECT_STATE = By.cssSelector(".location-filter-list .sk-check-label");
