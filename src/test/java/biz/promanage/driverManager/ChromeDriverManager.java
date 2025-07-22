@@ -33,8 +33,9 @@ public class ChromeDriverManager extends DriverManager {
 	    chromeOptions.addArguments("--user-data-dir=" + uniqueUserDataDir);
 
 	    chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+	    WebDriverManager.chromedriver().setup();
 
-	    WebDriverManager.chromedriver().driverVersion("138.0.7204.101").setup();
+	   // WebDriverManager.chromedriver().driverVersion("138.0.7204.101").setup();
 	    
 	    driver = new ChromeDriver(chromeOptions);
 
