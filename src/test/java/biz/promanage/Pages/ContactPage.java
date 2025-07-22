@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class ContactPage extends BasePage {
+
 	By INTERACTIONS = By.xpath("(//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]");   
 	By CONTACT = By.xpath("((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[2]");
 //	((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[2]

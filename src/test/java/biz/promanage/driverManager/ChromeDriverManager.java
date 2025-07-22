@@ -19,20 +19,27 @@ public class ChromeDriverManager extends DriverManager {
 	@Override
 	protected void startDriver() throws IOException {
 	    ChromeOptions chromeOptions = new ChromeOptions();
+	    chromeOptions.addArguments("--headless=new");
+	    chromeOptions.addArguments("--disable-gpu");
 	    chromeOptions.addArguments("--incognito");
 	    chromeOptions.addArguments("start-maximized");
 	    chromeOptions.addArguments("disable-infobars");
 	    chromeOptions.addArguments("--disable-extensions");
 	    chromeOptions.addArguments("--remote-allow-origins=*");
+	    
+
 
 	    String uniqueUserDataDir = Files.createTempDirectory("chrome_profile_").toString();
 	    chromeOptions.addArguments("--user-data-dir=" + uniqueUserDataDir);
 
 	    chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-	    WebDriverManager.chromedriver().driverVersion("138.0.7204.102").setup();
+	    WebDriverManager.chromedriver().driverVersion("138.0.7204.101").setup();
+	    
 	    driver = new ChromeDriver(chromeOptions);
 
+	    
+	    
 	    // Clean up temp profile directory after test run
 	    Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 	        try {

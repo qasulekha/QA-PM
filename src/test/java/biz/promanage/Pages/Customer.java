@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Customer extends BasePage {
 
-    private final By SWITCH_TENANT = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Switch Tenant']/parent::a[1]");
+    private final By SWITCH_TENANT = By.xpath("//span[text()='Switch Tenant']//parent::a");
     private final By CUSTOMER_INPUT_FOCUS = By.cssSelector(".sk-outlined-input:nth-child(1) > .sk-input");
     private final By CUSTOMER_NAME = By.cssSelector(".sk-show > .sk-input");
     private final By SELECTED_CUSTOMER_NAME = By.cssSelector("div:nth-child(1) > .sk-truncate:nth-child(1)");

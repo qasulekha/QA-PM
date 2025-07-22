@@ -14,7 +14,6 @@ public class ContactPageTest extends BaseTest {
     @Test
     public void ContactGroupCreation() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-
         if (new Customer(getDriver(), test).changeCustomer("Sulekha.Com")) {
             String groupName = "AutomationTestingGroup";
             ContactPage contactPageTest = new ContactPage(getDriver(), test);
@@ -22,7 +21,8 @@ public class ContactPageTest extends BaseTest {
             .clickInteractions()
             .clickContactGroup()
             .deleteGroup(groupName);
-            contactPageTest.clickContact()
+            contactPageTest 
+                    .clickContact()
                     .clickCreateGroup()
                     .enterGroupName(groupName)
                     .clickStaticGroup()

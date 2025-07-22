@@ -21,7 +21,6 @@ public class GlobalFilter extends BasePage {
     By PROFILE_COUNT_FILTER = By.cssSelector(".location-filter-list > li:nth-child(1) .sk-h8");
     private final By businessProfiles = By.xpath("(//div[@class='sk-sidebar sk-show']//a)[7]");
     private final By LISTING_MANAGEMENT = By.xpath("//span[text()='Listing Management']//parent::a");
-   // private final By businessProfiles = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Business Profiles']/parent::a[1]");
     String profileCount="";
     String state = "kerala";
 
@@ -63,15 +62,14 @@ public class GlobalFilter extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(APPLY_BUTTON)).click();
         return this;
     }
-
+    public GlobalFilter clickListingManagement() {
+        waitForElementAndClick(LISTING_MANAGEMENT);
+        return this;
+    }
     public GlobalFilter clickBusinessProfiles() {
         PageLoad.pause();
         test.log(Status.INFO, "Clicking on Business Profiles link");
         wait.until(ExpectedConditions.elementToBeClickable(businessProfiles)).click();
-        return this;
-    }
-    public GlobalFilter clickListingManagement() {
-        waitForElementAndClick(LISTING_MANAGEMENT);
         return this;
     }
 
