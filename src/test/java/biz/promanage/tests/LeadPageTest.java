@@ -19,7 +19,7 @@ public class LeadPageTest extends BaseTest {
     @Test(enabled = true)
     public void testEnterpriseLeadSubmission() throws IOException, InterruptedException {
 
-        EnterpriseLead enterpriseLead = JacksonUtils.deserializeJson("EnterpriseLead.json", EnterpriseLead.class);
+        EnterpriseLead enterpriseLead = JacksonUtils.deserializeJson("enterpriseLead.json", EnterpriseLead.class);
         EnterpriseLeadPage enterpriseLeadPage = new EnterpriseLeadPage(getDriver(), test);
 
         enterpriseLeadPage
