@@ -20,8 +20,8 @@ public class ChromeDriverManager extends DriverManager {
 	protected void startDriver() throws IOException {
 	    ChromeOptions chromeOptions = new ChromeOptions();
 	    chromeOptions.addArguments("--headless=new");
-	   chromeOptions.addArguments("--disable-gpu");
-	   // chromeOptions.addArguments("--incognito");
+	    chromeOptions.addArguments("--disable-gpu");
+	    chromeOptions.addArguments("--incognito");
 	    chromeOptions.addArguments("start-maximized");
 	    chromeOptions.addArguments("disable-infobars");
 	    chromeOptions.addArguments("--disable-extensions");
