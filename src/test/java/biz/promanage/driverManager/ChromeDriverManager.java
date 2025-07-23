@@ -23,6 +23,7 @@ public class ChromeDriverManager extends DriverManager {
 	    chromeOptions.addArguments("--disable-gpu");
 	    chromeOptions.addArguments("--incognito");
 	    chromeOptions.addArguments("start-maximized");
+	    chromeOptions.addArguments("--window-size=1920,1080");
 	    chromeOptions.addArguments("disable-infobars");
 	    chromeOptions.addArguments("--disable-extensions");
 	    chromeOptions.addArguments("--remote-allow-origins=*");
