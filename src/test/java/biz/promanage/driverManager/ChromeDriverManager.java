@@ -6,8 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v132.network.Network;
-import org.openqa.selenium.devtools.v132.page.Page;
+import org.openqa.selenium.devtools.v138.network.Network;
+import org.openqa.selenium.devtools.v138.page.Page;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,7 +19,9 @@ public class ChromeDriverManager extends DriverManager {
 	@Override
 	protected void startDriver() throws IOException {
 	    ChromeOptions chromeOptions = new ChromeOptions();
-	    chromeOptions.addArguments("--incognito");
+	    chromeOptions.addArguments("--headless=new");
+	   chromeOptions.addArguments("--disable-gpu");
+	   // chromeOptions.addArguments("--incognito");
 	    chromeOptions.addArguments("start-maximized");
 	    chromeOptions.addArguments("disable-infobars");
 	    chromeOptions.addArguments("--disable-extensions");

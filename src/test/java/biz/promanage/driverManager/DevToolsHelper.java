@@ -1,17 +1,17 @@
 package biz.promanage.driverManager;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v132.network.Network;
-import org.openqa.selenium.devtools.v132.page.Page;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v138.network.Network;
+import org.openqa.selenium.devtools.v138.page.Page;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DevToolsHelper {
 
@@ -27,8 +27,15 @@ public class DevToolsHelper {
     public DevToolsHelper(WebDriver driver, long timeoutSeconds) {
         this.devTools = ((ChromeDriver) driver).getDevTools();
         this.devTools.createSession();
-        this.devTools.send(Page.enable());
-        this.devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+       // this.devTools.send(Page.enable());
+        this.devTools.send(Page.enable(Optional.empty()));
+        //this.devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+        this.devTools.send(Network.enable(
+        	    Optional.empty(),  // maxTotalBufferSize
+        	    Optional.empty(),  // maxResourceBufferSize
+        	    Optional.empty(),  // maxPostDataSize
+        	    Optional.empty()   // enableRequestId
+        	));
         this.timeoutInSeconds = timeoutSeconds;
     }
       public void waitForPageLoadAndAsyncCompletion() {
