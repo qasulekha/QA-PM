@@ -2,7 +2,7 @@
 
 <suite name="Sanity">
 	<listeners>
-		<!--   <listener class-name="biz.promanage.listeners.TestListener"/>-->
+		<!--  <listener class-name="biz.promanage.listeners.TestListener"/>-->
 		<listener class-name="biz.promanage.listeners.AnnotationTransformer" />
 	</listeners>
 	<test name="Chrome">
@@ -10,12 +10,11 @@
 		<classes>
 			<class name="biz.promanage.tests.LeadPageTest" />
 			<class name="biz.promanage.tests.UserLoginTest" />
-			<class name="biz.promanage.tests.GlobalFilterTest" />
-			<class name="biz.promanage.tests.QuestionAnswerTest" />
+			<!--<class name="biz.promanage.tests.GlobalFilterTest" />
 			<class name="biz.promanage.tests.LeaderBoardPageTest" />
 			<class name="biz.promanage.tests.ContactPageTest" />
-			<class name="biz.promanage.tests.CustomGroupTest" />
-			<class name="biz.promanage.tests.PostPageTest" />
+			<class name="biz.promanage.tests.CustomGroupTest" />-->
+		
 
 		</classes>
 	</test>

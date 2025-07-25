@@ -13,7 +13,7 @@ public class LeaderBoardPageTest extends BaseTest {
     @Test
     public void LeaderBoardTest() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        if (new Customer(getDriver(), test).changeCustomer("Aster Pharmacy")) {
+        if (new Customer(getDriver(), test).changeCustomer("Sterling Resorts")) {
             LeaderBoardPage leaderBoardPage = new LeaderBoardPage(getDriver(), test);
             leaderBoardPage.load().selectYearAndMonth().verifyCityFilter().compareLeaderboardResults().verifyGroupFilter();
         }
