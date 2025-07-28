@@ -10,10 +10,10 @@
 		<classes>
 			<class name="biz.promanage.tests.LeadPageTest" />
 			<class name="biz.promanage.tests.UserLoginTest" />
-			<!--<class name="biz.promanage.tests.GlobalFilterTest" />
+			<class name="biz.promanage.tests.GlobalFilterTest" />
 			<class name="biz.promanage.tests.LeaderBoardPageTest" />
 			<class name="biz.promanage.tests.ContactPageTest" />
-			<class name="biz.promanage.tests.CustomGroupTest" />-->
+			<class name="biz.promanage.tests.CustomGroupTest" />
 		
 
 		</classes>
