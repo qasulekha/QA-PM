@@ -14,8 +14,6 @@
 			<class name="biz.promanage.tests.LeaderBoardPageTest" />
 			<class name="biz.promanage.tests.ContactPageTest" />
 			<class name="biz.promanage.tests.CustomGroupTest" />
-		
-
 		</classes>
 	</test>
 </suite>
