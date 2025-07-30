@@ -8,6 +8,7 @@
 	<test name="Chrome">
 		<parameter name="browser" value="CHROME" />
 		<classes>
+			
 			<class name="biz.promanage.tests.LeadPageTest" />
 			<class name="biz.promanage.tests.UserLoginTest" />
 			<class name="biz.promanage.tests.GlobalFilterTest" />
