@@ -121,7 +121,7 @@ public class CustomGroup extends BasePage {
 		waitForElementAndClick(ACTION);
 		PageLoad.pause();
 		test.log(Status.INFO, "Action filter clicked");
-		WebElement option = driver.findElement(By.xpath("//option[text()='AutomationTestCustomgroup']"));
+		WebElement option = driver.findElement(By.xpath("//option[text()='AutomationTestGroup']"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", option);
 		PageLoad.pause();
 		option.click();
