@@ -13,7 +13,7 @@ public class Otp {
         String apiResponse = null;
 
         if (!Objects.equals(userMobileNumber, "9380835000")) {
-        	PageLoad.pauseTenSeconds();
+        	PageLoad.pause();
             BufferedReader br = new BufferedReader(new InputStreamReader(new URL(otpEndpoint).openStream()));
             while ((line = br.readLine()) != null) {
                 apiResponse = line;

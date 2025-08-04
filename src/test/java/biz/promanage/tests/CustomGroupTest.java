@@ -24,9 +24,9 @@ public class CustomGroupTest extends BaseTest
         }
 
         if(CustomGroup !=null) {
-            String customGroupName = "AutomationTestGroup";
+            String customGroupName = "AutomationCustomgroup";
             CustomGroup.load().CreateCustomGroup(customGroupName).verifyCustomGroup(customGroupName);
-
+            CustomGroup.load().CreateCustomGroup1(customGroupName).verifyCustomGroup(customGroupName);
         }
     }
 }

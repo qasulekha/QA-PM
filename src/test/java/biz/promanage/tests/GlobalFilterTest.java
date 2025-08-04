@@ -14,7 +14,7 @@ public class GlobalFilterTest extends BaseTest {
     @Test
     public void validateLocationFilter() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        if (new Customer(getDriver(), test).changeCustomer("Aster Pharmacy")) {
+        if (new Customer(getDriver(), test).changeCustomer("Sterling Resorts")) {
             GlobalFilter globalFilterTest = new GlobalFilter(getDriver(), test);
             globalFilterTest.clickOnFilter().searchState().selectState().clickApply().clickListingManagement().clickBusinessProfiles().ScrollToTheBottom();
         }

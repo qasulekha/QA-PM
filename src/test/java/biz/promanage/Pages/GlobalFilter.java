@@ -18,10 +18,10 @@ public class GlobalFilter extends BasePage {
     By APPLY_BUTTON = By.cssSelector(".sk-flex-align-center .sk-button:nth-child(2) > .sk-ripple-container");
     By PROFILE_COUNT = By.xpath("//div[@class='sk-card-secondary']");
     By PROFILE_COUNT_FILTER = By.cssSelector(".location-filter-list > li:nth-child(1) .sk-h8");
-    private final By businessProfiles = By.xpath("(//div[@class='sk-sidebar sk-show']//a)[7]");
+    private final By businessProfiles = By.xpath("(//div[@class='sk-sidebar sk-show']//a)[8]");
     private final By LISTING_MANAGEMENT = By.xpath("//span[text()='Listing Management']//parent::a");
     String profileCount="";
-    String state = "kerala";
+    String state = "Tamil Nadu";
 
     public GlobalFilter(WebDriver driver, ExtentTest test) {
         super(driver, test);
@@ -79,7 +79,7 @@ public class GlobalFilter extends BasePage {
         PageLoad.pause();
         dynamicScrolling();
         getProfileCount();
-        PageLoad.pauseOneSec();
+        PageLoad.pause();
         takeScreenshot();
     }
 

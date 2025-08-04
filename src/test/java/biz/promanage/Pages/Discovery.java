@@ -56,15 +56,17 @@ public class Discovery extends BasePage {
 	    RetryAnalyzer retryAnalyzer = new RetryAnalyzer();
 	    Thread.sleep(25000); // Wait for elements to load
 
-	    String[] dataPoints = { "Searches", "View by device", "Views Total", "Directions Requests", "Phone Calls", "Website Visits" };
-	    String[] dataPoints1 = { "Searches", "View by device", "Views Total", "Directions Requests", "Phone Calls", "Website Visits" };
+
+	    String[] dataPoints = { "View by device", "Maps Views", "Search views", "Directions Requests", "Phone Calls", "Website Visits", "Searches" };
+	    String[] dataPoints1 = { "View by device", "Maps Views", "Search views", "Directions Requests", "Phone Calls", "Website Visits", "Searches" };
 	    String[] xPaths = {
-	    		"(//div[@class='sk-card-secondary'])[2]//div[@class='sk-h3']",
 	            "//div[@class='device-details']/div/div",
-	            "(//div[@class='sk-card-primary'])[5]//small/b",
-	            "((//div[@class='sk-card-secondary'])[6]//div[@class='sk-flex'])[2]/b",
-	            "((//div[@class='sk-card-secondary'])[6]//div[@class='sk-flex'])[4]/b",
-	            "((//div[@class='sk-card-secondary'])[6]//div[@class='sk-flex'])[6]/b"
+	            "((//div[@class='sk-card animated'])[2]//div[@class='data-wrapper']//div[@class='sk-flex']/b)[1]",
+	            "((//div[@class='sk-card animated'])[2]//div[@class='data-wrapper']//div[@class='sk-flex']/b)[2]",
+	            "((//div[@class='sk-card-secondary'])[3]//div[@class='sk-flex'])[2]/b",
+	            "((//div[@class='sk-card-secondary'])[3]//div[@class='sk-flex'])[4]/b",
+	            "((//div[@class='sk-card-secondary'])[3]//div[@class='sk-flex'])[6]/b",
+	            "(//div[@class='sk-card-secondary'])[5]//div[@class='sk-h3']"
 	    };
 
 	    for (int i = 0; i < xPaths.length; i++) {
@@ -95,14 +97,14 @@ public class Discovery extends BasePage {
 	        } catch (Exception e) {
 	            System.out.println("❌ Exception encountered while fetching value for " + dataPoints1);
 	            if (retryAnalyzer.getRetryCount() == 1) {
-	            	comonmethods.Teamsjson("Promanage", "❌ Test failed on second attempt: \r\n [Searches,View by device,Views Total,Directions Requests,Phone Calls,Website Visits]","fail", "");
+	            	comonmethods.Teamsjson("Promanage", "❌ Test failed on second attempt: \r\n [View by device,Maps Views,Search views,Directions Requests,Phone Calls,Website Visits,Searches]","fail", "");
 	                Assert.fail("Test failed: '" + dataPoints1 + "' value is empty or null.");
 	            } else if (retryAnalyzer.getRetryCount() == 2) {
-	            	comonmethods.Teamsjson("Promanage", "❌ Test failed on third attempt: \r\n[Searches,View by device,Views Total,Directions Requests,Phone Calls,Website Visits]","fail", "");
+	            	comonmethods.Teamsjson("Promanage", "❌ Test failed on third attempt: \r\n[View by device,Maps Views,Search views,Directions Requests,Phone Calls,Website Visits,Searches]","fail", "");
 	                Assert.fail("Test failed: '" + dataPoints1 + "' value is empty or null.");
 	            } else {
 	                System.out.println("❌ Value Not Fetched for: " + dataPoints1);
-	                comonmethods.Teamsjson("Promanage", "❌ Test failed on first attempt: \r\n[Searches,View by device,Views Total,Directions Requests,Phone Calls,Website Visits]","fail", "");
+	                comonmethods.Teamsjson("Promanage", "❌ Test failed on first attempt: \r\n[View by device,Maps Views,Search views,Directions Requests,Phone Calls,Website Visits,Searches]","fail", "");
 	                Assert.fail("Test failed: '" + dataPoints1 + "' value is empty or null.");
 	            }
 	            
