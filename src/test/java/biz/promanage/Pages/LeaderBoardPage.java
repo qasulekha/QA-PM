@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 public class LeaderBoardPage extends BasePage {
 
-    private static final String FOCUSED_GROUP_NAME = "Focused_South";
+    private static final String FOCUSED_GROUP_NAME = "Focused_Restaurant";
     private static final String CITY_NAME = "Ooty";
     private final By img = By.xpath("//div[@class='table-card table-card-body']//img");
     private final By DATE = By.xpath("(//div[@class='sk-flex-row sk-flex-align-start sk-sticky']//div)[12]");
@@ -98,9 +98,9 @@ public class LeaderBoardPage extends BasePage {
 
         String selectedGroupName = wait.until(ExpectedConditions.visibilityOfElementLocated(GROUP_NAME)).getText();
         test.log(Status.INFO, "Selected Group Name: " + selectedGroupName);
-
+        PageLoad.pause();
         Assert.assertEquals(selectedGroupName, FOCUSED_GROUP_NAME, "Group names do not match");
         takeScreenshot();
-    }
+    } 
 
 }
