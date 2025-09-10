@@ -35,7 +35,7 @@ public class MyDashBoard extends BasePage {
 
 	
 
-public void Storedata() throws InterruptedException, MalformedURLException, IOException {
+public void ValidateMyDashBoardData() throws InterruptedException, MalformedURLException, IOException {
 	//TeamsAlert comonmethods = new TeamsAlert();
 	  ArrayList<String> values = new ArrayList<>();
 	  ArrayList<String> missingDataPoints = new ArrayList<>();
@@ -43,9 +43,9 @@ public void Storedata() throws InterruptedException, MalformedURLException, IOEx
     Thread.sleep(25000); // Wait for elements to load
 
     String[] dataPoints =
-    		  {"Total Values","Activity", "Views", "Overall Contact", "Profiles protected", "Unauthorized changes", "Discovery Activity", "Discovery Views", "Searches Value", "Overall Rating", "Current Rating", "Total Health Score"};
+    		  { "Total Values", "Activity", "Views", "Overall Contact", "Profiles protected", "Unauthorized changes", "Discovery Activity", "Discovery Views", "Searches Value", "Overall Rating", "Current Rating", "Total Health Score" };
     String[] dataPoints1 =
-    	      {"Total Values","Activity", "Views", "Overall Contact", "Profiles protected", "Unauthorized changes", "Discovery Activity", "Discovery Views", "Searches Value", "Overall Rating", "Current Rating", "Total Health Score" };
+    	      { "Total Values", "Activity", "Views", "Overall Contact", "Profiles protected", "Unauthorized changes", "Discovery Activity", "Discovery Views", "Searches Value", "Overall Rating", "Current Rating", "Total Health Score" };
     		  String[] xPaths = { 
     	      "(//div[@class='sk-card animated'])[1]//div[@class='sk-h3']",
     		  "(//div[@class='sk-card animated'])[1]//ul//li//b",
@@ -57,8 +57,8 @@ public void Storedata() throws InterruptedException, MalformedURLException, IOEx
     		  "(((//div[@class='sk-card animated'])[3]//b)[4])", 
     		  "(//div[@class='sk-card animated'])[4]//div[@class='sk-h3']",
     		  "(//div[@class='sk-card animated'])[5]//div[@class='sk-h3']",
-    		  "((//div[@class='sk-card animated'])[5]//span)[4]",
-    		  "((//div[@class='sk-card animated'])[6]//b)[1]",
+    		  "((//div[@class='sk-card animated'])[5]//span)[4]//b",
+    		  "((//div[@class='sk-card animated'])[6]//b)[1]"
     		  
     		  
     		  
@@ -66,17 +66,17 @@ public void Storedata() throws InterruptedException, MalformedURLException, IOEx
     		 
         };
     		  for (int i = 0; i < xPaths.length; i++) {
-    		        try {
-    		        	//scroll(By.xpath(xPaths[i])); // Scroll to the element
-    		            WebElement element = driver.findElement(By.xpath(xPaths[i]));
-    		            String value = element.getText();
-    		            if (!value.isEmpty()) {
-    		                System.out.println("✔ " + dataPoints[i] + " fetched successfully: " + value);
-    		                values.add(value);
-    		            } 
-    		            else {
-    		                 missingDataPoints.add(dataPoints[i]);
-//    		                
+	        try {
+	        	//scroll(By.xpath(xPaths[i])); 
+	            WebElement element = driver.findElement(By.xpath(xPaths[i]));
+	            String value = element.getText();
+	            
+	            if (!value.isEmpty()) {
+	                System.out.println("✔ " + dataPoints[i] + " fetched successfully: " + value);
+	                values.add(value);
+	            } 
+	            else {
+	                 missingDataPoints.add(dataPoints[i]);
 //    		                if (retryAnalyzer.getRetryCount() == 1) {
 //    		                	comonmethods.Teamsjson("Promanage", "❌ Test failed on second attempt: \r\n[" +  dataPoints[i]+"]","fail", "");
 //    		                    Assert.fail("Test failed: '" + dataPoints[i] + "' value is empty or null.");
@@ -89,14 +89,13 @@ public void Storedata() throws InterruptedException, MalformedURLException, IOEx
 //    		                    Assert.fail("Test failed: '" + dataPoints[i] + "' value is empty or null.");
 //    		                }
     		            }
-    		        }
-    		        catch (Exception e) {
+    		        } catch (Exception e) {
     		            System.out.println("❌ Exception encountered while fetching value for " + dataPoints1);
     		            if (retryAnalyzer.getRetryCount() == 1) {
-    		            	comonmethods.Teamsjson("Promanage", "❌ Test failed on second attempt: \r\n [Total Values,Activity,Views,Overall Contact,Profiles protected,Unauthorized changes,Discovery Activity,Discovery Views,Searches Value,Overall Rating,Current Rating,Total Health Score]","fail", "");
+    		            	comonmethods.Teamsjson("Promanage", "❌ Test failed on second attempt: \r\n[Total Values,Activity,Views,Overall Contact,Profiles protected,Unauthorized changes,Discovery Activity,Discovery Views,Searches Value,Overall Rating,Current Rating,Total Health Score]","fail", "");
     		                Assert.fail("Test failed: '" + dataPoints1 + "' value is empty or null.");
     		            } else if (retryAnalyzer.getRetryCount() == 2) {
-    		            	comonmethods.Teamsjson("Promanage", "❌ Test failed on third attempt: \r\n[Total Values,Activity,Views,Overall Contact,Profiles protected,Unauthorized changes,Discovery Activity,Discovery Views,Searches Value,Overall Rating,Current Rating,Total Health Score]","fail", "");
+    		            	comonmethods.Teamsjson("Promanage", "❌ Test failed on third attempt: \r\nTotal Values,Activity,Views,Overall Contact,Profiles protected,Unauthorized changes,Discovery Activity,Discovery Views,Searches Value,Overall Rating,Current Rating,Total Health Score]","fail", "");
     		                Assert.fail("Test failed: '" + dataPoints1 + "' value is empty or null.");
     		            } else {
     		                System.out.println("❌ Value Not Fetched for: " + dataPoints1);
@@ -106,16 +105,26 @@ public void Storedata() throws InterruptedException, MalformedURLException, IOEx
 //    		            Assert.fail("Test failed: Exception occurred while retrieving '" + dataPoints[i] + "' value.");
     		        }
     		    }
+
     	 
     		    // Check if any data points are missing and trigger failure message
-    		    if (!missingDataPoints.isEmpty()) {
+    		  if (!missingDataPoints.isEmpty()) {
     		        String missingValues = String.join(", ", missingDataPoints);
     		        if (retryAnalyzer.getRetryCount() == 1) {
     	            	comonmethods.Teamsjson("Promanage", "❌ Test failed on second attempt: \r\n[" +  missingValues+"]","fail", "");
     	                Assert.fail("Test failed: '" + missingValues + "' value is empty or null.");
     	            } else if (retryAnalyzer.getRetryCount() == 2) {
     	            	comonmethods.Teamsjson("Promanage", "❌ Test failed on third attempt: \r\n[" +  missingValues+"]","fail", "");
+    	            	 takeScreenshot(); 
+    	               	 //comonmethods.snap(driver);
+							/*
+							 * comonmethods.mailWithAttachment("Promanage Failure alert",
+							 * "Hi Team</br> \r\n" +
+							 * "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There was a problem in posting a lead.Kindly find the screenshot in this attachment</br>\r\n"
+							 * + "<br>" + "<b>Regards</b></br>\r\n" + "QA@sulekha.com");
+							 */
     	                Assert.fail("Test failed: '" + missingValues + "' value is empty or null.");
+    	   
     	            } else {
     	                System.out.println("❌ Value Not Fetched for: " + missingValues);
     	                comonmethods.Teamsjson("Promanage", "❌ Test failed on first attempt: \r\n[" +  missingValues +"]","fail", "");

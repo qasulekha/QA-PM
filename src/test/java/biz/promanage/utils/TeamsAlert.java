@@ -1,11 +1,46 @@
 package biz.promanage.utils;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Properties;
+import java.util.logging.FileHandler;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Reporter;
+
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.microsoft.azure.storage.core.Base64;
 
 import biz.promanage.base.BaseTest;
+import biz.promanage.reports.ExtentManager;
 
 /*public class TeamsAlert {
     public static void SendAlertToTeams(String statusMsg, String screenshotUrl) throws InterruptedException, IOException {
@@ -186,4 +221,220 @@ public class TeamsAlert extends BaseTest {
                 "    ]\n" +
                 "}";
     }
+
+	public void mailWithAttachment(String subject, String content) throws IOException {
+
+		final String username = "qa@sulekha.com";
+		final String password = "Testing92025";
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "outlook.office365.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("qa@sulekha.com"));
+//			message.setRecipients(Message.RecipientType.TO,
+//					InternetAddress.parse("MohamedNN@sulekha.com,mohamedjaleel@sulekha.com,manivannanr@sulekha.com,sriniv@sulekha.com,JagadishwaranG@sulekha.com"));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse("MohamedNN@sulekha.com,JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com"));
+			message.setSubject(subject);
+			// message.setText(content);
+
+			// message.setContent(content, "text/html");
+			Multipart multipart = new MimeMultipart();
+			BodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart.setContent(content, "text/html");
+			// messageBodyPart.setText(content);
+			// Set text message part
+			multipart.addBodyPart(messageBodyPart);
+			MimeBodyPart messageBodyPart2 = new MimeBodyPart();
+			String filename = "Promanage_extent_report_%s.png";
+			DataSource source = new FileDataSource(filename);
+			messageBodyPart2.setDataHandler(new DataHandler(source));
+			messageBodyPart2.setFileName(filename);
+			multipart.addBodyPart(messageBodyPart2);
+
+			// Send the complete message parts
+			message.setContent(multipart);
+			message.addHeader("X-Priority", "1");
+
+			Transport.send(message);
+
+			System.out.println("Done");
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	public void mailWithAttachmentfile(String subject, String content) throws IOException {
+	    final String username = "qa@sulekha.com";
+	    final String password = "Testing92025";
+
+	    Properties props = new Properties();
+	    props.put("mail.smtp.auth", "true");
+	    props.put("mail.smtp.starttls.enable", "true");
+	    props.put("mail.smtp.host", "outlook.office365.com");
+	    props.put("mail.smtp.port", "587");
+	    props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+	    Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+	        protected PasswordAuthentication getPasswordAuthentication() {
+	            return new PasswordAuthentication(username, password);
+	        }
+	    });
+
+	    try {
+	        Message message = new MimeMessage(session);
+	        message.setFrom(new InternetAddress("qa@sulekha.com"));
+	        message.setRecipients(Message.RecipientType.TO,
+	            InternetAddress.parse("MohamedNN@sulekha.com,JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com,Rakeshm@promanage.biz"));
+	        message.setSubject(subject);
+
+	        Multipart multipart = new MimeMultipart();
+
+	        // body part
+	        MimeBodyPart bodyPart = new MimeBodyPart();
+	        bodyPart.setContent(content, "text/html");
+	        multipart.addBodyPart(bodyPart);
+
+	        // get latest screenshot from folder
+	        File screenshotDir = new File("screenshots");
+	        if (screenshotDir.exists() && screenshotDir.isDirectory()) {
+	            File[] files = screenshotDir.listFiles(File::isFile);
+
+	            if (files != null && files.length > 0) {
+	                // sort by last modified
+	                Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+	                File latestFile = files[0]; // latest screenshot
+
+	                MimeBodyPart attachPart = new MimeBodyPart();
+	                DataSource source = new FileDataSource(latestFile);
+	                attachPart.setDataHandler(new DataHandler(source));
+	                attachPart.setFileName(latestFile.getName());
+	                multipart.addBodyPart(attachPart);
+
+	                System.out.println("📎 Attached screenshot: " + latestFile.getAbsolutePath());
+	            } else {
+	                System.err.println("⚠ No screenshots found in: " + screenshotDir.getAbsolutePath());
+	            }
+	        } else {
+	            System.err.println("⚠ Screenshot folder not found: " + screenshotDir.getAbsolutePath());
+	        }
+
+	        message.setContent(multipart);
+	        message.addHeader("X-Priority", "1");
+
+	        Transport.send(message);
+	        System.out.println("✅ Email sent successfully with latest screenshot");
+
+	    } catch (MessagingException e) {
+	        throw new RuntimeException(e);
+	    }
+	}
+	 // directory to save screenshots
+    private static final String SCREENSHOTS_DIR = "screenshots";
+    private static final String AZURE_BASE_URL = "http://lscdn.azureedge.net/jenkins/Capshine/";
+
+    public String takeScreenshots() {
+        String screenshotName = String.format("Promanage_extent_report_%s.png", DateTimeUtil.getDateTime());
+        String imagePath = Paths.get(SCREENSHOTS_DIR, screenshotName).toString();
+        String azureFilePath = AZURE_BASE_URL + screenshotName;
+
+        try {
+            // Take screenshot
+            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(srcFile, new File(imagePath));  // ✅ using FileUtils
+
+            // Encode as Base64 for Extent Report
+            byte[] encoded = org.apache.commons.codec.binary.Base64.encodeBase64(FileUtils.readFileToByteArray(new File(imagePath)));
+            String base64Image = new String(encoded, StandardCharsets.US_ASCII);
+
+            // Upload to Azure
+            AzureFileUpload.ScreenShot(new File(imagePath));
+
+            // Add screenshot to Extent Report
+            Reporter.log(String.format("<a href='%s'><img src='%s' height='400' width='400'/></a>", azureFilePath, azureFilePath));
+            ExtentManager.getTest().info(MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
+
+            return imagePath; // ✅ return local path (for email attachment)
+
+        } catch (IOException e) {
+            test.log(Status.FAIL, "Failed to take screenshot: " + e.getMessage());
+            return null;
+        }
+    }
+
+	
+
+	public void mail(String subject, String content,String scrpath) throws IOException {
+
+		final String username = "qa@sulekha.com";
+		final String password = "Testing92025";
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "outlook.office365.com");
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("qa@sulekha.com"));
+//			message.setRecipients(Message.RecipientType.TO,
+//					InternetAddress.parse("MohamedNN@sulekha.com,mohamedjaleel@sulekha.com,manivannanr@sulekha.com,sriniv@sulekha.com"));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse("MohamedNN@sulekha.com,mohamedjaleel@sulekha.com,JagadishwaranG@sulekha.com"));
+			message.setSubject(subject);
+			message.setContent(content, "text/html");
+			// message.setText(content);
+			message.addHeader("X-Priority", "1");
+			Transport.send(message);
+
+			System.out.println("Done");
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static String timestamp() {
+		// Timestamp to make each screenshot name unique
+		return new SimpleDateFormat("yyyy-MM-dd HH-mm").format(new Date());
+	}
+
+	public void snap(RemoteWebDriver driver) {
+		try {
+			// To create reference of TakesScreenshot
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
+			// Call method to capture screenshot
+			File src = screenshot.getScreenshotAs(OutputType.FILE);
+			// Copy files to specific location
+			// result.getName() will return name of test case so that screenshot name will
+			// be same as test case name
+			FileUtils.copyFile(src, new File("./reports/" + timestamp() + ".jpg"));
+			System.out.println("Successfully captured a screenshot");
+		}
+
+		catch (IOException e) {
+			System.out.println("Exception while taking screenshot " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
 }

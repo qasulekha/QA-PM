@@ -6,6 +6,7 @@ import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.Random;
 
@@ -54,9 +55,11 @@ public class Customer extends BasePage {
 
                     WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sk-show > .sk-input")));
                     sendDelayedKeys(element, customerName);
+                    PageLoad.pause();
 
                     WebElement customerElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sk-overflow-menu']//ul[@class='sk-overflow-list sk-show']/li[. ='" + customerName + "']")));
-                    customerElement.click();
+                   
+                   customerElement.click();
 
                     String selectedCustomerName = wait.until(ExpectedConditions.elementToBeClickable(SELECTED_CUSTOMER_NAME)).getText();
 

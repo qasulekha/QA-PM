@@ -8,6 +8,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 import java.util.List;
 
 public class ContactPage extends BasePage {
@@ -235,7 +238,7 @@ public class ContactPage extends BasePage {
     }
 
     public ContactPage clickSubmitBtn() {
-        PageLoad.pause();
+       
         takeScreenshot();
       //  wait.until(ExpectedConditions.elementToBeClickable(SUBMIT_BTN)).click();
         waitForElementAndClick(SUBMIT_BTN);
@@ -243,7 +246,7 @@ public class ContactPage extends BasePage {
     }
 
     public void clickContactGroupMenu() {
-        clickContact();
+        //clickContact();
        // wait.until(ExpectedConditions.elementToBeClickable(CONTACT_GROUP_MENU)).click();
         waitForElementAndClick(CONTACT_GROUP_MENU);
         PageLoad.pause();
@@ -255,35 +258,70 @@ public class ContactPage extends BasePage {
         return driver.findElement(By.cssSelector(".sk-surface:nth-child(2) .sk-width-large > .sk-line-clamp")).getText();
     }
 
+	/*
+	 * public void deleteGroup(String groupName) {
+	 * 
+	 * int i = 1; //navigateToContactGroupPage(); SearchGroup(groupName);
+	 * List<WebElement> elements = driver.findElements(By.xpath(GROUP_NAMES));
+	 * 
+	 * for (WebElement element : elements) { if
+	 * (element.getText().equals(groupName)) { DeleteGroup(i); break; } i++; } //
+	 * driver.findElement(By.xpath(SEARCH_BY_GROUP_NAME)).clear(); }
+	 * 
+	 * private void SearchGroup(String groupName) { PageLoad.pause();
+	 * sendDelayedKeys(driver.findElement(By.xpath(SEARCH_BY_GROUP_NAME)),groupName)
+	 * ; PageLoad.pauseThreeSecs();
+	 * driver.findElement(By.xpath(SEARCH_BY_GROUP_NAME)).sendKeys(Keys.ENTER); }
+	 * 
+	 * private void DeleteGroup(int i) { click(driver.findElement(By.xpath(
+	 * "(//div[@class='sk-overflow-menu']//button)[" + i + "]")));
+	 * PageLoad.pauseOneSec();
+	 * click(driver.findElement(By.cssSelector(".sk-show > li:nth-child(2)")));
+	 * PageLoad.pauseOneSec(); click(driver.findElement(By.
+	 * cssSelector(".sk-dialog:nth-child(4) .sk-button:nth-child(2) > .sk-ripple-container"
+	 * ))); }
+	 */
+    
     public void deleteGroup(String groupName) {
-
-        int i = 1;
-       //navigateToContactGroupPage();
+        // Navigate to group page if needed
         SearchGroup(groupName);
+
+        // Get all groups
         List<WebElement> elements = driver.findElements(By.xpath(GROUP_NAMES));
+        int i = 1;
         for (WebElement element : elements) {
-            if (element.getText().equals(groupName)) {
+            String text = element.getText().trim();
+            if (text.equalsIgnoreCase(groupName)) {
                 DeleteGroup(i);
                 break;
             }
             i++;
         }
-        driver.findElement(By.xpath(SEARCH_BY_GROUP_NAME)).clear();
     }
-
     private void SearchGroup(String groupName) {
-    	 PageLoad.pause();
-        sendDelayedKeys(driver.findElement(By.xpath(SEARCH_BY_GROUP_NAME)),groupName);
-        PageLoad.pauseThreeSecs();
-        driver.findElement(By.xpath(SEARCH_BY_GROUP_NAME)).sendKeys(Keys.ENTER);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SEARCH_BY_GROUP_NAME)));
+        //searchBox.clear();
+        searchBox.sendKeys(groupName, Keys.ENTER);
+    }
+    private void DeleteGroup(int i) {
+    	
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        // Click overflow menu button
+        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='sk-overflow-menu']//button)[" + i + "]")));
+        menuButton.click();
+
+        // Click delete option
+        WebElement deleteOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sk-show > li:nth-child(2)") ));
+        deleteOption.click();
+
+        // Confirm delete
+        WebElement confirmBtn = wait.until(ExpectedConditions.elementToBeClickable( By.cssSelector(".sk-dialog:nth-child(4) .sk-button:nth-child(2) > .sk-ripple-container")));
+        confirmBtn.click();
     }
 
-    private void DeleteGroup(int i) {
-        click(driver.findElement(By.xpath("(//div[@class='sk-overflow-menu']//button)[" + i + "]")));
-        PageLoad.pause();
-        click(driver.findElement(By.cssSelector(".sk-show > li:nth-child(2)")));
-        click(driver.findElement(By.cssSelector(".sk-dialog:nth-child(4) .sk-button:nth-child(2) > .sk-ripple-container")));
-    }
 
     private void navigateToContactGroupPage() {
         PageLoad.pauseThreeSecs();

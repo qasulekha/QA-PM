@@ -71,7 +71,7 @@ public class Discovery extends BasePage {
 
 	    for (int i = 0; i < xPaths.length; i++) {
 	        try {
-	        	//scroll(By.xpath(xPaths[i])); // Scroll to the element
+	        	scroll(By.xpath(xPaths[i])); // Scroll to the element
 	            WebElement element = driver.findElement(By.xpath(xPaths[i]));
 	            String value = element.getText();
 	            
@@ -101,7 +101,14 @@ public class Discovery extends BasePage {
 	                Assert.fail("Test failed: '" + dataPoints1 + "' value is empty or null.");
 	            } else if (retryAnalyzer.getRetryCount() == 2) {
 	            	comonmethods.Teamsjson("Promanage", "❌ Test failed on third attempt: \r\n[View by device,Maps Views,Search views,Directions Requests,Phone Calls,Website Visits,Searches]","fail", "");
-	                Assert.fail("Test failed: '" + dataPoints1 + "' value is empty or null.");
+	            	String screenshotPath = takeScreenshot();
+					  comonmethods.mailWithAttachmentfile( "Promanage Failure alert",
+					  "Hi Team</br>\r\n" +
+					  "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There was a problem in loading promanage site. where widget is missing  "
+					  + "[View by device,Maps Views,Search views,Directions Requests,Phone Calls,Website Visits,Searches] "+ "Kindly find the screenshot in this attachment</br>\r\n" +
+					  "<br><b>Regards</b></br>\r\nQA@sulekha.com"
+					  );
+	            	Assert.fail("Test failed: '" + dataPoints1 + "' value is empty or null.");
 	            } else {
 	                System.out.println("❌ Value Not Fetched for: " + dataPoints1);
 	                comonmethods.Teamsjson("Promanage", "❌ Test failed on first attempt: \r\n[View by device,Maps Views,Search views,Directions Requests,Phone Calls,Website Visits,Searches]","fail", "");
@@ -120,7 +127,18 @@ public class Discovery extends BasePage {
                 Assert.fail("Test failed: '" + missingValues + "' value is empty or null.");
             } else if (retryAnalyzer.getRetryCount() == 2) {
             	comonmethods.Teamsjson("Promanage", "❌ Test failed on third attempt: \r\n[" +  missingValues+"]","fail", "");
+            	 takeScreenshot(); 
+               	 //comonmethods.snap(driver);
+            	 String screenshotPath = takeScreenshot();
+					  comonmethods.mailWithAttachmentfile( "Promanage Failure alert",
+					  "Hi Team</br>\r\n" +
+					  "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There was a problem in loading promanage site. where widget is missing -"
+					  + missingValues + " Kindly find the screenshot in this attachment</br>\r\n" +
+					  "<br><b>Regards</b></br>\r\nQA@sulekha.com"
+					  );
+					
                 Assert.fail("Test failed: '" + missingValues + "' value is empty or null.");
+   
             } else {
                 System.out.println("❌ Value Not Fetched for: " + missingValues);
                 comonmethods.Teamsjson("Promanage", "❌ Test failed on first attempt: \r\n[" +  missingValues +"]","fail", "");

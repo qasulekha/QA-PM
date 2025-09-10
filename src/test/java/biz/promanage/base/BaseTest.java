@@ -28,7 +28,7 @@ import java.util.HashMap;
 public class BaseTest {
 
     private final ThreadLocal<DriverManager> driverManager = new ThreadLocal<>();
-    private final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    protected final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     public static ExtentTest test;
     protected static ThreadLocal<HashMap<String, String>> strings = new ThreadLocal<HashMap<String, String>>();
     public TestLogger logger = new TestLogger();

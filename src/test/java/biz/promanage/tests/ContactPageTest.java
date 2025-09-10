@@ -14,14 +14,14 @@ public class ContactPageTest extends BaseTest {
     @Test
     public void ContactGroupCreation() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        if (new Customer(getDriver(), test).changeCustomer("Sulekha.Com")) {
+        if (new Customer(getDriver(), test).changeCustomer("Sulekha.com")) {
             String groupName = "AutomationTestingGroup";
             ContactPage contactPageTest = new ContactPage(getDriver(), test);
             contactPageTest
             .clickInteractions()
             .clickContactGroup()
             .deleteGroup(groupName);
-            contactPageTest 
+            contactPageTest
                     .clickContact()
                     .clickCreateGroup()
                     .enterGroupName(groupName)
