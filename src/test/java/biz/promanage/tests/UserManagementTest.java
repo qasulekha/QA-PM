@@ -14,53 +14,43 @@ import java.io.IOException;
 
 public class UserManagementTest extends BaseTest {
 
-    @Test 
-    public void userManagementCreation() throws IOException, InterruptedException {
-        // Perform login
-        new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        // Change to the specific customer
-        if (new Customer(getDriver(), test).changeCustomer("Sulekha.Com")) {
+	
+	@Test 
+	public void userManagementCreation() throws IOException, InterruptedException {
+	    new LoginPage(getDriver(), test).login(GetUserLoginCred());
 
-            // Instantiate UserManagementPage and perform actions
-            UserManagementPage userManagementPage = new UserManagementPage(getDriver(), test);
-            String name = "TestZ";
-            String phNo = "9042219183";
-            String mail = "mohamedasi0910@gmail.com";
-            String userName = "xyy0910@gmail.com";
-            String loc = "Karnataka(2)";
-            String ac = "WhatsApp Assistant";
-            String ph = "9042219189";
-           
-            
-             userManagementPage.clickUser().searchBox(phNo).deleteUser().addUser(name).enterPhNum(phNo).enterEmail(mail)
-            .selectRole().cmoUser().clickAdd().editUser().saveProfile();
-              
-//             String valLoc = userManagementPage.clickTest().getLocation(loc);
-//             Assert.assertEquals(loc,valLoc );
+	    if (new Customer(getDriver(), test).changeCustomer("Sulekha.Com")) {
 
+	        UserManagementPage userManagementPage = new UserManagementPage(getDriver(), test);
 
-           
-             String expected =  userManagementPage.clearSearch().searchBox(ph).getPhoneNumber();
-             
-             Assert.assertEquals(phNo,expected );  
-            
-             
-             
-            
-           String expected1 =  userManagementPage.getSelectedActiveAccess();
-           Assert.assertEquals(ac,expected1 );
-         
-           
-             test.log(Status.PASS, "User created. Group Name :  " + phNo);
-             
-           
-            
-            
-        }
-      
-    }
-    
-   
-    
-}
-      
+	        String name = "TestZ";
+	        String phNo = "9042219183";
+	        String mail = "mohamedasi0910@gmail.com";
+	        String ac = "WhatsApp Assistant";
+
+	        // Flow
+	        userManagementPage.clickUser()
+	                          .searchBox(phNo)
+	                          .deleteUser()
+	                          .addUser(name)
+	                          .enterPhNum(phNo)
+	                          .enterEmail(mail)
+	                          .selectRole()
+	                          .cmoUser()
+	                          .clickAdd()
+	                          .editUser()
+	                          .saveProfile()
+	                          .clearSearch()
+	                          .searchBox(phNo);
+
+	        // Assertions
+	        String expected = userManagementPage.getPhoneNumber();
+	        Assert.assertEquals(phNo, expected);
+
+	        String expected1 = userManagementPage.getSelectedActiveAccess();
+	        Assert.assertEquals(ac, expected1);
+
+	        test.log(Status.PASS, "User created successfully. Phone: " + phNo);
+	    }
+	}
+}  

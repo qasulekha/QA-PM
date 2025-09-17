@@ -20,28 +20,28 @@ public class RetryAnalyzer extends BaseTest implements IRetryAnalyzer  {
         
         if (retryCount == 1) {
             System.out.println("❌ Test failed on first attempt: " + result.getName());
-//            try {
-//				comonmethods.Teamsjson("Promanage", "❌ Test failed on first attempt: " + result.getName(),"fail", "");
-//			} catch (IOException | InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			/*
+			 * try { comonmethods.Teamsjson("Promanage", "❌ Test failed on first attempt: "
+			 * + result.getName(),"fail", ""); } catch (IOException | InterruptedException
+			 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
+			 */
         } else if (retryCount == 2) {
             System.out.println("❌ Test failed on second attempt: " + result.getName());
         } else if (retryCount == 3) {
             System.out.println("❌ Test failed on third attempt: " + result.getName());
         }
 
-        if (retryCount < maxRetryCount) {
-            System.out.println("🔄 Retrying test: " + result.getName() + " | Attempt: " + (retryCount + 1));
-            try {
-				comonmethods.Teamsjson("Retry Listener", "Retrying: Checking for Next Attempt","fail", "");
-			} catch (IOException | InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-           return true; // Retry test
-        }
+		
+		  if (retryCount < maxRetryCount) { 
+			  System.out.println("🔄 Retrying test: " +
+		  result.getName() + " | Attempt: " + (retryCount + 1)); try {
+		  comonmethods.Teamsjson("Retry Listener",
+		  "Retrying: Checking for Next Attempt","fail", ""); } 
+		   catch (IOException |
+		  InterruptedException e) { // TODO Auto-generated catch block
+		  e.printStackTrace(); } return true; // Retry test
+		  }
+		
 
         return false; // Stop retrying after max retries
     }

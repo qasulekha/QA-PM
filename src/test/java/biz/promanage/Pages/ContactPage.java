@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class ContactPage extends BasePage {
-	By INTERACTIONS = By.xpath("(//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]");   
+	By INTERACTIONS = By.xpath("(//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[8]");   
 	By CONTACT = By.xpath("((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[2]");
 //	((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[2]
     By CONTACT_GROUP = By.xpath("((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[3]");

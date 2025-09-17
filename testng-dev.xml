@@ -2,8 +2,8 @@
 
 <suite name="Sanity">
     <listeners>
-        <!--   <listener class-name="biz.promanage.listeners.TestListener"/>-->
-        <!--         <listener class-name="biz.promanage.listeners.AnnotationTransformer"/>-->
+           <listener class-name="biz.promanage.listeners.TestListener"/>
+              <listener class-name="biz.promanage.listeners.AnnotationTransformer"/>
     </listeners>
     <test name="Chrome">
         <parameter name="browser" value="CHROME"/>
