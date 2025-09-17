@@ -14,10 +14,12 @@ import java.time.Duration;
 import java.util.List;
 
 public class ContactPage extends BasePage {
-	By INTERACTIONS = By.xpath("(//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[8]");   
-	By CONTACT = By.xpath("((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[2]");
+
+	//By INTERACTIONS = By.xpath("(//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[8]");
+	By INTERACTIONS = By.xpath("//span[text()='Interactions']/parent::a[1]");
+	By CONTACT = By.xpath("//span[text()='Contacts']/parent::a[1]");
 //	((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[2]
-    By CONTACT_GROUP = By.xpath("((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[3]");
+    By CONTACT_GROUP = By.xpath("//span[text()='Contact Group']/parent::a[1]");
     By CREATE_GROUP = By.cssSelector(".sk-text-end > .sk-mobile-hide > .sk-ripple-container");
     By GROUP_NAME = By.xpath("//div[@class='sk-form-label' and text()='Group Name']/following-sibling::div[1]/input[1]");
     By STATIC_GROUP = By.cssSelector("li:nth-child(2) > .sk-radio > .sk-check-label");
@@ -44,8 +46,8 @@ public class ContactPage extends BasePage {
     By CONTACT_SOURCE_FILTER_2_OPTION_GOOGLE = By.cssSelector(".sk-show > ul > li:nth-child(1)");
     By DONE_BTN_3 = By.cssSelector(".sk-text-end:nth-child(4) .sk-ripple-container");
     By SUBMIT_BTN = By.cssSelector(".sk-flex-row > .sk-text-end > .sk-primary > .sk-ripple-container");
-    By CONTACT_GROUP_MENU = By.xpath("((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[3]");
-    String GROUP_NAMES = "//div[@class='sk-surface table-card sk-avatar-item']//span[@class='sk-line-clamp sk-line-2']";
+    By CONTACT_GROUP_MENU = By.xpath("//span[text()='Contact Group']/parent::a[1]");
+    String GROUP_NAMES = "(//div[@class='sk-surface table-card sk-avatar-item']//span[@class='sk-line-clamp sk-line-2'])[1]";
     String SEARCH_BY_GROUP_NAME = "(//div[@class='contact-list']//input)[1]";
 
     public ContactPage(WebDriver driver, ExtentTest test) {
@@ -246,7 +248,7 @@ public class ContactPage extends BasePage {
     }
 
     public void clickContactGroupMenu() {
-        //clickContact();
+       clickContact();
        // wait.until(ExpectedConditions.elementToBeClickable(CONTACT_GROUP_MENU)).click();
         waitForElementAndClick(CONTACT_GROUP_MENU);
         PageLoad.pause();
@@ -285,18 +287,19 @@ public class ContactPage extends BasePage {
     public void deleteGroup(String groupName) {
         // Navigate to group page if needed
         SearchGroup(groupName);
-
-        // Get all groups
-        List<WebElement> elements = driver.findElements(By.xpath(GROUP_NAMES));
-        int i = 1;
-        for (WebElement element : elements) {
-            String text = element.getText().trim();
-            if (text.equalsIgnoreCase(groupName)) {
-                DeleteGroup(i);
-                break;
-            }
-            i++;
-        }
+        PageLoad.pause();
+        DeleteGroupp();
+//        // Get all groups
+//        List<WebElement> elements = driver.findElements(By.xpath(GROUP_NAMES));
+//        int i = 1;
+//        for (WebElement element : elements) {
+//            String text = element.getText().trim();
+//            if (text.equalsIgnoreCase(groupName)) {
+//                DeleteGroup(i);
+//                break;
+//            }
+//            i++;
+//        }
     }
     private void SearchGroup(String groupName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -321,6 +324,24 @@ public class ContactPage extends BasePage {
         WebElement confirmBtn = wait.until(ExpectedConditions.elementToBeClickable( By.cssSelector(".sk-dialog:nth-child(4) .sk-button:nth-child(2) > .sk-ripple-container")));
         confirmBtn.click();
     }
+    
+ private void DeleteGroupp() {
+    	
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        // Click overflow menu button
+        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='sk-overflow-menu']//button)[1]")));
+        menuButton.click();
+
+        // Click delete option
+        WebElement deleteOption = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sk-show > li:nth-child(2)") ));
+        deleteOption.click();
+
+        // Confirm delete
+        WebElement confirmBtn = wait.until(ExpectedConditions.elementToBeClickable( By.cssSelector(".sk-dialog:nth-child(4) .sk-button:nth-child(2) > .sk-ripple-container")));
+        confirmBtn.click();
+    }
+
 
 
     private void navigateToContactGroupPage() {

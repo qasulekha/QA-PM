@@ -61,6 +61,7 @@ public class LeaderBoardPage extends BasePage {
 
     public LeaderBoardPage verifyCityFilter() {
         logInfo(" Verifying City filter ");
+        PageLoad.pause();
         waitForElementAndClick(CITY_TAB);
         waitForPageLoaderToDisappear();
 

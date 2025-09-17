@@ -34,15 +34,12 @@ public class UserManagementPage extends BasePage {
         super(driver, test);
     }
 
-    private void logStep(String message) {
-        test.log(Status.INFO, message,
-                MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot()).build());
-    }
-
     public UserManagementPage clickUser() {
         PageLoad.pauseThreeSecs();
         waitForElementAndClick(US_MANAG);
-        logStep("Navigated to User Management page");
+        wait.until(ExpectedConditions.elementToBeClickable(US_MANAG));
+
+        test.log(Status.INFO, "Navigated to User Management page.");
         return this;
     }
 
@@ -51,63 +48,88 @@ public class UserManagementPage extends BasePage {
         waitForElementAndClick(ADD_USER);
         WebElement na = wait.until(ExpectedConditions.elementToBeClickable(NA_ME));
         sendDelayedKeys(na, name);
-        logStep("Entered Name: " + name);
+
+        test.log(Status.INFO, "Entered user name: " + name);
         return this;
     }
 
     public UserManagementPage enterPhNum(String phNo) {
         WebElement ph = wait.until(ExpectedConditions.elementToBeClickable(PH_NUM));
         sendDelayedKeys(ph, phNo);
-        logStep("Entered Phone Number: " + phNo);
+
+        test.log(Status.INFO, "Entered phone number: " + phNo);
         return this;
     }
 
     public UserManagementPage enterEmail(String mail) {
         WebElement em = wait.until(ExpectedConditions.elementToBeClickable(E_MAIL));
         sendDelayedKeys(em, mail);
-        logStep("Entered Email: " + mail);
+
+        test.log(Status.INFO, "Entered email: " + mail);
         return this;
     }
 
     public UserManagementPage selectRole() {
         waitForElementAndClick(RO_LE);
-        logStep("Opened Role dropdown");
+
+        test.log(Status.INFO, "Opened Role dropdown.");
         return this;
     }
 
     public UserManagementPage cmoUser() {
         waitForElementAndClick(C_M_O);
-        logStep("Selected Role: Chief Marketing Officer");
+
+        test.log(Status.INFO, "Selected role: Chief Marketing Officer.");
         return this;
     }
 
     public UserManagementPage clickAdd() {
         waitForElementAndClick(A_D_D);
-        logStep("Clicked Add User button");
+
+        test.log(Status.INFO, "Clicked Add User button.");
         return this;
     }
 
     public UserManagementPage saveProfile() {
         PageLoad.pauseThreeSecs();
         waitForElementAndClick(S_A_V_E);
-        logStep("Clicked Save Profile");
+
+        test.log(Status.INFO, "Clicked Save Profile button.");
         return this;
     }
 
     public String getPhoneNumber() {
         PageLoad.pauseThreeSecs();
+        takeScreenshot();
         String phone = driver.findElement(By.xpath("(//span[text()='9042219183'])[1]")).getText();
-        logStep("Retrieved Phone Number: " + phone);
+
+        test.log(Status.INFO, "Fetched phone number: " + phone);
         return phone;
     }
 
     public String getSelectedActiveAccess() throws InterruptedException {
         PageLoad.pauseThreeSecs();
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         waitForElementAndClick(clickEdit);
         scroll(w_p_a_s);
-        String output = driver.findElement(By.xpath("//div[@class='access-card sk-clickable card-selected']//b[text()='WhatsApp Assistant']")).getText();
-        logStep("Retrieved Active Access: " + output);
+
+        String output = driver.findElement(
+            By.xpath("//div[@class='access-card sk-clickable card-selected']//b[text()='WhatsApp Assistant']")
+        ).getText();
+
+        test.log(Status.INFO, "Selected Active Access: " + output);
+        takeScreenshot();
+        return output;
+    }
+
+    public String getSelectedActiveAccess1() {
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+        String output = driver.findElement(
+            By.xpath("//div[@class='access-card sk-clickable card-selected']//b[text()='Approval Activity Tracker']")
+        ).getText();
+
+        test.log(Status.INFO, "Selected Active Access: " + output);
         return output;
     }
 
@@ -116,7 +138,8 @@ public class UserManagementPage extends BasePage {
         WebElement user = wait.until(ExpectedConditions.elementToBeClickable(S_E_A_R_C_H));
         sendDelayedKeys(user, userName);
         waitForElementAndClick(S_E_A_R_C_H);
-        logStep("Searched for user: " + userName);
+
+        test.log(Status.INFO, "Searched for user: " + userName);
         return this;
     }
 
@@ -124,7 +147,9 @@ public class UserManagementPage extends BasePage {
         waitForElementAndClick(D_T_E);
         PageLoad.pause();
         waitForElementAndClick(O_K);
-        logStep("Deleted existing user");
+        takeScreenshot();
+
+        test.log(Status.INFO, "Deleted user successfully.");
         return this;
     }
 
@@ -132,7 +157,9 @@ public class UserManagementPage extends BasePage {
         PageLoad.pauseThreeSecs();
         scrollAndClick(w_p_a_s);
         scrollAndClick(a_p_p_r);
-        logStep("Edited user: Enabled WhatsApp Assistant and Approval Activity Tracker");
+        takeScreenshot();
+
+        test.log(Status.INFO, "Edited user: enabled WhatsApp Assistant and Approval Activity Tracker.");
         return this;
     }
 
@@ -140,7 +167,24 @@ public class UserManagementPage extends BasePage {
         PageLoad.pauseThreeSecs();
         WebElement user = wait.until(ExpectedConditions.elementToBeClickable(S_E_A_R_C_H));
         user.clear();
-        logStep("Cleared Search box");
+
+        test.log(Status.INFO, "Cleared search box.");
         return this;
+    }
+
+    public UserManagementPage clickTest() {
+        waitForElementAndClick(RO_LE);
+
+        test.log(Status.INFO, "Clicked on Role dropdown (Test).");
+        return this;
+    }
+
+    public String getLocation(String lo) {
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+        String location = driver.findElement(By.xpath("//span[text()='Karnataka(2)']")).getAttribute("value");
+
+        test.log(Status.INFO, "Fetched location: " + location);
+        return location;
     }
 }
