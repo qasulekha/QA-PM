@@ -24,16 +24,16 @@ public class UserManagementTest extends BaseTest {
 	        UserManagementPage userManagementPage = new UserManagementPage(getDriver(), test);
 
 	        String name = "TestZ";
-	        String phNo = "9042219183";
+	        String phoneNumber = "9042219183";
 	        String mail = "mohamedasi0910@gmail.com";
-	        String ac = "WhatsApp Assistant";
+	        String whatsAppAssis = "WhatsApp Assistant";
 
 	        // Flow
 	        userManagementPage.clickUser()
-	                          .searchBox(phNo)
+	                          .searchBox(phoneNumber)
 	                          .deleteUser()
 	                          .addUser(name)
-	                          .enterPhNum(phNo)
+	                          .enterPhNum(phoneNumber)
 	                          .enterEmail(mail)
 	                          .selectRole()
 	                          .cmoUser()
@@ -41,16 +41,16 @@ public class UserManagementTest extends BaseTest {
 	                          .editUser()
 	                          .saveProfile()
 	                          .clearSearch()
-	                          .searchBox(phNo);
+	                          .searchBox(phoneNumber);
 
 	        // Assertions
 	        String expected = userManagementPage.getPhoneNumber();
-	        Assert.assertEquals(phNo, expected);
+	        Assert.assertEquals(phoneNumber, expected);
 
 	        String expected1 = userManagementPage.getSelectedActiveAccess();
-	        Assert.assertEquals(ac, expected1);
+	        Assert.assertEquals(whatsAppAssis, expected1);
 
-	        test.log(Status.PASS, "User created successfully. Phone: " + phNo);
+	        test.log(Status.PASS, "User created successfully. Phone: " + phoneNumber);
 	    }
 	}
 }  

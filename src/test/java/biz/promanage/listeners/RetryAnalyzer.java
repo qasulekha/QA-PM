@@ -20,12 +20,11 @@ public class RetryAnalyzer extends BaseTest implements IRetryAnalyzer  {
         
         if (retryCount == 1) {
             System.out.println("❌ Test failed on first attempt: " + result.getName());
-           try {
-				comonmethods.Teamsjson("Promanage", "❌ Test failed on first attempt: " + result.getName(),"fail", "");
-			} catch (IOException | InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			/*
+			 * try { comonmethods.Teamsjson("Promanage", "❌ Test failed on first attempt: "
+			 * + result.getName(),"fail", ""); } catch (IOException | InterruptedException
+			 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
+			 */
         } else if (retryCount == 2) {
             System.out.println("❌ Test failed on second attempt: " + result.getName());
         } else if (retryCount == 3) {
