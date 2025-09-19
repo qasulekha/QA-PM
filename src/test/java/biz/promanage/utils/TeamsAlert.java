@@ -246,7 +246,7 @@ public class TeamsAlert extends BaseTest {
 //			message.setRecipients(Message.RecipientType.TO,
 //					InternetAddress.parse("MohamedNN@sulekha.com,mohamedjaleel@sulekha.com,manivannanr@sulekha.com,sriniv@sulekha.com,JagadishwaranG@sulekha.com"));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("MohamedNN@sulekha.com,JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com"));
+					InternetAddress.parse("MohamedNN@sulekha.com,JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com,MohamedAsifM@promanage.biz"));
 			message.setSubject(subject);
 			// message.setText(content);
 
@@ -297,7 +297,7 @@ public class TeamsAlert extends BaseTest {
 	        Message message = new MimeMessage(session);
 	        message.setFrom(new InternetAddress("qa@sulekha.com"));
 	        message.setRecipients(Message.RecipientType.TO,
-	            InternetAddress.parse("MohamedNN@sulekha.com,JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com,Rakeshm@promanage.biz"));
+	            InternetAddress.parse("MohamedNN@sulekha.com,JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com,Rakeshm@promanage.biz,MohamedAsifM@promanage.biz"));
 	        message.setSubject(subject);
 
 	        Multipart multipart = new MimeMultipart();
