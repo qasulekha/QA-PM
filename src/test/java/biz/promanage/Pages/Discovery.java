@@ -71,7 +71,7 @@ public class Discovery extends BasePage {
 
 	    for (int i = 0; i < xPaths.length; i++) {
 	        try {
-	        	//scroll(By.xpath(xPaths[i])); // Scroll to the element
+	        	scroll(By.xpath(xPaths[i])); // Scroll to the element
 	            WebElement element = driver.findElement(By.xpath(xPaths[i]));
 	            String value = element.getText();
 	            
