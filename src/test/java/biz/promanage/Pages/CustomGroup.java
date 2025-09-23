@@ -43,7 +43,7 @@ public class CustomGroup extends BasePage {
     }
  
     public CustomGroup CreateCustomGroup(String groupName) {
- 
+    	PageLoad.pause();
         dropdown = new Select(driver.findElement(By.xpath("//option[.='Action']/parent::select")));
  
         if (isOptionPresent(groupName)) {

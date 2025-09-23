@@ -96,7 +96,7 @@ public class LeaderBoardPage extends BasePage {
         waitForPageLoaderToDisappear();
 
         sendDelayedKeys(wait.until(ExpectedConditions.elementToBeClickable(SEARCH_BY_GROUP)), FOCUSED_GROUP_NAME);
-
+        PageLoad.pauseTenSeconds();
         String selectedGroupName = wait.until(ExpectedConditions.visibilityOfElementLocated(GROUP_NAME)).getText();
         test.log(Status.INFO, "Selected Group Name: " + selectedGroupName);
         PageLoad.pause();
