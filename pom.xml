@@ -21,10 +21,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M5</version>
 				<configuration>
-					<!--<suiteXmlFiles>
-						<suiteXmlFile>${testngFile}</suiteXmlFile>sC:\Desktop Files\Blogs\Images\2024-08-15.jpg
-						
-					</suiteXmlFiles>-->
+					<suiteXmlFiles>
+						<suiteXmlFile>${testngFile}</suiteXmlFile>
+					</suiteXmlFiles>
 					<systemPropertyVariables>
 						<browser>${browser}</browser>
 					</systemPropertyVariables>
