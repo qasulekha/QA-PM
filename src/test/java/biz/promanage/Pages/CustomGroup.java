@@ -47,9 +47,10 @@ public class CustomGroup extends BasePage {
         dropdown = new Select(driver.findElement(By.xpath("//option[.='Action']/parent::select")));
  
         if (isOptionPresent(groupName)) {
+        	
             DeleteGroup(groupName);
         }
-        PageLoad.pause();
+        
         CreateGroup(groupName);
         return this;
     }
@@ -97,16 +98,19 @@ public class CustomGroup extends BasePage {
     }
  
     private void DeleteGroup(String groupName) {
+    	PageLoad.pause();
         selectOption(groupName);
         waitForElementAndClick(DELETE_GROUP_BTN);
         waitForElementAndClick(DELETE_OK_BTN);
     }
  
     public boolean isOptionPresent(String optionText) {
+    	PageLoad.pause();
         return dropdown.getOptions().stream().anyMatch(option -> option.getText().trim().equals(optionText));
     }
  
     public void selectOption(String optionText) {
+    	PageLoad.pause();
         dropdown.selectByVisibleText(optionText);
     }
  

@@ -6,8 +6,6 @@ import biz.promanage.Pages.LoginPage;
 import biz.promanage.base.BaseTest;
 import org.testng.annotations.Test;
 
-import com.aventstack.extentreports.Status;
-
 import java.io.IOException;
 
 public class CustomGroupTest extends BaseTest
@@ -19,7 +17,7 @@ public class CustomGroupTest extends BaseTest
 
         CustomGroup CustomGroup = null;
         Customer customerPage = new Customer(getDriver(), test);
-        boolean isCustomerChanged = customerPage.changeCustomer("Sulekha.Com");
+        boolean isCustomerChanged = customerPage.changeCustomer("Sulekha.com");
 
         if (isCustomerChanged) {
             CustomGroup = new CustomGroup(getDriver(), test);
@@ -29,9 +27,6 @@ public class CustomGroupTest extends BaseTest
             String customGroupName = "AutomationCustomgroup";
             CustomGroup.load().CreateCustomGroup(customGroupName).verifyCustomGroup(customGroupName);
             CustomGroup.load().CreateCustomGroup1(customGroupName).verifyCustomGroup(customGroupName);
-		} /*
-			 * else { test.log(Status.FAIL, "Timeout: Custom group '" + "customGroup" +
-			 * "' not found."); }
-			 */
+        }
     }
 }
