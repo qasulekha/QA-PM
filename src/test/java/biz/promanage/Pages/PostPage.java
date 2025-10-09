@@ -91,6 +91,7 @@ public class PostPage extends BasePage {
         PageLoad.pause();
         waitForElementAndClick(SELECT_CITY);
         test.log(Status.INFO, "Write a post successfully");
+        
         takeScreenshot();
         return this;
     }
