@@ -43,7 +43,7 @@ public class CustomGroup extends BasePage {
     }
  
     public CustomGroup CreateCustomGroup(String groupName) {
-    	PageLoad.pause();
+    	PageLoad.pauseTenSeconds();
         dropdown = new Select(driver.findElement(By.xpath("//option[.='Action']/parent::select")));
  
         if (isOptionPresent(groupName)) {
@@ -56,6 +56,7 @@ public class CustomGroup extends BasePage {
     }
  
     private void CreateGroup(String groupName) {
+    	PageLoad.pause();
         waitForElementAndClick(LOCATION_1);
         waitForElementAndClick(LOCATION_2);
         selectOption("Create Custom Group");

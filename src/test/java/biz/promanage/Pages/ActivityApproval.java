@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -19,7 +20,7 @@ public class ActivityApproval extends BasePage {
     private final By ACTIVITY__TYPE = By.xpath("(//div[@class='sk-flex-row approval-dropdown sk-margin-bottom']/div)[1]");
     private final By ACTIVITY__TYPE_POST = By.xpath("((//div[@class='sk-flex-row approval-dropdown sk-margin-bottom']/div)[1]//child::li)[2]");
     private final By RESPONDED_BY  = By.xpath("(//div[@class='sk-text-select sk-small'])[1]");
-    private final By CMO = By.xpath("(//div[@class='sk-overflow-list sk-show']//ul//li)[9]");
+    private final By CMO = By.xpath("//div[@class='sk-overflow-list sk-show']//li[text()='CMO ']");
     private final By RESPONDED_BY_CMO = By.xpath("(((//div[@class='sk-data-table'])[1]//tr)[2]//td)[6]//div");
     private final By STATUS = By.xpath("(//div[@class='sk-event-group'])[5]");
     private final By STATUS_APPROVAL = By.xpath("(//div[@class='sk-overflow-list sk-show']//child::li)[3]");
@@ -55,15 +56,16 @@ public class ActivityApproval extends BasePage {
     }
 
     public ActivityApproval clickRespondedBy() {
-    	
         waitForElementAndClick(RESPONDED_BY);
         PageLoad.pause();
-        waitForElementAndClick(CMO);
+        WebElement cmoElement = driver.findElement(CMO);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(cmoElement).click().build().perform();
+        System.out.println("Selected Responded By: CMO ");
         test.log(Status.INFO, "Selected Responded By: CMO");
         takeScreenshot();
         return this;
     }
-
     public  ActivityApproval clickStatus() {
         waitForElementAndClick(STATUS);
         PageLoad.pause();
