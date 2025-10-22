@@ -40,7 +40,6 @@ public class PostPage extends BasePage {
     public PostPage(WebDriver driver, ExtentTest test) {
         super(driver, test);
     }
- 
     
     public PostPage clickInsights() {
     	PageLoad.pauseThreeSecs();
@@ -51,12 +50,14 @@ public class PostPage extends BasePage {
 
     public PostPage clickListingManagement() {
         waitForElementAndClick(LSTING_MANAGEMENT);
+        System.out.println("Clicked on Listing Management");
         test.log(Status.INFO, "Clicked on Listing Management");
         return this;
     }
 
     public PostPage clickBusinessProfile() {
         waitForElementAndClick(BUSINESS_PROFILE);
+        System.out.println("Clicked on Business Profiles");
         test.log(Status.INFO, "Clicked on Business Profiles");
         return this;
     }
@@ -64,12 +65,14 @@ public class PostPage extends BasePage {
     public PostPage clickBusinessProfileId() {
         waitForElementAndClick(BUSINESS_PROFILE_ID);
         PageLoad.pauseThreeSecs();
+        System.out.println("Selected Business Profile ID");
         test.log(Status.INFO, "Selected Business Profile ID");
         return this;
     }
 
     public PostPage clickPost() {
         waitForElementAndClick(POST);
+        System.out.println("Clicked on Post");
         test.log(Status.INFO, "Clicked on Post");
         return this;
     }
@@ -77,6 +80,7 @@ public class PostPage extends BasePage {
     public PostPage addNewPost() {
         PageLoad.pauseThreeSecs();
         waitForElementAndClick(ADD_POST_BTN);
+        System.out.println("Clicked Add Post button");
         test.log(Status.INFO, "Clicked Add Post button");
         return this;
     }
@@ -90,16 +94,22 @@ public class PostPage extends BasePage {
         driver.findElement(WRITE_A_POST_TEXT).sendKeys(writeApost1);
         PageLoad.pause();
         waitForElementAndClick(SELECT_CITY);
+        System.out.println("Write a post successfully");
         test.log(Status.INFO, "Write a post successfully");
-        
         takeScreenshot();
+        
+        clickSendForApproval();
+        publish();
         return this;
     }
 
     public PostPage clickUploadBtn() {
         PageLoad.pauseTenSeconds();
         waitForElementAndClick(UPLOAD_IMAGE);
+        System.out.println("Clicked on Upload Image button");
         test.log(Status.INFO, "Clicked on Upload Image button");
+        
+       
         return this;
     }
 
@@ -116,13 +126,13 @@ public class PostPage extends BasePage {
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
 
+            System.out.println("File uploaded successfully: " + filename);
             test.log(Status.INFO, "File uploaded successfully: " + filename);
             takeScreenshot();
-            imageName();
-            clickSendForApproval();
-            publish();
+           
 
         } catch (Exception e) {
+            System.out.println("File upload failed: " + e.getMessage());
             test.log(Status.FAIL, "File upload failed: " + e.getMessage());
         }
     }
@@ -130,6 +140,7 @@ public class PostPage extends BasePage {
     public void publish() {
         PageLoad.pause();
         waitForElementAndClick(PUBLISH_BTN);
+        System.out.println("Post Published successfully");
         test.log(Status.INFO, "Post Published successfully");
         PageLoad.pause();
         takeScreenshot();
@@ -137,6 +148,7 @@ public class PostPage extends BasePage {
 
     public PostPage enterWebsiteAddress(String address) {
         driver.findElement(WEBSITE_ADDRESS).sendKeys(address);
+        System.out.println("Entered Website Address: " + address);
         test.log(Status.INFO, "Entered Website Address: " + address);
         return this;
     }
@@ -149,19 +161,18 @@ public class PostPage extends BasePage {
         waitForElementAndClick(IMAGE_NAME);
         waitForElementAndClick(IMAGE_CITY);
         waitForElementAndClick(IMAGE_AREA);
+        System.out.println("Entered Image details (Name, City, Area)");
         test.log(Status.INFO, "Entered Image details (Name, City, Area)");
         return this;
     }
 
     public PostPage clickSendForApproval() {
         WebElement element = driver.findElement(SEND_FOR_APPROVAL);
-        
         // Scroll into view
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        
         // Click the element
         waitForElementAndClick(SEND_FOR_APPROVAL);
-        takeScreenshot();
+        System.out.println("Clicked on Send for Approval");
         return this;
     }
 }

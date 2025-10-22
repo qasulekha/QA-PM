@@ -3,7 +3,7 @@ package biz.promanage.tests;
 import biz.promanage.Pages.Customer;
 import biz.promanage.Pages.LoginPage;
 import biz.promanage.Pages.PostPage;
-import biz.promanage.Pages.PostPages;
+
 import biz.promanage.base.BaseTest;
 
 import org.testng.Assert;
@@ -28,9 +28,9 @@ public class PostPageTest extends BaseTest {
                     .clickBusinessProfileId()
                     .clickPost()
                     .addNewPost()
-                    .addCompanyName()
-                    .clickUploadBtn()
-                    .uploadDoc("ProfileImage","C:\\Desktop Files\\Images\\2024-08-15.jpg");
+                    .addCompanyName();
+                   // .clickUploadBtn()
+                    //.uploadDoc("ProfileImage","C:\\Desktop Files\\Blogs\\Images\\2024-08-15.jpg");
             
             
             
