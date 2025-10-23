@@ -6,10 +6,10 @@ import biz.promanage.Pages.PostPage;
 
 import biz.promanage.base.BaseTest;
 
-import org.testng.Assert;
+
 import org.testng.annotations.Test;
 
-import com.aventstack.extentreports.Status;
+
 
 import java.io.IOException;
 
@@ -29,14 +29,7 @@ public class PostPageTest extends BaseTest {
                     .clickPost()
                     .addNewPost()
                     .addCompanyName();
-                   // .clickUploadBtn()
-                    //.uploadDoc("ProfileImage","C:\\Desktop Files\\Blogs\\Images\\2024-08-15.jpg");
-            
-            
-            
-                   
-                   // .enterWebsiteAddress("www.sulekha.com")
-                 //  .publish();
+                  
         }
     }
 }
