@@ -15,8 +15,8 @@
 			<class name="biz.promanage.tests.ContactPageTest" />
 			<class name="biz.promanage.tests.CustomGroupTest" />
 			<class name="biz.promanage.tests.UserManagementTest" />
-			<!--<class name="biz.promanage.tests.PostPageTest" />-->
-			<!--<class name="biz.promanage.tests.ActivityApprovalTest" />-->
+			<class name="biz.promanage.tests.PostPageTest" />
+			<class name="biz.promanage.tests.ActivityApprovalTest" />
 
 		</classes>
 	</test>
