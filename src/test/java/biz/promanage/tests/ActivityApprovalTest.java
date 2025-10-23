@@ -3,8 +3,8 @@ package biz.promanage.tests;
 import biz.promanage.Pages.ActivityApproval;
 import biz.promanage.Pages.Customer;
 import biz.promanage.Pages.LoginPage;
-import biz.promanage.Pages.PostPage;
-import biz.promanage.Pages.PostPages;
+
+
 import biz.promanage.base.BaseTest;
 
 import org.testng.Assert;

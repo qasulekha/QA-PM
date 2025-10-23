@@ -5,14 +5,11 @@ import biz.promanage.utils.PageLoad;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 
 public class ActivityApproval extends BasePage {
 	 private final By LSTING_MANAGEMENT = By.xpath("//span[text()='Listing Management']//parent::a");
