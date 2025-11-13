@@ -20,10 +20,23 @@ import org.testng.Reporter;
 import org.testng.annotations.*;
 import org.apache.logging.log4j.ThreadContext;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+
+import javax.imageio.IIOImage;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
+
+
+import java.util.Iterator;
+
+
+
 
 public class BaseTest {
 
@@ -103,7 +116,7 @@ public class BaseTest {
         }
     }
 
-    public String takeScreenshot(String testName) {
+  /*  public String takeScreenshot(String testName) {
         File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         String screenshotName = "Promanage" + "_" + testName + "_" + DateTimeUtil.getDateTime() + ".png";
         String imagePath = "screenshots" + File.separator + screenshotName;
@@ -129,8 +142,111 @@ public class BaseTest {
 
         ExtentManager.getTest().info(MediaEntityBuilder.createScreenCaptureFromBase64String(new String(encoded, StandardCharsets.US_ASCII)).build());
         return azureFilePath;
+    } */
+    
+
+// Optimized Version 1    
+/*    
+public String takeScreenshot(String testName) {
+    String timestamp = DateTimeUtil.getDateTime();
+    String screenshotName = "Promanage_" + testName + "_" + timestamp + ".jpg"; // Use JPG for compression
+    String imagePath = "screenshots" + File.separator + screenshotName;
+    String azureFilePath = "http://lscdn.azureedge.net/jenkins/Capshine/" + screenshotName;
+
+    try {
+        // Capture screenshot
+        File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+        BufferedImage image = ImageIO.read(srcFile);
+
+        // Compress and save as JPG
+        File compressedImageFile = new File(imagePath);
+        OutputStream os = new FileOutputStream(compressedImageFile);
+        ImageOutputStream ios = ImageIO.createImageOutputStream(os);
+        Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
+        ImageWriter writer = writers.next();
+
+        writer.setOutput(ios);
+        ImageWriteParam param = writer.getDefaultWriteParam();
+        param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+        param.setCompressionQuality(0.5f); // Adjust quality (0.0 to 1.0)
+
+        writer.write(null, new IIOImage(image, null, null), param);
+
+        // Close resources
+        ios.close();
+        os.close();
+        writer.dispose();
+
+        // Upload to Azure
+        AzureFileUpload.ScreenShot(compressedImageFile);
+
+        // Log thumbnail in TestNG report
+        Reporter.log("<a href='" + azureFilePath + "'> <img src='" + azureFilePath + "' height='100' width='100'/> </a>");
+
+        // Encode for Extent Report
+        byte[] encoded = Base64.encodeBase64(FileUtils.readFileToByteArray(compressedImageFile));
+        ExtentManager.getTest().info(
+            MediaEntityBuilder.createScreenCaptureFromBase64String(new String(encoded, StandardCharsets.US_ASCII)).build()
+        );
+
+        return azureFilePath;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+*/
+
+ // Optimized Version 2   
+
+public String takeScreenshot(String testName) {
+    String timestamp = DateTimeUtil.getDateTime();
+    String screenshotName = "Promanage_" + testName + "_" + timestamp + ".jpg";
+    String imagePath = "screenshots" + File.separator + screenshotName;
+    String azureFilePath = "http://lscdn.azureedge.net/jenkins/Capshine/" + screenshotName;
+
+    try {
+        // Capture screenshot
+        File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+        BufferedImage image = ImageIO.read(srcFile);
+
+        // Compress and save as JPG
+        File compressedImageFile = new File(imagePath);
+        OutputStream os = new FileOutputStream(compressedImageFile);
+        ImageOutputStream ios = ImageIO.createImageOutputStream(os);
+        Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
+        ImageWriter writer = writers.next();
+
+        writer.setOutput(ios);
+        ImageWriteParam param = writer.getDefaultWriteParam();
+        param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+        param.setCompressionQuality(0.5f); // Adjust quality (0.0 to 1.0)
+
+        writer.write(null, new IIOImage(image, null, null), param);
+
+        // Close resources
+        ios.close();
+        os.close();
+        writer.dispose();
+
+        // Upload to Azure
+        AzureFileUpload.ScreenShot(compressedImageFile);
+
+        // Log thumbnail in TestNG report
+        Reporter.log("<a href='" + azureFilePath + "' target='_blank'><img src='" + azureFilePath + "' height='100' width='100'/></a>");
+
+        // Link image in Extent Report (no Base64)
+        ExtentManager.getTest().info("Screenshot: <a href='" + azureFilePath + "' target='_blank'>View Screenshot</a>");
+
+        return azureFilePath;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
     }
 
+}
     public JSONObject GetData(String path) throws IOException {
         JSONObject jsonObj;
 

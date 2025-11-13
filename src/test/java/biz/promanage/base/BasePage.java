@@ -30,6 +30,24 @@ import java.nio.file.*;
 import java.time.Duration;
 import java.util.Random;
 
+
+import java.awt.image.BufferedImage;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.nio.file.Paths;
+import java.util.Iterator;
+
+import javax.imageio.IIOImage;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+
+
 public class BasePage {
     private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
     private static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(60);
@@ -122,7 +140,7 @@ public class BasePage {
         return waitForElementToBeVisible(locator).getText();
     }
 
-    public String takeScreenshot() {
+ /*   public String takeScreenshot() {
         String screenshotName = String.format("Promanage_extent_report_%s.png", DateTimeUtil.getDateTime());
         String imagePath = Paths.get(SCREENSHOTS_DIR, screenshotName).toString();
         String azureFilePath = AZURE_BASE_URL + screenshotName;
@@ -141,6 +159,65 @@ public class BasePage {
             return null;
         }
     }
+*/
+
+
+
+    public String takeScreenshot() {
+        String screenshotName = String.format("Promanage_extent_report_%s.jpg", DateTimeUtil.getDateTime());
+        String imagePath = Paths.get(SCREENSHOTS_DIR, screenshotName).toString();
+        String azureFilePath = AZURE_BASE_URL + screenshotName;
+
+        try {
+            // Capture screenshot
+            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            BufferedImage image = ImageIO.read(srcFile);
+
+            // Compress and save as JPG
+            File compressedImageFile = new File(imagePath);
+            OutputStream os = new FileOutputStream(compressedImageFile);
+            ImageOutputStream ios = ImageIO.createImageOutputStream(os);
+            Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
+            ImageWriter writer = writers.next();
+
+            writer.setOutput(ios);
+            ImageWriteParam param = writer.getDefaultWriteParam();
+            param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+            param.setCompressionQuality(0.5f); // Adjust quality (0.0 to 1.0)
+
+            writer.write(null, new IIOImage(image, null, null), param);
+
+            // Close resources
+            ios.close();
+            os.close();
+            writer.dispose();
+
+            // Upload to Azure
+            AzureFileUpload.ScreenShot(compressedImageFile);
+
+            // Log thumbnail in TestNG report
+            Reporter.log(String.format(
+                    "<a href='%s' target='_blank'><img src='%s' height='100' width='100'/></a>",
+                    azureFilePath, azureFilePath));
+
+            // ✅ Embed screenshot directly in Extent Report
+            ExtentManager.getTest().info(
+                    MediaEntityBuilder.createScreenCaptureFromPath(azureFilePath, "Screenshot").build());
+
+            // OR alternative (custom HTML inline image)
+            // ExtentManager.getTest().info(String.format(
+            //         "<a href='%s' target='_blank'><img src='%s' alt='screenshot' height='300' width='400'/></a>",
+            //         azureFilePath, azureFilePath),
+            //         MediaEntityBuilder.createScreenCaptureFromPath(azureFilePath).build());
+
+            return azureFilePath;
+
+        } catch (Exception e) {
+            ExtentManager.getTest().log(Status.FAIL, "Failed to take screenshot: " + e.getMessage());
+            return null;
+        }
+    }
+
 
     private void writeToPdf() {
         try {
