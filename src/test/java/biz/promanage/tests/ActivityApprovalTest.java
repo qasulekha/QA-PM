@@ -21,7 +21,7 @@ public class ActivityApprovalTest extends BaseTest {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
         if (new Customer(getDriver(), test).changeCustomer("Sulekha.com")) {
         	 String APPROVED  ="Approved";
-        	 String CMO ="CMO";
+        	 String CMO ="C.USER TEST";
         	 String POST ="Posts";
         	 ActivityApproval activityApprovalTest = new ActivityApproval(getDriver(), test);
         	 activityApprovalTest
