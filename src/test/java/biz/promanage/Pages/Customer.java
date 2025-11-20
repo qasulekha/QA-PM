@@ -51,14 +51,15 @@ public class Customer extends BasePage {
 
                     wait.until(ExpectedConditions.elementToBeClickable(SWITCH_TENANT)).click();
                     wait.until(ExpectedConditions.elementToBeClickable(CUSTOMER_INPUT_FOCUS)).click();
-                    wait.until(ExpectedConditions.elementToBeClickable(CUSTOMER_NAME));
+                   // wait.until(ExpectedConditions.elementToBeClickable(CUSTOMER_NAME));
 
-                    WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sk-show > .sk-input")));
+                  //  WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sk-show > .sk-input")));
+                    WebElement element = wait.until(ExpectedConditions.elementToBeClickable(CUSTOMER_INPUT_FOCUS));
                     sendDelayedKeys(element, customerName);
                     PageLoad.pause();
 
-                    WebElement customerElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sk-overflow-menu']//ul[@class='sk-overflow-list sk-show']/li[. ='" + customerName + "']")));
-                   
+                   // WebElement customerElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sk-overflow-menu']//ul[@class='sk-overflow-list sk-show']/li[. ='" + customerName + "']")));
+                    WebElement customerElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//ul[@id='skOverflowMenu']/li)[1]")));
                    customerElement.click();
 
                     String selectedCustomerName = wait.until(ExpectedConditions.elementToBeClickable(SELECTED_CUSTOMER_NAME)).getText();

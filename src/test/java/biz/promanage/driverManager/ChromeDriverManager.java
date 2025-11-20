@@ -20,7 +20,7 @@ public class ChromeDriverManager extends DriverManager {
 	protected void startDriver() throws IOException {
 	    ChromeOptions chromeOptions = new ChromeOptions();
 	    
-	    chromeOptions.addArguments("--headless=new");
+	   // chromeOptions.addArguments("--headless=new");
 	    chromeOptions.addArguments("--disable-gpu");
 	    chromeOptions.addArguments("--incognito");
 	    chromeOptions.addArguments("start-maximized");
@@ -34,7 +34,7 @@ public class ChromeDriverManager extends DriverManager {
 
 	    chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-	    WebDriverManager.chromedriver().driverVersion("140.0.7339.208").setup();
+	    WebDriverManager.chromedriver().driverVersion("138.0.7204.102").setup();
 	    driver = new ChromeDriver(chromeOptions);
 	   
 	    // Clean up temp profile directory after test run
