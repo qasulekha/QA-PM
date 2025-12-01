@@ -1,70 +1,86 @@
 package biz.promanage.Pages;
 
 import biz.promanage.base.BasePage;
-import biz.promanage.driverManager.DevToolsHelper;
+
 import biz.promanage.utils.PageLoad;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+
+
 
 public class SidebarNavigation extends BasePage {
-    private final By insightPage = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Insights']/parent::a[1]");
-    private final By listings = By.xpath(" //div[@class='sk-sidebar']//ul/li/a/span[text()='Listings']/parent::a[1]");
-    private final By leaderboard = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Leaderboard']/parent::a[1]");
-    private final By tickets = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Tickets']/parent::a[1]");
-    private final By reviews = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Reviews']/parent::a[1]");
-    private final By campaigns = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Campaigns']/parent::a[1]");
-    private final By campaignSMS = By.xpath("//ul[@class='sub-menu sk-show']/li//span[text()='SMS']/parent::a[1]");
-    private final By chat = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Chat']/parent::a[1]");
-    private final By chatPage = By.xpath("//div[contains(@class,'sk-chat-title')]/h4");
-    private final By contacts = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Contacts']/parent::a[1]");
-    private final By contactList = By.xpath("//ul[@class='sub-menu sk-show']/li/a/span[text()='List']/parent::a[1]");
-    private final By contactGroup = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Groups']/parent::a[1]");
-    private final By createGroup = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Create Groups']/parent::a[1]");
-    private final By duplicateListings = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Duplicate Listings']/parent::a[1]");
-    private final By rankTracker = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Rank Tracker']/parent::a[1]");
-    private final By bulkUploadTracker = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Bulk Upload Tracker']/parent::a[1]");
-    private final By questionAndAnswer = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Question and Answer']/parent::a[1]");
-    private final By businessProfiles = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Business Profiles']/parent::a[1]");
-    private final By userManagement = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='User Management']/parent::a[1]");
-    private final By settings = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Settings']/parent::a[1]");
-    private final By platform = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Platforms']/parent::a[1]");
-    private final By switchTenant = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Switch Tenant']/parent::a[1]");
-    private final By profileScore = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Profile Score']/parent::a[1]");
-    private final By roiCalculator = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='ROI Calculator']/parent::a[1]");
-    private final By promanageCustomer = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Promanage Customer']/parent::a[1]");
-    private final By smbListingManagement = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='SMB Listing Management']/parent::a[1]");
-    private final By mentions = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='Mentions']/parent::a[1]");
-    private final By gmbProfileAnalyzer = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='GMB Profile Analyzer']/parent::a[1]");
-    private final By seoConfiguration = By.xpath("//div[@class='sk-sidebar']//ul/li/a/span[text()='SEO Configuration']/parent::a[1]");
-    private final By insightTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Insights-My Dashboard']");
-    private final By leaderboardTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Leaderboard']");
-    private final By ticketsTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Tickets']");
-    private final By reviewsTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Reviews']");
-    private final By campaignsTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Campaigns']");
-    private final By chatTitle = By.xpath("//div[contains(@class,'sk-chat-title')]/h4");
-    private final By contactsTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Contacts']");
-    private final By duplicateListingsTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Duplicate Listings']");
-    private final By rankTrackerTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Rank Tracker']");
-    private final By bulkUploadTrackerTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Bulk Upload Tracker']");
-    private final By questionAndAnswerTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Question and Answer']");
-    private final By businessProfilesTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Business Profiles']");
-    private final By userManagementTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='User Management']");
-    private final By settingsTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Settings']");
-    private final By platformTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Platform']");
-    private final By switchTenantTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Switch Tenent']");
-    private final By profileScoreTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Profile Score']");
-    private final By roiCalculatorTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='ROI Calculator']");
-    private final By promanageCustomerTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Promanage Customer']");
-    private final By smbListingManagementTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='SMB Listing Management']");
-    private final By mentionsTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='Mentions']");
-    private final By gmbProfileAnalyzerTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='GMB Profile Analyzer']");
-    private final By seoConfigurationTitle = By.xpath("//div[@class='sk-title-primary'][normalize-space(text())='SEOConfiguration']");
+	
+    private final By align = By.xpath("//span[text()='Align']/parent::a[1]");
+    private final By insight = By.xpath("//span[text()='Insights']/parent::a[1]");
+    private final By report = By.xpath("//span[text()='Reports']/parent::a[1]");
+    private final By rankTracker = By.xpath("//span[text()='Rank Tracker']/parent::a[1]");
+    private final By ratingGoles = By.xpath("//span[text()='Rating Goals']/parent::a[1]");
+    private final By listingManagement = By.xpath("//span[text()='Listing Management']/parent::a[1]");
+    private final By listings = By.xpath("//span[text()='Listings']/parent::a[1]");
+    private final By businessProfiles = By.xpath("//span[text()='Business Profiles']/parent::a[1]");
+    private final By activityApproval = By.xpath("//span[text()='Activity Approval']/parent::a[1]");
+    private final By bulkUploadTracker = By.xpath("//span[text()='Bulk Upload Tracker']/parent::a[1]");
+    private final By duplicateListings = By.xpath("//span[text()='Duplicate Listings']/parent::a[1]");
+    private final By platform = By.xpath("//span[text()='Platforms']/parent::a[1]");
+    private final By reputationManagement = By.xpath("//span[text()='Reputation Management']/parent::a[1]");
+    private final By reviews = By.xpath("//span[text()='Reviews']/parent::a[1]");
+    private final By tickets = By.xpath("//span[text()='Tickets']/parent::a[1]");
+    private final By imagePrediction = By.xpath("//span[text()='Image Prediction']/parent::a[1]");
+    private final By leaderboard = By.xpath("//span[text()='Leaderboard']/parent::a[1]");
+    private final By questionAndAnswer = By.xpath("//span[text()='Question and Answer']/parent::a[1]");
+    private final By mentions = By.xpath("//span[text()='Mentions']/parent::a[1]");
+    private final By interaction = By.xpath("//span[text()='Interactions']/parent::a[1]");
+    private final By callLogs = By.xpath(" //span[text()='Call Logs']/parent::a[1]");
+    private final By contacts = By.xpath("//span[text()='Contacts']/parent::a[1]");
+    private final By contactGroup = By.xpath("//span[text()='Contact Group']/parent::a[1]");
+    private final By chat = By.xpath(" //span[text()='Chats']/parent::a[1]");
+    private final By campaignSMS = By.xpath("//span[text()='SMS Campaigns']/parent::a[1]");
+    private final By userManagement = By.xpath("//span[text()='User Management']/parent::a[1]");
+    private final By switchTenant = By.xpath("//span[text()='Switch Tenant']/parent::a[1]");
+    private final By settings = By.xpath("//span[text()='Settings']/parent::a[1]");
+    private final By back = By.xpath("(//span[@class='sk-ripple-container'])[1]");
+    
+    
+    private final By alignTitle = By.cssSelector("div.sk-title-primary");
+    private final By insightTitle = By.cssSelector("div.sk-title-primary");
+    private final By reportTitle = By.cssSelector("div.sk-title-primary");
+    private final By rankTrackerTitle = By.cssSelector("div.sk-title-primary");
+    private final By ratingGolesTitle = By.cssSelector("div.sk-title-primary");
+    private final By listingsTitle = By.cssSelector("div.sk-title-primary");
+    private final By businessProfilesTitle = By.cssSelector("div.sk-title-primary");
+    private final By activityApprovalTitle = By.cssSelector("div.sk-title-primary");
+    private final By bulkUploadTrackerTitle = By.cssSelector("div.sk-title-primary");
+    private final By duplicateListingsTitle = By.cssSelector("div.sk-title-primary");
+    private final By platformTitle = By.cssSelector("div.sk-title-primary");
+    private final By reviewsTitle = By.cssSelector("div.sk-title-primary");
+    private final By ticketsTitle = By.cssSelector("div.sk-title-primary");
+    private final By imagePredictionTitle = By.cssSelector("div.sk-title-primary");
+    private final By leaderboardTitle = By.cssSelector("div.sk-title-primary");
+    private final By questionAndAnswerTitle =By.cssSelector("div.sk-title-primary");
+    private final By mentionsTitle = By.cssSelector("div.sk-title-primary");   
+    private final By callLogsTitle = By.cssSelector("h4.sk-h4");
+    private final By contactsTitle = By.cssSelector("div.sk-title-primary");
+    private final By contactGroupTitle = By.cssSelector("div.sk-title-primary");
+    private final By chatTitle = By.cssSelector("h4.sk-h4");
+    private final By campaignSMSTitle = By.cssSelector("div.sk-title-primary");
+    private final By userManagementTitle = By.cssSelector("div.sk-title-primary");
+    private final By switchTenantTitle = By.cssSelector("div.sk-title-primary");
+    private final By settingsTitle = By.cssSelector("div.sk-title-primary");
+  
+   
+  
+  
+    
+    
+   
+    
+    
+    
 
     public SidebarNavigation(WebDriver driver, ExtentTest test) {
         super(driver, test);
@@ -76,231 +92,369 @@ public class SidebarNavigation extends BasePage {
         return this;
     }
 
+    
+	public SidebarNavigation clickAlignPage() {
+        test.log(Status.INFO, "Clicking on Align Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(align)).click();
+        String alignPageTitle = driver.findElement(alignTitle).getText();
+        Assert.assertEquals(alignPageTitle, "Align", "Align page title mismatch!");
+        System.out.println("Align Page Title :" + alignPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		
+        return this;
+  
+        
+    }
+    
     public SidebarNavigation clickInsightPage() {
-        //logToExtentReport(Status.INFO, "Clicking on Insight page Menu Item");
-        test.log(Status.INFO, "Clicking on Insight page Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(insightPage)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(insightTitle));
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Insights Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(insight)).click();
+       // wait.until(ExpectedConditions.visibilityOfElementLocated(insightTitle));
         String insightPageTitle = driver.findElement(insightTitle).getText();
+        Assert.assertEquals(insightPageTitle, "Insights-My Dashboard", "Insights page title mismatch!");
         System.out.println("Insight Page Title :" + insightPageTitle);
-        return this;
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
     }
-
-    public SidebarNavigation clickLeaderboard() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Leaderboard Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(leaderboard)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(leaderboardTitle));
-        String leaderBoardPageTitle = driver.findElement(leaderboardTitle).getText();
-        System.out.println("Leader Board Page Title :" + leaderBoardPageTitle);
-        return this;
+    public SidebarNavigation clickReportPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Reports Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(report)).click();
+        String reportsPageTitle = driver.findElement(reportTitle).getText();
+        Assert.assertEquals(reportsPageTitle, "Reports", "Reports page title mismatch!");
+        System.out.println("Reports Page Title :" + reportsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
     }
-
-    public SidebarNavigation clickTickets() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Tickets Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(tickets)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(ticketsTitle));
-        String ticketingPageTitle = driver.findElement(ticketsTitle).getText();
-        System.out.println("Leader Board Page Title :" + ticketsTitle);
-        return this;
-    }
-
-    public SidebarNavigation clickReviews() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Reviews Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(reviews)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(reviewsTitle));
-        return this;
-    }
-
-    public SidebarNavigation clickCampaigns() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Campaigns Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(campaigns)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(campaignSMS)).click();
-        //   wait.until(ExpectedConditions.visibilityOfElementLocated(campaignsTitle));
-        return this;
-    }
-
-    public SidebarNavigation clickChat() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Chat Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(chat)).click();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("svg.sk-circular")));
-        PageLoad.pause();
-        driver.navigate().back();
-        //  wait.until(ExpectedConditions.visibilityOfElementLocated(chatTitle));
-        return this;
-    }
-
-    public SidebarNavigation clickContacts() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Contains Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(contacts)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(contactList)).click();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("svg.sk-circular")));
-/*      driver.navigate().refresh();
-        wait.until(ExpectedConditions.elementToBeClickable(contacts)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(contactGroup)).click();
-        driver.navigate().refresh();
-        wait.until(ExpectedConditions.elementToBeClickable(contacts)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(createGroup)).click();*/
-        return this;
-    }
-
-    public SidebarNavigation clickDuplicateListings() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Duplicate Listings Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(duplicateListings)).click();
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(duplicateListingsTitle));
-        return this;
-    }
-
-    public SidebarNavigation clickRankTracker() {
-        driver.navigate().refresh();
+    public SidebarNavigation clickRankTrackerPage() {
+    	PageLoad.pauseOneSec();
         test.log(Status.INFO, "Clicking on Rank Tracker Menu Item");
         wait.until(ExpectedConditions.elementToBeClickable(rankTracker)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(rankTrackerTitle));
+        String rankTrackerPageTitle = driver.findElement(rankTrackerTitle).getText();
+        Assert.assertEquals(rankTrackerPageTitle, "Keyword Rank Tracker", "Keyword Rank Tracker page title mismatch!");
+        System.out.println("Reports Page Title :" + rankTrackerPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
         return this;
     }
-
-    public SidebarNavigation clickBulkUploadTracker() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Bulk Upload Tracker Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(bulkUploadTracker)).click();
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(bulkUploadTrackerTitle));
+    public SidebarNavigation clickRatingGolesPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Rating Goles Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(ratingGoles)).click();
+        String ratingGolesPageTitle = driver.findElement(ratingGolesTitle).getText();
+        Assert.assertEquals(ratingGolesPageTitle, "Rating Goals", "Rating Goals page title mismatch!");
+        System.out.println("Reports Page Title :" + ratingGolesPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
         return this;
     }
-
-    public SidebarNavigation clickQuestionAndAnswer() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Question and Answer Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(questionAndAnswer)).click();
-        //   wait.until(ExpectedConditions.visibilityOfElementLocated(questionAndAnswerTitle));
-        return this;
+    public SidebarNavigation clickListingsPage() {
+    	PageLoad.pauseOneSec();
+    	wait.until(ExpectedConditions.elementToBeClickable(listingManagement)).click();
+    	PageLoad.pause();
+        test.log(Status.INFO, "Clicking on Listings Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(listings)).click();
+        PageLoad.pause();
+        String listingsPageTitle = driver.findElement(listingsTitle).getText();
+        Assert.assertEquals(listingsPageTitle, "Listings", "Listings page title mismatch!");
+        System.out.println("Listings Page Title :" + listingsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
     }
-
-    public SidebarNavigation clickBusinessProfiles() {
-        driver.navigate().refresh();
+    public SidebarNavigation clickBusinessProfilesPage() {
+    	PageLoad.pauseOneSec();
         test.log(Status.INFO, "Clicking on Business Profiles Menu Item");
         wait.until(ExpectedConditions.elementToBeClickable(businessProfiles)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(businessProfilesTitle));
+        PageLoad.pauseThreeSecs();
+        String businessProfilePageTitle = driver.findElement(businessProfilesTitle).getText();
+        Assert.assertEquals(businessProfilePageTitle, "Business Profiles", "Business Profiles page title mismatch!");
+        System.out.println("Business Profiles Page Title :" + businessProfilePageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
         return this;
     }
-
-    public SidebarNavigation clickUserManagement() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on User Management Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(userManagement)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(userManagementTitle));
+    public SidebarNavigation clickActivityApprovalPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on activity Approval PageTitle Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(activityApproval)).click();
+        PageLoad.pauseThreeSecs();
+        String activityApprovalPageTitle = driver.findElement(activityApprovalTitle).getText();
+        Assert.assertEquals(activityApprovalPageTitle, "Activity Approval", "Activity Approval page title mismatch!");
+        System.out.println("Activity Approval Page Title :" + activityApprovalPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
         return this;
     }
-
-    public SidebarNavigation clickSettings() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Settings Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(settings)).click();
-        //  wait.until(ExpectedConditions.visibilityOfElementLocated(settingsTitle));
-        return this;
+    public SidebarNavigation clickBulkUploadTrackerPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Bulk Upload Tracker Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(bulkUploadTracker)).click();
+        PageLoad.pauseThreeSecs();
+        String bulkUploadTrackerPageTitle = driver.findElement(By.xpath("//div[@class='filter-group-wrapper']/preceding::div[contains(@class,'sk-title-primary')][1]")).getText();
+      //  System.out.println(bulkUploadTrackerPageTitle);
+        if(bulkUploadTrackerPageTitle.contains("Bulk Upload Tracker")) {
+        	
+        } else {
+        	Assert.assertEquals(false, true);
+        }
+       // Assert.assertEquals(bulkUploadTrackerPageTitle, "arrow_back Bulk Upload Tracker", "Bulk Upload Tracker page title mismatch!");
+        System.out.println("Bulk Upload Tracker Page Title :" + bulkUploadTrackerPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
     }
-
-    public SidebarNavigation clickPlatform() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Platform Menu Item");
+    public SidebarNavigation clickDuplicateListingsPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Duplicate Listings Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(duplicateListings)).click();
+        PageLoad.pauseThreeSecs();
+        String duplicateListingsPageTitle = driver.findElement(duplicateListingsTitle).getText();
+        Assert.assertEquals(duplicateListingsPageTitle, "Duplicate Listings", "Duplicate Listings page title mismatch!");
+        System.out.println("Duplicate Listings  Page Title :" + duplicateListingsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
+    }
+    public SidebarNavigation clickPlatformPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Platforms Menu Item");
         wait.until(ExpectedConditions.elementToBeClickable(platform)).click();
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(platformTitle));
+        PageLoad.pauseThreeSecs();
+        String platformTitlePageTitle = driver.findElement(platformTitle).getText();
+        Assert.assertEquals(platformTitlePageTitle, "Connected Platforms", "Platforms page title mismatch!");
+        System.out.println("Platforms Page Title :" + platformTitlePageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
         return this;
     }
-
-    public SidebarNavigation clickSwitchTenant() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Switch Tenant Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(switchTenant)).click();
-        //   wait.until(ExpectedConditions.visibilityOfElementLocated(switchTenantTitle));
+   
+    public SidebarNavigation clickReviewsPage() {
+    	PageLoad.pauseOneSec();
+    	 wait.until(ExpectedConditions.elementToBeClickable(reputationManagement)).click();
+        test.log(Status.INFO, "Clicking on Reviews Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(reviews)).click();
+        PageLoad.pauseThreeSecs();
+        String reviewsPageTitle = driver.findElement(reviewsTitle).getText();
+        Assert.assertEquals(reviewsPageTitle, "Reviews", "Reviews page title mismatch!");
+        System.out.println("Reviews Page Title :" + reviewsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
         return this;
     }
-
-    public SidebarNavigation clickProfileScore() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Profile Score Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(profileScore)).click();
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(profileScoreTitle));
+    public SidebarNavigation clickTicketsPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Tickets Title Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(tickets)).click();
+        PageLoad.pauseThreeSecs();
+        String ticketsPageTitle = driver.findElement(ticketsTitle).getText();
+        Assert.assertEquals(ticketsPageTitle, "Tickets", "Ticktes page title mismatch!");
+        System.out.println("Tickets Page Title :" + ticketsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
         return this;
     }
-
-    public SidebarNavigation clickRoiCalculator() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on ROI Calculator Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(roiCalculator)).click();
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(roiCalculatorTitle));
+    public SidebarNavigation clickImagePredictionPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking onImage prediction Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(imagePrediction)).click();
+        PageLoad.pauseThreeSecs();
+        String imagePredictionPageTitle = driver.findElement(imagePredictionTitle).getText();
+        Assert.assertEquals(imagePredictionPageTitle, "Image Prediction", "Image Prediction page title mismatch!");
+        System.out.println("Image Prediction Page Title :" + imagePredictionPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
+    }
+    public SidebarNavigation clickLeaderboardPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Duplicate Listings Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(leaderboard)).click();
+        PageLoad.pauseThreeSecs();
+        String leaderboardPageTitle = driver.findElement(leaderboardTitle).getText();
+        Assert.assertEquals(leaderboardPageTitle, "Leaderboard", "Leaderboard page title mismatch!");
+        System.out.println("Leaderboard  Page Title :" + leaderboardPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
+    }
+    public SidebarNavigation clickQuestionAndAnswerPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Question And Answer Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(questionAndAnswer)).click();
+        PageLoad.pauseThreeSecs();
+        String questionAndAnswerPageTitle = driver.findElement(questionAndAnswerTitle).getText();
+        Assert.assertEquals(questionAndAnswerPageTitle, "Question and Answer", "Question And Answer page title mismatch!");
+        System.out.println("Question And Answer Page Title :" + questionAndAnswerPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
         return this;
     }
-
-    public SidebarNavigation clickPromanageCustomer() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on Promanage Customer Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(promanageCustomer)).click();
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(promanageCustomerTitle));
-        return this;
-    }
-
-    public SidebarNavigation clickSmbListingManagement() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on SMB Listing Management Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(smbListingManagement)).click();
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(smbListingManagementTitle));
-        return this;
-    }
-
-    public SidebarNavigation clickMentions() {
-        driver.navigate().refresh();
+    public SidebarNavigation clickmentionsPage() {
+    	PageLoad.pauseOneSec();
         test.log(Status.INFO, "Clicking on Mentions Menu Item");
         wait.until(ExpectedConditions.elementToBeClickable(mentions)).click();
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(mentionsTitle));
+        PageLoad.pauseThreeSecs();
+        String mentionsPageTitle = driver.findElement(mentionsTitle).getText();
+        Assert.assertEquals(mentionsPageTitle, "Mentions", "Mentions page title mismatch!");
+        System.out.println("Mentions Page Title :" + mentionsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
         return this;
     }
-
-    public SidebarNavigation clickGmbProfileAnalyzer() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on GMB Profile Analyzer Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(gmbProfileAnalyzer)).click();
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(gmbProfileAnalyzerTitle));
-        // getPageTitle();
+   
+   
+    
+    
+    public SidebarNavigation clickCallsPage() {
+    	PageLoad.pauseOneSec();
+    	wait.until(ExpectedConditions.elementToBeClickable(interaction)).click();
+        test.log(Status.INFO, "Clicking on Calls Title Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(callLogs)).click();
+        PageLoad.pauseThreeSecs();
+        String callsPageTitle = driver.findElement(callLogsTitle).getText();
+        Assert.assertEquals(callsPageTitle, "Calls", "Calls page title mismatch!");
+        System.out.println("Calls Page Title :" + callsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+        wait.until(ExpectedConditions.elementToBeClickable(back)).click();
         return this;
     }
-
-    public void clickSeoConfiguration() {
-        driver.navigate().refresh();
-        test.log(Status.INFO, "Clicking on SEO Configuration Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(seoConfiguration)).click();
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(seoConfigurationTitle));
+    public SidebarNavigation clickContactsPage() {
+    	PageLoad.pauseOneSec();
+    	 wait.until(ExpectedConditions.elementToBeClickable(interaction)).click();
+        test.log(Status.INFO, "Clicking on Contact Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(contacts)).click();
+        PageLoad.pauseThreeSecs();
+        String contactsPageTitle = driver.findElement(contactsTitle).getText();
+        Assert.assertEquals(contactsPageTitle, "Contacts", "Contact page title mismatch!");
+        System.out.println("Contacts Page Title :" + contactsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
     }
-
-    private void getPageTitle() {
-        String text = driver.findElement(By.xpath("//div[@class='sk-title-primary']")).getText();
-        test.log(Status.INFO, "Expected : " + "Actual : " + text);
+    public SidebarNavigation clickContactGroupPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Contacts Group Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(contactGroup)).click();
+        PageLoad.pauseThreeSecs();
+        String contactGropupPageTitle = driver.findElement(contactGroupTitle).getText();
+        Assert.assertEquals(contactGropupPageTitle, "Group", "Contacts Group title mismatch!");
+        System.out.println("Leaderboard  Page Title :" + contactGropupPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
     }
-
-    public SidebarNavigation clickListings() {
-        test.log(Status.INFO, "Clicking on Listings Page");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(listings));
-        wait.until(ExpectedConditions.elementToBeClickable(listings)).click();
+    public SidebarNavigation clickChatPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Chats Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(chat)).click();
+        PageLoad.pauseThreeSecs();
+        String chatsPageTitle = driver.findElement(chatTitle).getText();
+        Assert.assertEquals(chatsPageTitle, "Chat", "Chats page title mismatch!");
+        System.out.println("Chats Page Title :" + chatsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+        wait.until(ExpectedConditions.elementToBeClickable(back)).click();
         return this;
     }
-
-    public void Navigate() {
-        List<WebElement> menuItems = driver.findElements(By.xpath("//div[@class='sk-sidebar']//ul/li/a"));
-        int menuCount = menuItems.size();
-        String menuName = "";
-        for (WebElement menuItem : menuItems) {
-            menuName = menuItem.getText();
-            if(!menuName.equalsIgnoreCase("chat"))
-            menuItem.click();
-           // new DevToolsHelper(driver).waitForPageLoadAndAsyncCompletion();
-            System.out.println("Page title after click: " + driver.getTitle());
-        }
+    public SidebarNavigation clickCampaignSMSPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Campaign SMS Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(campaignSMS)).click();
+        PageLoad.pauseThreeSecs();
+        String campaignSMSPageTitle = driver.findElement(campaignSMSTitle).getText();
+        Assert.assertEquals(campaignSMSPageTitle, "Campaign - SMS", "Campaign SMS title mismatch!");
+        System.out.println("Campaign SMS Page Title :" + campaignSMSPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+        return this;
     }
+    
+    
+    
+    public SidebarNavigation clickUserManagementPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on User Management Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(userManagement)).click();
+        PageLoad.pauseThreeSecs();
+        String userManagementPageTitle = driver.findElement(userManagementTitle).getText();
+        Assert.assertEquals(userManagementPageTitle, "User Management", "User Management page title mismatch!");
+        System.out.println("User Management  Page Title :" + userManagementPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+		return this;
+        
+    }
+    public SidebarNavigation clickSwitchTenantPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Switch Tenant Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(switchTenant)).click();
+        PageLoad.pauseThreeSecs();
+        String switchTenantPageTitle = driver.findElement(switchTenantTitle).getText();
+        Assert.assertEquals(switchTenantPageTitle, "Switch Tenant", "Switch Tenant page title mismatch!");
+        System.out.println("Switch Tenant Page Title :" + switchTenantPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+        return this;
+    }
+    public SidebarNavigation clickSettingsPage() {
+    	PageLoad.pauseOneSec();
+        test.log(Status.INFO, "Clicking on Settings Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(settings)).click();
+        PageLoad.pauseThreeSecs();
+        String settingsPageTitle = driver.findElement(settingsTitle).getText();
+        Assert.assertEquals(settingsPageTitle, "Settings", "Settings page title mismatch!");
+        System.out.println("Settings Page Title :" + settingsPageTitle);
+        PageLoad.pauseThreeSecs();
+        takeScreenshot();
+        return this;
+    }
+   
 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    
+
 
 
