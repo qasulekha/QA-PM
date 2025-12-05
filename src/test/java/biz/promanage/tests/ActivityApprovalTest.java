@@ -31,6 +31,7 @@ public class ActivityApprovalTest extends BaseTest {
             		.clickRespondedBy()
             		.clickStatus();
             
+        	 
             
             
                     Assert.assertEquals(CMO, activityApprovalTest.getCMO());
