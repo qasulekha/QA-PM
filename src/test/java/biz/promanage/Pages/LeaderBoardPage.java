@@ -12,8 +12,8 @@ import java.time.LocalDate;
 
 public class LeaderBoardPage extends BasePage {
 
-    private static final String FOCUSED_GROUP_NAME = "Focused_DHL";
-    private static final String CITY_NAME = "Mumbai";
+    private static final String FOCUSED_GROUP_NAME = "BVN_Assigned Listings";
+    private static final String CITY_NAME = "Chennai";
     private final By img = By.xpath("//div[@class='table-card table-card-body']//img");
     private final By DATE = By.xpath("(//div[@class='sk-flex-row sk-flex-align-start sk-sticky']//div)[12]");
     private final By SUBMIT_BUTTON = By.xpath("//div[@class='sk-flex-row sk-flex-justify-between sk-flex-align-center sk-no-wrap']//button");
@@ -96,7 +96,7 @@ public class LeaderBoardPage extends BasePage {
         waitForPageLoaderToDisappear();
 
         sendDelayedKeys(wait.until(ExpectedConditions.elementToBeClickable(SEARCH_BY_GROUP)), FOCUSED_GROUP_NAME);
-        PageLoad.pauseTenSeconds();
+        PageLoad.pauseFifteenSeconds();
         String selectedGroupName = wait.until(ExpectedConditions.visibilityOfElementLocated(GROUP_NAME)).getText();
         test.log(Status.INFO, "Selected Group Name: " + selectedGroupName);
         PageLoad.pause();
