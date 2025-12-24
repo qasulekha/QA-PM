@@ -25,6 +25,7 @@ public class NavigationBarTest extends BaseTest {
             .clickInsightPage()
             .clickReportPage()
             .clickRankTrackerPage()
+            .clickScheduledTrackerPage()
             .clickRatingGolesPage()
             .clickListingsPage()
             .clickBusinessProfilesPage()

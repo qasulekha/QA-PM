@@ -1,24 +1,26 @@
 package biz.promanage.Pages;
 
 import biz.promanage.base.BasePage;
-
+import biz.promanage.driverManager.DevToolsHelper;
 import biz.promanage.utils.PageLoad;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-
+import java.util.List;
 
 public class SidebarNavigation extends BasePage {
 	
     private final By align = By.xpath("//span[text()='Align']/parent::a[1]");
     private final By insight = By.xpath("//span[text()='Insights']/parent::a[1]");
     private final By report = By.xpath("//span[text()='Reports']/parent::a[1]");
-    private final By rankTracker = By.xpath("//span[text()='Rank Tracker']/parent::a[1]");
+    private final By rankTracker = By.xpath("//span[text()='Rank tracker']/parent::a[1]");
+    private final By realTime = By.xpath("//span[text()='Real-time Tracker']/parent::a[1]");
+    private final By scheduledTracker = By.xpath("//span[text()='Scheduled Tracker']/parent::a[1]");
     private final By ratingGoles = By.xpath("//span[text()='Rating Goals']/parent::a[1]");
     private final By listingManagement = By.xpath("//span[text()='Listing Management']/parent::a[1]");
     private final By listings = By.xpath("//span[text()='Listings']/parent::a[1]");
@@ -50,11 +52,11 @@ public class SidebarNavigation extends BasePage {
     private final By insightTitle = By.cssSelector("div.sk-title-primary");
     private final By reportTitle = By.cssSelector("div.sk-title-primary");
     private final By rankTrackerTitle = By.cssSelector("div.sk-title-primary");
+    private final By bulkUploadTrackerTitle = By.cssSelector("div.sk-title-primary");
     private final By ratingGolesTitle = By.cssSelector("div.sk-title-primary");
     private final By listingsTitle = By.cssSelector("div.sk-title-primary");
     private final By businessProfilesTitle = By.cssSelector("div.sk-title-primary");
     private final By activityApprovalTitle = By.cssSelector("div.sk-title-primary");
-    private final By bulkUploadTrackerTitle = By.cssSelector("div.sk-title-primary");
     private final By duplicateListingsTitle = By.cssSelector("div.sk-title-primary");
     private final By platformTitle = By.cssSelector("div.sk-title-primary");
     private final By reviewsTitle = By.cssSelector("div.sk-title-primary");
@@ -92,8 +94,7 @@ public class SidebarNavigation extends BasePage {
         return this;
     }
 
-    
-	public SidebarNavigation clickAlignPage() {
+    public SidebarNavigation clickAlignPage() {
         test.log(Status.INFO, "Clicking on Align Menu Item");
         wait.until(ExpectedConditions.elementToBeClickable(align)).click();
         String alignPageTitle = driver.findElement(alignTitle).getText();
@@ -101,7 +102,18 @@ public class SidebarNavigation extends BasePage {
         System.out.println("Align Page Title :" + alignPageTitle);
         PageLoad.pauseThreeSecs();
         takeScreenshot();
-		
+		/*
+		 * clickInsightPage(); clickReportPage(); clickRankTrackerPage();
+		 * clickRatingGolesPage(); clickListingsPage(); clickBusinessProfilesPage();
+		 * clickActivityApprovalPage(); // clickBulkUploadTrackerPage();
+		 * clickDuplicateListingsPage(); clickPlatformPage(); clickReviewsPage();
+		 * clickTicketsPage(); clickImagePredictionPage(); clickLeaderboardPage();
+		 * clickQuestionAndAnswerPage(); clickmentionsPage(); clickCallsPage();
+		 * clickContactsPage(); clickContactGroupPage(); clickChatPage();
+		 * clickCampaignSMSPage(); clickUserManagementPage(); clickSwitchTenantPage();
+		 * clickSettingsPage();
+		 */
+        
         return this;
   
         
@@ -134,14 +146,47 @@ public class SidebarNavigation extends BasePage {
     }
     public SidebarNavigation clickRankTrackerPage() {
     	PageLoad.pauseOneSec();
-        test.log(Status.INFO, "Clicking on Rank Tracker Menu Item");
-        wait.until(ExpectedConditions.elementToBeClickable(rankTracker)).click();
-        String rankTrackerPageTitle = driver.findElement(rankTrackerTitle).getText();
-        Assert.assertEquals(rankTrackerPageTitle, "Keyword Rank Tracker", "Keyword Rank Tracker page title mismatch!");
-        System.out.println("Reports Page Title :" + rankTrackerPageTitle);
-        PageLoad.pauseThreeSecs();
-        takeScreenshot();
-        return this;
+    	wait.until(ExpectedConditions.elementToBeClickable(rankTracker)).click();
+    	PageLoad.pause();
+        test.log(Status.INFO, "Clicking on Real time Rank Tracker Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(realTime)).click();
+        String realTimeTrackerPageTitle = driver.findElement(By.xpath("//div[@class='filter-group-wrapper']/preceding::div[contains(@class,'sk-title-primary')][1]")).getText();
+        //  System.out.println(bulkUploadTrackerPageTitle);
+          if(realTimeTrackerPageTitle.contains("Real-Time Keyword Rank Tracker")) {
+          	
+          } else {
+          	Assert.assertEquals(false, true);
+          }
+         // Assert.assertEquals(bulkUploadTrackerPageTitle, "arrow_back Bulk Upload Tracker", "Bulk Upload Tracker page title mismatch!");
+          System.out.println("Real Time Tracker Page Title :" + realTimeTrackerPageTitle);
+          PageLoad.pauseThreeSecs();
+          takeScreenshot();
+         
+          
+          
+  		return this;
+        
+    }
+    
+    public SidebarNavigation clickScheduledTrackerPage() {
+    	PageLoad.pauseOneSec();
+    	//wait.until(ExpectedConditions.elementToBeClickable(rankTracker)).click();
+    	PageLoad.pause();
+        test.log(Status.INFO, "Clicking on Scheduled Tracker Menu Item");
+        wait.until(ExpectedConditions.elementToBeClickable(scheduledTracker)).click();
+        String scheduledTrackerPageTitle = driver.findElement(By.xpath("//div[@class='filter-group-wrapper']/preceding::div[contains(@class,'sk-title-primary')][1]")).getText();
+        //  System.out.println(bulkUploadTrackerPageTitle);
+          if(scheduledTrackerPageTitle.contains("Scheduled Keyword Rank Tracker")) {
+          	
+          } else {
+          	Assert.assertEquals(false, true);
+          }
+         // Assert.assertEquals(bulkUploadTrackerPageTitle, "arrow_back Bulk Upload Tracker", "Bulk Upload Tracker page title mismatch!");
+          System.out.println("Scheduled Tracker Page Title :" + scheduledTrackerPageTitle);
+          PageLoad.pauseThreeSecs();
+          takeScreenshot();
+  		return this;
+        
     }
     public SidebarNavigation clickRatingGolesPage() {
     	PageLoad.pauseOneSec();
@@ -352,7 +397,7 @@ public class SidebarNavigation extends BasePage {
         PageLoad.pauseThreeSecs();
         String contactGropupPageTitle = driver.findElement(contactGroupTitle).getText();
         Assert.assertEquals(contactGropupPageTitle, "Group", "Contacts Group title mismatch!");
-        System.out.println("Leaderboard  Page Title :" + contactGropupPageTitle);
+        System.out.println("Contact Group  Page Title :" + contactGropupPageTitle);
         PageLoad.pauseThreeSecs();
         takeScreenshot();
 		return this;
