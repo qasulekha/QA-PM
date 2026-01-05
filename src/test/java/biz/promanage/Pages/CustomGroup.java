@@ -76,6 +76,7 @@ public class CustomGroup extends BasePage {
             waitForElementAndClick(FILTER_DDL);
             waitForElementAndClick(CUSTOM_GROUP_TAB);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("svg.sk-circular")));
+            PageLoad.pause(); 
             wait.until(ExpectedConditions.elementToBeClickable(LOCATION_SEARCH_BOX)).click();
             sendDelayedKeys(driver.findElement(By.cssSelector(".filter-padding .sk-input")), customGroup);
             WebElement element = waitForElementToBeVisible(By.xpath("//ul[@class='location-filter-list']/li//p[normalize-space(.)='" + customGroup + "']"));
