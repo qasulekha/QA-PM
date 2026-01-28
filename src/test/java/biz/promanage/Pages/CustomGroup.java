@@ -56,7 +56,7 @@ public class CustomGroup extends BasePage {
     }
  
     private void CreateGroup(String groupName) {
-    	PageLoad.pause();
+    	 PageLoad.pause();
         waitForElementAndClick(LOCATION_1);
         waitForElementAndClick(LOCATION_2);
         selectOption("Create Custom Group");
@@ -76,7 +76,6 @@ public class CustomGroup extends BasePage {
             waitForElementAndClick(FILTER_DDL);
             waitForElementAndClick(CUSTOM_GROUP_TAB);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("svg.sk-circular")));
-            PageLoad.pause(); 
             wait.until(ExpectedConditions.elementToBeClickable(LOCATION_SEARCH_BOX)).click();
             sendDelayedKeys(driver.findElement(By.cssSelector(".filter-padding .sk-input")), customGroup);
             WebElement element = waitForElementToBeVisible(By.xpath("//ul[@class='location-filter-list']/li//p[normalize-space(.)='" + customGroup + "']"));
@@ -123,7 +122,7 @@ public class CustomGroup extends BasePage {
  
 	public CustomGroup CreateCustomGroup1(String groupName) {
 		waitForElementAndClick(LOCATION_3);
-		PageLoad.pauseThreeSecs();
+		PageLoad.pause();
 		waitForElementAndClick(ACTION);
 		PageLoad.pause();
 		test.log(Status.INFO, "Action filter clicked");
