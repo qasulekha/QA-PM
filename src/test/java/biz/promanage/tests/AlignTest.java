@@ -23,7 +23,7 @@ public class AlignTest extends BaseTest {
 			alignPage.clickAlign().clickcreaBut().enterTitle("Test Task Creation").enterCus("Sul").enterassignee("CMO")
 					.selectStatus().selectTask().proTask().priority().visibility()
 					.description("When we try to upload an image, it is not uploaded correctly.")
-					.includeUser("New CMO").comment("Please Work on this.").save().visibility1().save().showPastDue()
+					.includeUser("MOHD CMO").comment("Please Work on this.").save().visibility1().save().showPastDue()
 					.verifyPastDueTasks().showPastDue1().clickFilter().filterVisibility().taskStatus().taskPriority()
 					.taskType().clickApply().clickSelectCustomer().passCustmoerName("sulekha.com").clickSubmit()
 					.clickFilter().reset().clickApply().searchTask("#SUL-682").editStatus().editTaskType()

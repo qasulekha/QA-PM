@@ -47,7 +47,7 @@ public class AlignPage extends BasePage {
 	By INTERNAL = By.xpath("(//li[text()='Internal '])[2]");
 	By DESCRIPTION = By.xpath("(//div[@class='ql-editor ql-blank'])[1]");
 	By INClUSER = By.xpath("(//input[@type='text'])[24]");
-	By CMO_TEST = By.xpath("(//li[text()='New CMO '])[2]");
+	By CMO_TEST = By.xpath("(//li[text()='MOHD CMO'])[2]");
 	// By COMMENT = By.xpath("(//div[@class='ql-editor ql-blank'])[2]");
 	By ATTACH_FILE = By.xpath("(//span[text()='Attach File'])[2]");
 	By SAVE = By.xpath("((//div[@class='sk-text-end sk-button-group'])[2]//button)[2]");
