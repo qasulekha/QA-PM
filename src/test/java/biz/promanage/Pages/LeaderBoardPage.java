@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class LeaderBoardPage extends BasePage {
 
     private static final String FOCUSED_GROUP_NAME = "BVN_Assigned Listings";
-    private static final String CITY_NAME = "Kalaburagi";
+    private static final String CITY_NAME = "Lucknow";
     private final By img = By.xpath("//div[@class='table-card table-card-body']//img");
     private final By DATE = By.xpath("(//div[@class='sk-flex-row sk-flex-align-start sk-sticky']//div)[12]");
     private final By SUBMIT_BUTTON = By.xpath("//div[@class='sk-flex-row sk-flex-justify-between sk-flex-align-center sk-no-wrap']//button");
@@ -42,13 +42,13 @@ public class LeaderBoardPage extends BasePage {
 
     public LeaderBoardPage selectYearAndMonth() {
         logInfo(" Selecting Month and Year ");
-        int currentMonth = LocalDate.now().getMonthValue() - 0;
+        int currentMonth = LocalDate.now().getMonthValue() - 1;
         int currentYear = LocalDate.now().getYear();
 
-       // By MONTH_SELECTOR = By.xpath("(//div[@class='month-group'])[1]//ul//li[" + currentMonth + "]");
-        //By YEAR_SELECTOR = By.xpath("//ul/li[contains(@id,'" + currentYear + "')]");
-        By MONTH_SELECTOR = By.xpath("((//div[@class='month-group'])[1]//ul//li)[12]");
-        By YEAR_SELECTOR = By.xpath("(//*[@id='nav-1-2025']//span[contains(@class,'sk-ripple-container')])[1]");
+      By MONTH_SELECTOR = By.xpath("(//div[@class='month-group'])[1]//ul//li[" + currentMonth + "]");
+        By YEAR_SELECTOR = By.xpath("//ul/li[contains(@id,'" + currentYear + "')]");
+       // By MONTH_SELECTOR = By.xpath("((//div[@class='month-group'])[1]//ul//li)[12]");
+      //  By YEAR_SELECTOR = By.xpath("(//*[@id='nav-1-2025']//span[contains(@class,'sk-ripple-container')])[1]");
 
         waitForElementAndClick(DATE);
         waitForElementAndClick(YEAR_SELECTOR);
