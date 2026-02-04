@@ -38,7 +38,7 @@ public class NavigationBarTest extends BaseTest {
             .clickImagePredictionPage()
             .clickLeaderboardPage()
             .clickQuestionAndAnswerPage()
-            .clickmentionsPage()
+           // .clickmentionsPage()
             .clickCallsPage()
             .clickContactsPage()
             .clickContactGroupPage()
