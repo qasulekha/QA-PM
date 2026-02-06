@@ -16,7 +16,7 @@ import biz.promanage.base.BaseTest;
 import biz.promanage.listeners.RetryAnalyzer;
 import biz.promanage.utils.TeamsAlert;
 
-public class DiscoveryTab extends BaseTest{
+public class DiscoveryTabTest extends BaseTest{
 	int retryCount = 0;
 	
 	
@@ -28,7 +28,7 @@ public class DiscoveryTab extends BaseTest{
 		 
 		try {
 			 //if (new Customer(getDriver(), test).changeCustomer("Muthoot Finance Limited")) {
-				 new LoginPage(getDriver(), test).login(GetUserLoginCred());
+		 new LoginPage(getDriver(), test).login(GetUserLoginCred());
 		 Discovery discoveryPage=new Discovery(getDriver(), test);
 		 discoveryPage.Discoverytab().ValidateDiscoveryData();
 			// }
