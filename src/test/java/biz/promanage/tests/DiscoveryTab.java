@@ -16,7 +16,7 @@ import biz.promanage.base.BaseTest;
 import biz.promanage.listeners.RetryAnalyzer;
 import biz.promanage.utils.TeamsAlert;
 
-public class DiscoveryTabTest extends BaseTest{
+public class DiscoveryTab extends BaseTest{
 	int retryCount = 0;
 	
 	
