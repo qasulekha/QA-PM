@@ -31,8 +31,78 @@ public class LeaderBoardPage extends BasePage {
         super(driver, test);
     }
 
+/*
+ * public LeaderBoardPage load() { logInfo(" Loading Leaderboard Page ");
+ * load("/app/Leaderboard"); waitForPageLoaderToDisappear();
+ * waitForElementToBeVisible(img); takeScreenshot(); return this; }
+ * 
+ * public LeaderBoardPage selectYearAndMonth() {
+ * logInfo(" Selecting Month and Year "); int currentMonth =
+ * LocalDate.now().getMonthValue() - 1; int currentYear =
+ * LocalDate.now().getYear();
+ * 
+ * By MONTH_SELECTOR = By.xpath("(//div[@class='month-group'])[1]//ul//li[" +
+ * currentMonth + "]"); By YEAR_SELECTOR = By.xpath("//ul/li[contains(@id,'" +
+ * currentYear + "')]"); // By MONTH_SELECTOR =
+ * By.xpath("((//div[@class='month-group'])[1]//ul//li)[12]"); // By
+ * YEAR_SELECTOR = By.xpath(
+ * "(//*[@id='nav-1-2025']//span[contains(@class,'sk-ripple-container')])[1]");
+ * 
+ * waitForElementAndClick(DATE); waitForElementAndClick(YEAR_SELECTOR);
+ * waitForElementAndClick(MONTH_SELECTOR);
+ * waitForElementAndClick(SUBMIT_BUTTON);
+ * 
+ * test.log(Status.INFO, "Selected Month: " + currentMonth + ", Year: " +
+ * currentYear); takeScreenshot();
+ * 
+ * return this; }
+ * 
+ * public LeaderBoardPage verifyCityFilter() {
+ * logInfo(" Verifying City filter "); PageLoad.pause();
+ * waitForElementAndClick(CITY_TAB); waitForPageLoaderToDisappear();
+ * 
+ * sendDelayedKeys(wait.until(ExpectedConditions.elementToBeClickable(
+ * SEARCH_BY_CITY)), CITY_NAME); test.log(Status.INFO, "Searched City Name: " +
+ * CITY_NAME); PageLoad.pauseTenSeconds();
+ * 
+ * String filteredResult =
+ * wait.until(ExpectedConditions.visibilityOfElementLocated(CITY_NAME_RESULT)).
+ * getText(); Assert.assertEquals(filteredResult, CITY_NAME,
+ * "City Name did not match");
+ * 
+ * test.log(Status.INFO, "Expected City Name: " + CITY_NAME +
+ * ", Actual City Name: " + filteredResult); takeScreenshot(); return this; }
+ * 
+ * public LeaderBoardPage compareLeaderboardResults() {
+ * logInfo(" Comparing Leaderboard Results "); String selectedCityName =
+ * wait.until(ExpectedConditions.visibilityOfElementLocated(LEADER_BOARD_CITY)).
+ * getText(); test.log(Status.INFO, "Selected Leaderboard City: " +
+ * selectedCityName);
+ * 
+ * String resultCityName =
+ * wait.until(ExpectedConditions.visibilityOfElementLocated(RESULT_CITY)).
+ * getText(); test.log(Status.INFO, "Searched Result City: " + resultCityName);
+ * 
+ * Assert.assertEquals(selectedCityName, resultCityName,
+ * "City names on leaderboard do not match"); takeScreenshot(); return this; }
+ * 
+ * public void verifyGroupFilter() { logInfo(" Verifying Group filter ");
+ * waitForElementAndClick(GROUPS_TAB); waitForPageLoaderToDisappear();
+ * 
+ * sendDelayedKeys(wait.until(ExpectedConditions.elementToBeClickable(
+ * SEARCH_BY_GROUP)), FOCUSED_GROUP_NAME); PageLoad.pauseFifteenSeconds();
+ * String selectedGroupName =
+ * wait.until(ExpectedConditions.visibilityOfElementLocated(GROUP_NAME)).getText
+ * (); test.log(Status.INFO, "Selected Group Name: " + selectedGroupName);
+ * PageLoad.pause(); Assert.assertEquals(selectedGroupName, FOCUSED_GROUP_NAME,
+ * "Group names do not match"); takeScreenshot(); }
+ * 
+ * }
+ */
+    
     public LeaderBoardPage load() {
-        logInfo(" Loading Leaderboard Page ");
+        System.out.println("Leaderboard Page loaded");
+        logInfo("Loading Leaderboard Page");
         load("/app/Leaderboard");
         waitForPageLoaderToDisappear();
         waitForElementToBeVisible(img);
@@ -41,69 +111,104 @@ public class LeaderBoardPage extends BasePage {
     }
 
     public LeaderBoardPage selectYearAndMonth() {
-        logInfo(" Selecting Month and Year ");
+        System.out.println("Selecting month and year from Date Filter");
+        logInfo("Selecting Month and Year");
+
         int currentMonth = LocalDate.now().getMonthValue() - 1;
         int currentYear = LocalDate.now().getYear();
 
-      By MONTH_SELECTOR = By.xpath("(//div[@class='month-group'])[1]//ul//li[" + currentMonth + "]");
+        By MONTH_SELECTOR = By.xpath("(//div[@class='month-group'])[1]//ul//li[" + currentMonth + "]");
         By YEAR_SELECTOR = By.xpath("//ul/li[contains(@id,'" + currentYear + "')]");
-       // By MONTH_SELECTOR = By.xpath("((//div[@class='month-group'])[1]//ul//li)[12]");
-      //  By YEAR_SELECTOR = By.xpath("(//*[@id='nav-1-2025']//span[contains(@class,'sk-ripple-container')])[1]");
 
         waitForElementAndClick(DATE);
         waitForElementAndClick(YEAR_SELECTOR);
         waitForElementAndClick(MONTH_SELECTOR);
         waitForElementAndClick(SUBMIT_BUTTON);
 
-        test.log(Status.INFO, "Selected Month: " + currentMonth + ", Year: " + currentYear);
+        System.out.println("Date Filter applied");
+        PageLoad.pauseOneSec();
         takeScreenshot();
 
         return this;
     }
 
     public LeaderBoardPage verifyCityFilter() {
-        logInfo(" Verifying City filter ");
+        System.out.println("Verifying City filter");
+        logInfo("Verifying City filter");
+
         PageLoad.pause();
         waitForElementAndClick(CITY_TAB);
         waitForPageLoaderToDisappear();
 
-        sendDelayedKeys(wait.until(ExpectedConditions.elementToBeClickable(SEARCH_BY_CITY)), CITY_NAME);
-        test.log(Status.INFO, "Searched City Name: " + CITY_NAME);
-        PageLoad.pauseTenSeconds();
+        System.out.println("Entering city name in City filter search field");
+        sendDelayedKeys(
+                wait.until(ExpectedConditions.elementToBeClickable(SEARCH_BY_CITY)),
+                CITY_NAME
+        );
 
-        String filteredResult = wait.until(ExpectedConditions.visibilityOfElementLocated(CITY_NAME_RESULT)).getText();
+        PageLoad.pauseFifteenSeconds();
+
+        String filteredResult = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(CITY_NAME_RESULT)
+        ).getText();
+
+        System.out.println("Validating filtered city result");
         Assert.assertEquals(filteredResult, CITY_NAME, "City Name did not match");
 
-        test.log(Status.INFO, "Expected City Name: " + CITY_NAME + ", Actual City Name: " + filteredResult);
         takeScreenshot();
         return this;
     }
 
     public LeaderBoardPage compareLeaderboardResults() {
-        logInfo(" Comparing Leaderboard Results ");
-        String selectedCityName = wait.until(ExpectedConditions.visibilityOfElementLocated(LEADER_BOARD_CITY)).getText();
-        test.log(Status.INFO, "Selected Leaderboard City: " + selectedCityName);
+        System.out.println("Comparing leaderboard results");
 
-        String resultCityName = wait.until(ExpectedConditions.visibilityOfElementLocated(RESULT_CITY)).getText();
-        test.log(Status.INFO, "Searched Result City: " + resultCityName);
+        String selectedCityName = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(LEADER_BOARD_CITY)
+        ).getText();
 
-        Assert.assertEquals(selectedCityName, resultCityName, "City names on leaderboard do not match");
+        String resultCityName = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(RESULT_CITY)
+        ).getText();
+
+        System.out.println("Leaderboard City: " + selectedCityName);
+        System.out.println("Search Result City: " + resultCityName);
+
+        Assert.assertEquals(
+                selectedCityName,
+                resultCityName,
+                "City names on leaderboard do not match"
+        );
+
         takeScreenshot();
         return this;
     }
 
     public void verifyGroupFilter() {
-        logInfo(" Verifying Group filter ");
+        System.out.println("Verifying Group filter");
+        logInfo("Verifying Group filter");
+
         waitForElementAndClick(GROUPS_TAB);
         waitForPageLoaderToDisappear();
 
-        sendDelayedKeys(wait.until(ExpectedConditions.elementToBeClickable(SEARCH_BY_GROUP)), FOCUSED_GROUP_NAME);
-        PageLoad.pauseFifteenSeconds();
-        String selectedGroupName = wait.until(ExpectedConditions.visibilityOfElementLocated(GROUP_NAME)).getText();
-        test.log(Status.INFO, "Selected Group Name: " + selectedGroupName);
-        PageLoad.pause();
-        Assert.assertEquals(selectedGroupName, FOCUSED_GROUP_NAME, "Group names do not match");
-        takeScreenshot();
-    } 
+        System.out.println("Entering group name in Group filter search field");
+        sendDelayedKeys(
+                wait.until(ExpectedConditions.elementToBeClickable(SEARCH_BY_GROUP)),
+                FOCUSED_GROUP_NAME
+        );
 
+        PageLoad.pauseTenSeconds();
+
+        String selectedGroupName = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(GROUP_NAME)
+        ).getText();
+
+        System.out.println("Validating selected group name");
+        Assert.assertEquals(
+                selectedGroupName,
+                FOCUSED_GROUP_NAME,
+                "Group names do not match"
+        );
+
+        takeScreenshot();
+    }
 }

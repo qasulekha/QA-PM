@@ -17,77 +17,169 @@ public class GlobalFilter extends BasePage {
     By SELECT_STATE = By.cssSelector(".location-filter-list .sk-check-label");
     By APPLY_BUTTON = By.cssSelector(".sk-flex-align-center .sk-button:nth-child(2) > .sk-ripple-container");
     By PROFILE_COUNT = By.xpath("//div[@class='sk-card-secondary']");
+    By INSIGHTS = By.xpath("//span[text()='Insights']//parent::a");
+    
     By PROFILE_COUNT_FILTER = By.cssSelector(".location-filter-list > li:nth-child(1) .sk-h8");
     private final By businessProfiles = By.xpath("//a[.//span[normalize-space()='Business Profiles']]");
     private final By LISTING_MANAGEMENT = By.xpath("//span[text()='Listing Management']//parent::a");
+    
     String profileCount="";
     String state = "Tamil Nadu";
 
     public GlobalFilter(WebDriver driver, ExtentTest test) {
         super(driver, test);
     }
-
-    public GlobalFilter clickOnFilter() {
-        waitForPageLoadToComplete();
-        test.log(Status.INFO, "Location Filter Clicked");
-        waitForElementAndClick(FILTER_DDL);
-        takeScreenshot();
-        return this;
-    }
-
-    public GlobalFilter searchState() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("svg.sk-circular")));
-        PageLoad.pause();
-        waitForElementAndClick(LOCATION_SEARCH_BOX);
-        test.log(Status.INFO, state + " state entered");
-        sendDelayedKeys(driver.findElement(By.cssSelector(".filter-padding .sk-input")), state);
-        takeScreenshot();
-        return this;
-    }
-
+/*
+ * public GlobalFilter clickOnInsights() { PageLoad.pause();
+ * waitForElementAndClick(INSIGHTS); return this;
+ * 
+ * }
+ * 
+ * public GlobalFilter clickOnFilter() { //clickOnInsights();
+ * waitForPageLoadToComplete(); test.log(Status.INFO,
+ * "Location Filter Clicked"); waitForElementAndClick(FILTER_DDL);
+ * takeScreenshot(); return this; }
+ * 
+ * public GlobalFilter searchState() {
+ * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(
+ * "svg.sk-circular"))); PageLoad.pause();
+ * waitForElementAndClick(LOCATION_SEARCH_BOX); test.log(Status.INFO, state +
+ * " state entered");
+ * sendDelayedKeys(driver.findElement(By.cssSelector(".filter-padding .sk-input"
+ * )), state); takeScreenshot(); return this; }
+ * 
+ * 
+ * 
+ * public GlobalFilter selectState() { test.log(Status.INFO, state +
+ * " state selected");
+ * wait.until(ExpectedConditions.elementToBeClickable(SELECT_STATE)).click();
+ * PageLoad.pauseThreeSecs(); profileCount =
+ * wait.until(ExpectedConditions.visibilityOfElementLocated(PROFILE_COUNT_FILTER
+ * )).getText(); test.log(Status.INFO, state +
+ * " state selected, Profile count : " + profileCount); return this; }
+ * 
+ * public GlobalFilter clickApply() {
+ * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(
+ * "svg.sk-circular"))); takeScreenshot(); test.log(Status.INFO,
+ * "Apply button clicked");
+ * wait.until(ExpectedConditions.elementToBeClickable(APPLY_BUTTON)).click();
+ * return this; } public GlobalFilter clickListingManagement() {
+ * waitForElementAndClick(LISTING_MANAGEMENT); return this; } public
+ * GlobalFilter clickBusinessProfiles() { PageLoad.pause();
+ * test.log(Status.INFO, "Clicking on Business Profiles link");
+ * wait.until(ExpectedConditions.elementToBeClickable(businessProfiles)).click()
+ * ; return this; }
+ * 
+ * public void ScrollToTheBottom() { waitForPageLoadToComplete();
+ * PageLoad.pause(); dynamicScrolling(); getProfileCount(); PageLoad.pause();
+ * takeScreenshot(); }
+ * 
+ * public void getProfileCount() { List<WebElement> elements =
+ * driver.findElements(PROFILE_COUNT); System.out.println("Profile Count : " +
+ * elements.size()); test.log(Status.INFO, "Total profile count : " +
+ * elements.size()); Assert.assertEquals(elements.size(),Integer.parseInt(Otp.
+ * ExtractNumberFromString(profileCount))); } }
+ */
     
- 
-    public GlobalFilter selectState() {
-        test.log(Status.INFO, state + " state selected");
-        wait.until(ExpectedConditions.elementToBeClickable(SELECT_STATE)).click();
-        PageLoad.pauseThreeSecs();
-        profileCount = wait.until(ExpectedConditions.visibilityOfElementLocated(PROFILE_COUNT_FILTER)).getText();
-        test.log(Status.INFO, state + " state selected, Profile count : " + profileCount);
-        return this;
-    }
-
-    public GlobalFilter clickApply() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("svg.sk-circular")));
+    
+    
+    public GlobalFilter load() {
+   	 PageLoad.pauseOneSec();
         takeScreenshot();
-        test.log(Status.INFO, "Apply button clicked");
-        wait.until(ExpectedConditions.elementToBeClickable(APPLY_BUTTON)).click();
-        return this;
-    }
-    public GlobalFilter clickListingManagement() {
-        waitForElementAndClick(LISTING_MANAGEMENT);
-        return this;
-    }
-    public GlobalFilter clickBusinessProfiles() {
-        PageLoad.pause();
-        test.log(Status.INFO, "Clicking on Business Profiles link");
-        wait.until(ExpectedConditions.elementToBeClickable(businessProfiles)).click();
-        return this;
-    }
+       System.out.println("Home Page: Home Page Loade successfully");
+       test.log(Status.INFO, "Home Page Loade successfully");
+       return this;
+   }
 
-    public void ScrollToTheBottom() {
-        waitForPageLoadToComplete();
-        PageLoad.pause();
-        dynamicScrolling();
-        getProfileCount();
-        PageLoad.pause();
-        takeScreenshot();
-    }
+   public GlobalFilter clickOnFilter() {
+       waitForPageLoadToComplete();
+       PageLoad.pause();
+       waitForElementAndClick(FILTER_DDL);
+       System.out.println("Location Filter: Clicking on Location Filter successfully");
+       test.log(Status.INFO, "Location Filter: Clicking on Location Filter successfully");
+       PageLoad.pauseOneSec();
+       takeScreenshot();
+       return this;
+   }
 
-    public void getProfileCount()
-    {
-        List<WebElement> elements = driver.findElements(PROFILE_COUNT);
-        System.out.println("Profile Count : " + elements.size());
-        test.log(Status.INFO, "Total profile count : " + elements.size());
-        Assert.assertEquals(elements.size(),Integer.parseInt(Otp.ExtractNumberFromString(profileCount)));
-    }
+   public GlobalFilter searchState() {
+       wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("svg.sk-circular")));
+       PageLoad.pause();
+       waitForElementAndClick(LOCATION_SEARCH_BOX);
+       System.out.println("Search box: Entering value in state search box successfully");
+       test.log(Status.INFO, "Entering value in state search box successfully");
+       sendDelayedKeys(driver.findElement(By.cssSelector(".filter-padding .sk-input")), state);
+       PageLoad.pauseOneSec();
+       takeScreenshot();
+       return this;
+   }
+
+   public GlobalFilter selectState() {
+       wait.until(ExpectedConditions.elementToBeClickable(SELECT_STATE)).click();
+       System.out.println("Select State: Selecting value from state dropdown successfully");
+       test.log(Status.INFO, "Selecting value from state dropdown successfully");
+       PageLoad.pauseOneSec();
+       takeScreenshot();
+       PageLoad.pauseThreeSecs();
+       profileCount = wait.until(
+               ExpectedConditions.visibilityOfElementLocated(PROFILE_COUNT_FILTER)).getText();
+       System.out.println("Profile count after filter selection: " + profileCount);
+       test.log(Status.INFO, "Profile count displayed after filter selection successfully ");
+       PageLoad.pauseOneSec();
+       takeScreenshot();
+       return this;
+   }
+
+   public GlobalFilter clickApply() {
+       wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("svg.sk-circular")));
+       wait.until(ExpectedConditions.elementToBeClickable(APPLY_BUTTON)).click();
+       System.out.println("Apply: Clicking Apply button successfully");
+       test.log(Status.INFO, "Apply button clicked");
+       PageLoad.pauseOneSec();
+       takeScreenshot();
+       return this;
+   }
+
+   public GlobalFilter clickListingManagement() {
+       waitForElementAndClick(LISTING_MANAGEMENT);
+       System.out.println("Click Listing Management: Clicking on Listing Management successfully");
+       test.log(Status.INFO, "Navigated to Listing Management");
+       PageLoad.pauseOneSec();
+       takeScreenshot();
+       return this;
+   }
+
+   public GlobalFilter clickBusinessProfiles() {
+       PageLoad.pauseOneSec();
+       wait.until(ExpectedConditions.elementToBeClickable(businessProfiles)).click();
+       System.out.println("Business profile: Clicking on Business Profiles successfully");
+       test.log(Status.INFO, "Business Profiles page opened");
+       PageLoad.pauseOneSec();
+       takeScreenshot();
+       return this;
+   }
+
+   public void ScrollToTheBottom() {
+       waitForPageLoadToComplete();
+       System.out.println("Scroll Down: Scrolling to the bottom of the page successfully");
+       test.log(Status.INFO, "Scrolled to bottom of the page");
+       PageLoad.pause();
+       dynamicScrolling();
+       getProfileCount();
+       PageLoad.pause();
+       takeScreenshot();
+   }
+
+   public void getProfileCount() {
+       List<WebElement> elements = driver.findElements(PROFILE_COUNT);
+       System.out.println("Profile Count : " + elements.size());
+       test.log(Status.INFO, "Total profiles displayed: " + elements.size());
+       PageLoad.pauseOneSec();
+       takeScreenshot();
+       Assert.assertEquals(
+               elements.size(),
+               Integer.parseInt(Otp.ExtractNumberFromString(profileCount))
+       );
+   }
+
 }

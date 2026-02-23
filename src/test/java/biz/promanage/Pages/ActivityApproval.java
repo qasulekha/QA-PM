@@ -12,7 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 
 
 public class ActivityApproval extends BasePage {
-	 private final By LSTING_MANAGEMENT = By.xpath("//span[text()='Listing Management']//parent::a");
+	private final By LSTING_MANAGEMENT = By.xpath("//span[text()='Listing Management']//parent::a");
     private final By ACTIVITY_APPROVAL = By.xpath("//span[text()='Activity Approval']//parent::a");
     private final By ACTIVITY__TYPE = By.xpath("(//div[@class='sk-flex-row approval-dropdown sk-margin-bottom']/div)[1]");
     private final By ACTIVITY__TYPE_POST = By.xpath("((//div[@class='sk-flex-row approval-dropdown sk-margin-bottom']/div)[1]//child::li)[2]");
@@ -29,6 +29,8 @@ public class ActivityApproval extends BasePage {
         super(driver, test);
     }
 
+   
+   
     public ActivityApproval clickListingManagement() {
         waitForElementAndClick(LSTING_MANAGEMENT);
         test.log(Status.INFO, "Clicked on Listing Management");
@@ -38,6 +40,7 @@ public class ActivityApproval extends BasePage {
     public ActivityApproval clickActivityApproval() {
     	 PageLoad.pause();
         waitForElementAndClick(ACTIVITY_APPROVAL);
+        System.out.println("Clicked on: Activity Approval");
         test.log(Status.INFO, "Clicked on Activity Approval");
         takeScreenshot();
         return this;
@@ -47,6 +50,7 @@ public class ActivityApproval extends BasePage {
         waitForElementAndClick(ACTIVITY__TYPE);
         PageLoad.pause();
         waitForElementAndClick(ACTIVITY__TYPE_POST);
+        System.out.println("Selected Activity Type: Post");
         test.log(Status.INFO, "Selected Activity Type: Post");
         takeScreenshot();
         return this;
@@ -55,18 +59,23 @@ public class ActivityApproval extends BasePage {
     public ActivityApproval clickRespondedBy() {
         waitForElementAndClick(RESPONDED_BY);
         PageLoad.pause();
-        WebElement cmoElement = driver.findElement(C_USER_TEST);
-        Actions actions = new Actions(driver);
+        WebElement cmoElement = driver.findElement(C_USER_TEST); 
+        Actions actions = new Actions(driver); 
         actions.moveToElement(cmoElement).click().build().perform();
+       // WebElement element = driver.findElement(CMO);
+      //  waitForElementAndClick(CMO);
+        
         System.out.println("Selected Responded By: CMO ");
         test.log(Status.INFO, "Selected Responded By: CMO");
         takeScreenshot();
         return this;
     }
+
     public  ActivityApproval clickStatus() {
         waitForElementAndClick(STATUS);
         PageLoad.pause();
         waitForElementAndClick(STATUS_APPROVAL);
+        System.out.println("Selected Status: Status Approval");
         test.log(Status.INFO, "Selected Status: Status Approval");
         takeScreenshot();
         return this;

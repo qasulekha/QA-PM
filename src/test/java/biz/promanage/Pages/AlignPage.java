@@ -77,8 +77,8 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage clickAlign() {
+		System.out.println("Aim to Click Align");
 		waitForElementAndClick(A_L_I_G_N);
-
 		test.log(Status.INFO, "Align Clicked");
 		takeScreenshot();
 		return this;
@@ -87,6 +87,7 @@ public class AlignPage extends BasePage {
 	public AlignPage searchTask(String searchTask) throws InterruptedException {
 
 		PageLoad.pause();
+		System.out.println("Aiming to click Searchbox");
 		WebElement searchBox = wait.until(ExpectedConditions.elementToBeClickable(SEARCH_BOX));
 		sendDelayedKeys(searchBox, searchTask);
 		Thread.sleep(2000);
@@ -100,13 +101,14 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage clickcreaBut() {
-
+		System.out.println("Aiming to Click Create button");
 		waitForElementAndClick(CREATE_TASK);
 		test.log(Status.INFO, "Create Task Clicked");
 		return this;
 	}
 
 	public AlignPage enterTitle(String ti) {
+		System.out.println("Aiming to Enter Title");
 		WebElement title = wait.until(ExpectedConditions.elementToBeClickable(ENTER_TITLE));
 		sendDelayedKeys(title, ti);
 		test.log(Status.INFO, "Title Entered");
@@ -114,8 +116,8 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage enterCus(String cus) {
+		System.out.println("Aiming to Enter Customer");
 		WebElement cusName = wait.until(ExpectedConditions.elementToBeClickable(SELECT_CUS));
-
 		sendDelayedKeys(cusName, cus);
 		waitForElementAndClick(SUL);
 		test.log(Status.INFO, "Customer Selected");
@@ -123,6 +125,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage enterassignee(String as) {
+		System.out.println("Aiming to ENter Assignee");
 		WebElement assign = wait.until(ExpectedConditions.elementToBeClickable(Assigned_To));
 		sendDelayedKeys(assign, as);
 		waitForElementAndClick(CMO);
@@ -131,6 +134,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage selectStatus() {
+		System.out.println("Aiming to select status");
 		waitForElementAndClick(STATUS);
 		// waitForElementAndClick(NEW);
 		test.log(Status.INFO, "Status Selected");
@@ -138,19 +142,21 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage selectTask() {
+		System.out.println("Aiming to select task");
 		waitForElementAndClick(SELTASK);
 		test.log(Status.INFO, "Task Clicked");
 		return this;
 	}
 
 	public AlignPage proTask() {
-
+		System.out.println("Aiming to select ProManage Task");
 		waitForElementAndClick(PROTASK);
 		test.log(Status.INFO, "ProManage Task Selected");
 		return this;
 	}
 
 	public AlignPage priority() {
+		System.out.println("Aiming to Select Priority");
 		waitForElementAndClick(PRIORITY);
 		waitForElementAndClick(MED);
 		test.log(Status.INFO, "Priority Selected");
@@ -158,6 +164,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage visibility() {
+		System.out.println("Aiming to select invalid visibility");
 		waitForElementAndClick(VISIBILITY);
 		waitForElementAndClick(INTERNAL);
 		test.log(Status.INFO, "Internal Visibility Selected");
@@ -166,6 +173,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage visibility1() {
+		System.out.println("Aiming to select valid visibility");
 		waitForElementAndClick(VISIBILITY);
 		waitForElementAndClick(EXTERNAL);
 		PageLoad.pauseThreeSecs();
@@ -175,7 +183,7 @@ public class AlignPage extends BasePage {
 
 
 	public AlignPage description(String desc) {
-
+		System.out.println("Aiming to enter Desripton");
 		// Wait until the description editor is visible
 		WebElement de = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 				"//div[contains(@class,'sk-form-row')][div[contains(text(),'Description')]]//div[contains(@class,'ql-editor')]")));
@@ -213,6 +221,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage includeUser(String user) {
+		System.out.println("Aiming for include user");
 		WebElement in = wait.until(ExpectedConditions.elementToBeClickable(INClUSER));
 		sendDelayedKeys(in, user);
 		waitForElementAndClick(CMO_TEST);
@@ -223,6 +232,7 @@ public class AlignPage extends BasePage {
 
 	public AlignPage comment(String com) {
 
+		System.out.println("Aiming to enter comment");
 		WebElement co = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 				"//div[contains(@class,'sk-form-row')][div[contains(text(),'Add Comment')]]//div[contains(@class,'ql-editor')]")));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", co);
@@ -236,6 +246,7 @@ public class AlignPage extends BasePage {
 
 
 	public AlignPage editComment() {
+		System.out.println("Aiming to edit a comment");
 		waitForElementAndClick(EDIT_COMMENT);
 		PageLoad.pauseOneSec();
 		WebElement ed = wait
@@ -246,6 +257,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage updateComment() {
+		System.out.println("Aiming to click update comment");
 		PageLoad.pauseOneSec();
 //		WebElement clearTxt = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[@class='sk-button sk-small sk-primary'])[1]")));
 //		clearTxt.clear();
@@ -257,7 +269,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage save() throws InterruptedException {
-
+		System.out.println("Aiming to click save");
 		// Thread.sleep(5000);
 		waitForElementAndClick(SAVE);
 		Thread.sleep(5000);
@@ -268,21 +280,21 @@ public class AlignPage extends BasePage {
 
 	}
 
-	public String getSelectedVisibility() {
-
-		PageLoad.pauseOneSec();
-		String visibility = driver.findElement(By.xpath("(//li[text()='External '])[2]")).getText();
-		System.out.println(visibility);
-		test.log(Status.INFO, "Retrieved Selected Visibility");
-		takeScreenshot();
-		return visibility;
-
-	}
+//	public String getSelectedVisibility() {
+//
+//		PageLoad.pauseOneSec();
+//		String visibility = driver.findElement(By.xpath("(//li[text()='External '])[2]")).getText();
+//		System.out.println("Task Visibility : "+visibility);
+//		test.log(Status.INFO, "Retrieved Selected Visibility");
+//		takeScreenshot();
+//		return visibility;
+//
+//	}
 
 	public String getSelectedStatus() {
 		PageLoad.pauseThreeSecs();
 		String status = driver.findElement(By.xpath("//div[text()='In Progress']")).getText();
-		System.out.println(status);
+		System.out.println("Task Status : "+status);
 		test.log(Status.INFO, "Retrieved Selected Status");
 		return status;
 	}
@@ -290,14 +302,14 @@ public class AlignPage extends BasePage {
 
 	public String getSelectedTaskType() {
 		String task = driver.findElement(By.xpath("//td[text()='New Feature']")).getText();
-		System.out.println(task);
+		System.out.println("Task Type : "+task);
 		test.log(Status.INFO, "Retrieved Selected Task Type");
 		return task;
 	}
 
 	public String getSelectedPriority() {
 		String priority = driver.findElement(By.xpath("(//td[text()='High'])[1]")).getText();
-		System.out.println(priority);
+		System.out.println("Task Priority : "+priority);
 		test.log(Status.INFO, "Retrieved Selected Priority");
 		return priority;
 	}
@@ -305,31 +317,33 @@ public class AlignPage extends BasePage {
 	public String getTaskName() {
 		PageLoad.pauseThreeSecs();
 		String taskName = driver.findElement(By.xpath("//div[text()='#SUL-682']")).getText();
-		System.out.println(taskName);
+		System.out.println("Task Name : "+taskName);
 		test.log(Status.INFO, "Retrieved Task Name");
 		return taskName;
 	}
 
-	public String getIncluseUser() throws InterruptedException {
-		PageLoad.pauseOneSec();
-		Thread.sleep(4000);
-		String inUser = driver.findElement(By.xpath(
-				"//div[@class='sk-panel sk-show sk-panel-fullscreen']//div[@class='sk-chip sk-chip-removable sk-bg-success sk-small']"))
-				.getText();
-		System.out.println(inUser);
-
-		test.log(Status.INFO, "Retrieved Incluse User");
-		return inUser;
-
-	}
+//	public String getIncluseUser() throws InterruptedException {
+//		PageLoad.pauseOneSec();
+//		Thread.sleep(4000);
+//		String inUser = driver.findElement(By.xpath(
+//				"//div[@class='sk-panel sk-show sk-panel-fullscreen']//div[@class='sk-chip sk-chip-removable sk-bg-success sk-small']"))
+//				.getText();
+//		System.out.println("Include UseName : "+inUser);
+//
+//		test.log(Status.INFO, "Retrieved Incluse User");
+//		return inUser;
+//
+//	}
 
 	public AlignPage clickFilter() {
+		System.out.println("Aiming to click Filter");
 		waitForElementAndClick(FILTER);
 		test.log(Status.INFO, "Filter Clicked");
 		return this;
 	}
 
 	public AlignPage filterVisibility() {
+		System.out.println("Aiming to select filter visibility");
 		PageLoad.pauseThreeSecs();
 		waitForElementAndClick(FILTER_VISIBILITY);
 		test.log(Status.INFO, "Visibility Selected");
@@ -338,24 +352,28 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage taskStatus() {
+		System.out.println("Aiming to select filter task");
 		waitForElementAndClick(FILTER_TASK_STATUS);
 		test.log(Status.INFO, "Task Status Selected");
 		return this;
 	}
 
 	public AlignPage taskPriority() {
+		System.out.println("Aiming to select filter task priority");
 		waitForElementAndClick(FILTER_PRIORITY);
 		test.log(Status.INFO, "Priority Selected");
 		return this;
 	}
 
 	public AlignPage taskType() {
+		System.out.println("Aiming to select filter task type");
 		waitForElementAndClick(FILTER_TASK_TYPE);
 		test.log(Status.INFO, "Task Type Selected");
 		return this;
 	}
 
 	public AlignPage clickApply() {
+		System.out.println("Aiming to click filter apply");
 		PageLoad.pauseOneSec();
 		waitForElementAndClick(FILTER_APPLY);
 		test.log(Status.INFO, "Apply Button Clicked");
@@ -365,12 +383,14 @@ public class AlignPage extends BasePage {
 
 	public AlignPage clickSelectCustomer() {
 		PageLoad.pauseOneSec();
+		System.out.println("Aiming to click select customer field");
 		waitForElementAndClick(SELECT_CUSTOMER);
 		test.log(Status.INFO, "Select Customer Clicked");
 		return this;
 	}
 
 	public AlignPage passCustmoerName(String cusName) {
+		System.out.println("Aiming to enter customer name");
 		WebElement passCus = wait.until(ExpectedConditions.elementToBeClickable(SEARCH_CUSTOMER));
 		sendDelayedKeys(passCus, cusName);
 		PageLoad.pauseOneSec();
@@ -380,6 +400,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage clickSubmit() {
+		System.out.println("Aiming to click submit customer");
 		waitForElementAndClick(SUBMIT);
 		test.log(Status.INFO, "Submit Clicked");
 		takeScreenshot();
@@ -387,6 +408,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage showPastDue() {
+		System.out.println("Aiming to click show past due toggle");
 		waitForElementAndClick(PAST_DUE);
 		PageLoad.pauseThreeSecs();
 		test.log(Status.INFO, "Past Due Clicked");
@@ -395,6 +417,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage showPastDue1() {
+		System.out.println("Aiming to click past due toggle to reset");
 		waitForElementAndClick(PAST_DUE);
 		PageLoad.pauseThreeSecs();
 		test.log(Status.INFO, "Past Due Unclicked");
@@ -410,6 +433,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage reset() {
+		System.out.println("Aiming to click reset filter");
 		PageLoad.pauseThreeSecs();
 		waitForElementAndClick(RESET);
 		test.log(Status.INFO, "Filter Resetted");
@@ -418,6 +442,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage editStatus() {
+		System.out.println("Aiming to edit status field");
 		PageLoad.pauseOneSec();
 		waitForElementAndClick(EDIT_STATUS);
 		PageLoad.pauseOneSec();
@@ -426,6 +451,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage editTaskType() {
+		System.out.println("Aiming to edit task type");
 		PageLoad.pauseOneSec();
 		waitForElementAndClick(EDIT_TASK_TYPE);
 		PageLoad.pauseOneSec();
@@ -434,6 +460,7 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage editPriority() {
+		System.out.println("Aiming to edit priority");
 		PageLoad.pauseOneSec();
 		waitForElementAndClick(EDIT_PRIORITY);
 		PageLoad.pauseOneSec();
@@ -444,7 +471,7 @@ public class AlignPage extends BasePage {
 	public AlignPage verifyPastDueTasks() {
 		// Wait for table to load
 		PageLoad.pauseThreeSecs();
-
+		System.out.println("Aiming to verify past due tasks");
 		List<WebElement> rows = driver.findElements(By.xpath("//table//tbody//tr"));
 
 		if (rows.isEmpty()) {

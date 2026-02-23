@@ -194,7 +194,7 @@ public class SidebarNavigation extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(ratingGoles)).click();
         String ratingGolesPageTitle = driver.findElement(ratingGolesTitle).getText();
         Assert.assertEquals(ratingGolesPageTitle, "Rating Goals", "Rating Goals page title mismatch!");
-        System.out.println("Reports Page Title :" + ratingGolesPageTitle);
+        System.out.println("Rating Goals Page Title :" + ratingGolesPageTitle);
         PageLoad.pauseThreeSecs();
         takeScreenshot();
         return this;

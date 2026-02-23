@@ -37,8 +37,115 @@ public class SmbLeadPage extends BasePage {
         super(driver, test);
     }
 
+/*
+ * public SmbLeadPage load() { test.log(Status.INFO, "Loading SMB Lead Page");
+ * load("/smbindex");
+ * wait.until(ExpectedConditions.elementToBeClickable(this.customerName));
+ * takeScreenshot(); return this; }
+ * 
+ * public SmbLeadPage enterCustomerName(String customerName) {
+ * test.log(Status.INFO, "Entering customer name: " + customerName);
+ * wait.until(ExpectedConditions.elementToBeClickable(this.customerName)).
+ * sendKeys(customerName); return this; }
+ * 
+ * public SmbLeadPage enterMobileNumber(String mobileNumber) {
+ * test.log(Status.INFO, "Entering mobile number: " + mobileNumber);
+ * wait.until(ExpectedConditions.elementToBeClickable(mobileNo)).sendKeys(
+ * mobileNumber); return this; }
+ * 
+ * public SmbLeadPage enterEmail(String emailAddress) { test.log(Status.INFO,
+ * "Entering email address: " + emailAddress);
+ * wait.until(ExpectedConditions.elementToBeClickable(email)).sendKeys(
+ * emailAddress); return this; }
+ * 
+ * public SmbLeadPage enterCompanyName(String name) { test.log(Status.INFO,
+ * "Entering company name: " + name);
+ * wait.until(ExpectedConditions.elementToBeClickable(companyName)).sendKeys(
+ * name); return this; }
+ * 
+ * public SmbLeadPage clickContinueButtonOne() { takeScreenshot();
+ * test.log(Status.INFO, "Clicking Continue Button Step One");
+ * wait.until(ExpectedConditions.elementToBeClickable(continueBtnStepOne)).click
+ * (); return this; }
+ * 
+ * public SmbLeadPage selectCategory(String categoryName) {
+ * test.log(Status.INFO, "Selecting category: " + categoryName);
+ * wait.until(ExpectedConditions.elementToBeClickable(category)).sendKeys(
+ * categoryName);
+ * wait.until(ExpectedConditions.elementToBeClickable(selectCategory)).click();
+ * return this; }
+ * 
+ * public SmbLeadPage enterCity(String cityName) { test.log(Status.INFO,
+ * "Entering city name: " + cityName);
+ * wait.until(ExpectedConditions.elementToBeClickable(city)).sendKeys(cityName);
+ * wait.until(ExpectedConditions.elementToBeClickable(selectCity)).click();
+ * return this; }
+ * 
+ * public SmbLeadPage enterWebsiteUrl(String WebsiteUrl) { test.log(Status.INFO,
+ * "Entering website URL: " + WebsiteUrl);
+ * wait.until(ExpectedConditions.elementToBeClickable(companyWebsiteUrl)).
+ * sendKeys(WebsiteUrl); return this; }
+ * 
+ * public SmbLeadPage selectBusinessProof(String Proof) { test.log(Status.INFO,
+ * "Selecting business proof: " + Proof);
+ * wait.until(ExpectedConditions.elementToBeClickable(businessProof)).click();
+ * wait.until(ExpectedConditions.elementToBeClickable(selectProof)).click();
+ * return this; }
+ * 
+ * public SmbLeadPage clickContinueButtonTwo() { takeScreenshot();
+ * test.log(Status.INFO, "Clicking Continue Button Step Two");
+ * wait.until(ExpectedConditions.elementToBeClickable(continueBtnStepTwo)).click
+ * (); return this; }
+ * 
+ * public SmbLeadPage hasGoogleProfile(boolean googleProfileExists) { if
+ * (!googleProfileExists) { test.log(Status.INFO,
+ * "Google profile does not exist");
+ * wait.until(ExpectedConditions.elementToBeClickable(gbpNo)).click(); } return
+ * this; }
+ * 
+ * public SmbLeadPage enterEmployeeCount(String employeeCount) {
+ * test.log(Status.INFO, "Entering employee count: " + employeeCount);
+ * wait.until(ExpectedConditions.elementToBeClickable(this.employeeCount)).
+ * sendKeys(employeeCount); return this; }
+ * 
+ * public SmbLeadPage selectAnnualRevenue(String revenue) {
+ * test.log(Status.INFO, "Selecting annual revenue: " + revenue);
+ * wait.until(ExpectedConditions.elementToBeClickable(annualRevenue)).click();
+ * wait.until(ExpectedConditions.elementToBeClickable(selectAnnualRevenue)).
+ * click(); return this; }
+ * 
+ * public SmbLeadPage selectProfileCount(String googleBusinessProfileCount) {
+ * test.log(Status.INFO, "Selecting profile count: " +
+ * googleBusinessProfileCount);
+ * wait.until(ExpectedConditions.elementToBeClickable(locationCount)).click();
+ * wait.until(ExpectedConditions.elementToBeClickable(selectLocationCount)).
+ * click(); return this; }
+ * 
+ * public SmbLeadPage selectActiveProfiles(String currentlyActiveProfiles) {
+ * test.log(Status.INFO, "Selecting active profiles: " +
+ * currentlyActiveProfiles);
+ * wait.until(ExpectedConditions.elementToBeClickable(activeProfiles)).click();
+ * wait.until(ExpectedConditions.elementToBeClickable(selectActiveProfiles)).
+ * click(); return this; }
+ * 
+ * public SmbLeadPage clickContinueButtonThree() { takeScreenshot();
+ * test.log(Status.INFO, "Clicking Continue Button Step Three");
+ * wait.until(ExpectedConditions.elementToBeClickable(continueBtnStepThree)).
+ * click(); return this; }
+ * 
+ * public void enterOtp(String otpValue) { test.log(Status.INFO,
+ * "Entering OTP: " + otpValue);
+ * wait.until(ExpectedConditions.elementToBeClickable(otp)).sendKeys(otpValue);
+ * }
+ * 
+ * public String getSuccessMessage() { test.log(Status.INFO, "success message");
+ * String successMessage =
+ * wait.until(ExpectedConditions.visibilityOfElementLocated(successMsg)).getText
+ * (); takeScreenshot(); return successMessage; } }
+ */
+    
     public SmbLeadPage load() {
-        test.log(Status.INFO, "Loading SMB Lead Page");
+        System.out.println("Loading SMB Lead Page");
         load("/smbindex");
         wait.until(ExpectedConditions.elementToBeClickable(this.customerName));
         takeScreenshot();
@@ -46,121 +153,144 @@ public class SmbLeadPage extends BasePage {
     }
 
     public SmbLeadPage enterCustomerName(String customerName) {
-        test.log(Status.INFO, "Entering customer name: " + customerName);
+        System.out.println("Entering customer name: " + customerName);
         wait.until(ExpectedConditions.elementToBeClickable(this.customerName)).sendKeys(customerName);
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage enterMobileNumber(String mobileNumber) {
-        test.log(Status.INFO, "Entering mobile number: " + mobileNumber);
+        System.out.println("Entering mobile number: " + mobileNumber);
         wait.until(ExpectedConditions.elementToBeClickable(mobileNo)).sendKeys(mobileNumber);
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage enterEmail(String emailAddress) {
-        test.log(Status.INFO, "Entering email address: " + emailAddress);
+        System.out.println("Entering email address: " + emailAddress);
         wait.until(ExpectedConditions.elementToBeClickable(email)).sendKeys(emailAddress);
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage enterCompanyName(String name) {
-        test.log(Status.INFO, "Entering company name: " + name);
+        System.out.println("Entering company name: " + name);
         wait.until(ExpectedConditions.elementToBeClickable(companyName)).sendKeys(name);
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage clickContinueButtonOne() {
+        System.out.println("Clicking Continue Button - Step 1");
         takeScreenshot();
-        test.log(Status.INFO, "Clicking Continue Button Step One");
         wait.until(ExpectedConditions.elementToBeClickable(continueBtnStepOne)).click();
+        takeScreenshot();
         return this;
     }
 
+    
+
     public SmbLeadPage selectCategory(String categoryName) {
-        test.log(Status.INFO, "Selecting category: " + categoryName);
+        System.out.println("Selecting category: " + categoryName);
         wait.until(ExpectedConditions.elementToBeClickable(category)).sendKeys(categoryName);
         wait.until(ExpectedConditions.elementToBeClickable(selectCategory)).click();
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage enterCity(String cityName) {
-        test.log(Status.INFO, "Entering city name: " + cityName);
+        System.out.println("Entering city: " + cityName);
         wait.until(ExpectedConditions.elementToBeClickable(city)).sendKeys(cityName);
         wait.until(ExpectedConditions.elementToBeClickable(selectCity)).click();
+        takeScreenshot();
         return this;
     }
 
-    public SmbLeadPage enterWebsiteUrl(String WebsiteUrl) {
-        test.log(Status.INFO, "Entering website URL: " + WebsiteUrl);
-        wait.until(ExpectedConditions.elementToBeClickable(companyWebsiteUrl)).sendKeys(WebsiteUrl);
+    public SmbLeadPage enterWebsiteUrl(String websiteUrl) {
+        System.out.println("Entering website URL: " + websiteUrl);
+        wait.until(ExpectedConditions.elementToBeClickable(companyWebsiteUrl)).sendKeys(websiteUrl);
+        takeScreenshot();
         return this;
     }
 
-    public SmbLeadPage selectBusinessProof(String Proof) {
-        test.log(Status.INFO, "Selecting business proof: " + Proof);
+    public SmbLeadPage selectBusinessProof(String proof) {
+        System.out.println("Selecting business proof: " + proof);
         wait.until(ExpectedConditions.elementToBeClickable(businessProof)).click();
         wait.until(ExpectedConditions.elementToBeClickable(selectProof)).click();
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage clickContinueButtonTwo() {
+        System.out.println("Clicking Continue Button - Step 2");
         takeScreenshot();
-        test.log(Status.INFO, "Clicking Continue Button Step Two");
         wait.until(ExpectedConditions.elementToBeClickable(continueBtnStepTwo)).click();
+        takeScreenshot();
         return this;
     }
 
+    
+
     public SmbLeadPage hasGoogleProfile(boolean googleProfileExists) {
+        System.out.println("Google profile exists: " + googleProfileExists);
         if (!googleProfileExists) {
-            test.log(Status.INFO, "Google profile does not exist");
             wait.until(ExpectedConditions.elementToBeClickable(gbpNo)).click();
+            takeScreenshot();
         }
         return this;
     }
 
     public SmbLeadPage enterEmployeeCount(String employeeCount) {
-        test.log(Status.INFO, "Entering employee count: " + employeeCount);
+        System.out.println("Entering employee count: " + employeeCount);
         wait.until(ExpectedConditions.elementToBeClickable(this.employeeCount)).sendKeys(employeeCount);
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage selectAnnualRevenue(String revenue) {
-        test.log(Status.INFO, "Selecting annual revenue: " + revenue);
+        System.out.println("Selecting annual revenue: " + revenue);
         wait.until(ExpectedConditions.elementToBeClickable(annualRevenue)).click();
         wait.until(ExpectedConditions.elementToBeClickable(selectAnnualRevenue)).click();
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage selectProfileCount(String googleBusinessProfileCount) {
-        test.log(Status.INFO, "Selecting profile count: " + googleBusinessProfileCount);
+        System.out.println("Selecting profile count: " + googleBusinessProfileCount);
         wait.until(ExpectedConditions.elementToBeClickable(locationCount)).click();
         wait.until(ExpectedConditions.elementToBeClickable(selectLocationCount)).click();
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage selectActiveProfiles(String currentlyActiveProfiles) {
-        test.log(Status.INFO, "Selecting active profiles: " + currentlyActiveProfiles);
+        System.out.println("Selecting active profiles: " + currentlyActiveProfiles);
         wait.until(ExpectedConditions.elementToBeClickable(activeProfiles)).click();
         wait.until(ExpectedConditions.elementToBeClickable(selectActiveProfiles)).click();
+        takeScreenshot();
         return this;
     }
 
     public SmbLeadPage clickContinueButtonThree() {
+        System.out.println("Clicking Continue Button - Step 3");
         takeScreenshot();
-        test.log(Status.INFO, "Clicking Continue Button Step Three");
         wait.until(ExpectedConditions.elementToBeClickable(continueBtnStepThree)).click();
+        takeScreenshot();
         return this;
     }
 
     public void enterOtp(String otpValue) {
-        test.log(Status.INFO, "Entering OTP: " + otpValue);
+        System.out.println("Entering OTP: " + otpValue);
         wait.until(ExpectedConditions.elementToBeClickable(otp)).sendKeys(otpValue);
+        takeScreenshot();
     }
 
     public String getSuccessMessage() {
-        test.log(Status.INFO, "success message");
-        String successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(successMsg)).getText();
+        System.out.println("Fetching success message");
+        String successMessage =
+                wait.until(ExpectedConditions.visibilityOfElementLocated(successMsg)).getText();
         takeScreenshot();
         return successMessage;
     }
+
 }
