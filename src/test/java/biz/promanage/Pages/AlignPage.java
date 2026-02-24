@@ -77,7 +77,8 @@ public class AlignPage extends BasePage {
 	}
 
 	public AlignPage clickAlign() {
-		System.out.println("Aim to Click Align");
+		System.out.println("\nTo Create Align Task :");
+		System.out.println("\nAim to Click Align");
 		waitForElementAndClick(A_L_I_G_N);
 		test.log(Status.INFO, "Align Clicked");
 		takeScreenshot();

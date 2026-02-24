@@ -141,7 +141,8 @@ public class UserManagementPage extends BasePage {
  */
     
     public UserManagementPage clickUser() {
-        System.out.println("Navigating to User Management page");
+    	System.out.println("\nTo Create User Management : ");
+		System.out.println("\nUser Management page");
         takeScreenshot();
 
         PageLoad.pauseThreeSecs();

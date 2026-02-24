@@ -289,7 +289,8 @@ public class ContactPage extends BasePage {
 	
 	 public ContactPage clickContact() {
 	        PageLoad.pause();
-	        System.out.println("Contact Page: Clicking Contact menu");
+	        System.out.println("\nTo Create Contact : ");
+			System.out.println("\nClicking Contact menu");
 	        takeScreenshot();
 	        waitForElementAndClick(CONTACT);
 	        waitForPageLoadToComplete();

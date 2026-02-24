@@ -113,7 +113,8 @@ public class CustomGroup extends BasePage {
     
     
     public CustomGroup load() {
-		System.out.println("Loading Listing Management Page");
+    	System.out.println("\nTo Create CustomGroup : ");
+		System.out.println("\nLoading Listing Management Page");
 		test.log(Status.INFO, "Loading Listing Management Page");
 		load("/app/ListingManagement");
 		waitForPageLoaderToDisappear();

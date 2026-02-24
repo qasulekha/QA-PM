@@ -42,6 +42,8 @@ public class PostPage extends BasePage {
     }
     
     public PostPage clickInsights() {
+    	System.out.println("\nTo Create Post : ");
+		System.out.println("\nAttempting to click on Insights");
     	PageLoad.pauseThreeSecs();
         waitForElementAndClick(INSIGHTS);
         test.log(Status.INFO, "Clicked on Insights");

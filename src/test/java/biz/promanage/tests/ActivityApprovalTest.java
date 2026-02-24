@@ -25,6 +25,7 @@ public class ActivityApprovalTest extends BaseTest {
         	 String POST ="Posts";
         	 ActivityApproval activityApprovalTest = new ActivityApproval(getDriver(), test);
         	 activityApprovalTest
+        	        .clickInsights()
         	        .clickListingManagement()
             		.clickActivityApproval()
             		.clickActivityType()

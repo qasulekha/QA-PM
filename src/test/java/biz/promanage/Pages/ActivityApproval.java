@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 
 
 public class ActivityApproval extends BasePage {
+	 private final By INSIGHTS = By.xpath("//span[text()='Insights']//parent::a");
 	private final By LSTING_MANAGEMENT = By.xpath("//span[text()='Listing Management']//parent::a");
     private final By ACTIVITY_APPROVAL = By.xpath("//span[text()='Activity Approval']//parent::a");
     private final By ACTIVITY__TYPE = By.xpath("(//div[@class='sk-flex-row approval-dropdown sk-margin-bottom']/div)[1]");
@@ -29,7 +30,12 @@ public class ActivityApproval extends BasePage {
         super(driver, test);
     }
 
-   
+    public ActivityApproval clickInsights() {
+    	System.out.println("\nTo Create Activity Approval : ");
+		System.out.println("\nClicked on Insights");
+        waitForElementAndClick(INSIGHTS);
+        return this;
+    }
    
     public ActivityApproval clickListingManagement() {
         waitForElementAndClick(LSTING_MANAGEMENT);

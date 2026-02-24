@@ -101,7 +101,8 @@ public class LeaderBoardPage extends BasePage {
  */
     
     public LeaderBoardPage load() {
-        System.out.println("Leaderboard Page loaded");
+    	System.out.println("\nTo Create Leaderboard : ");
+		System.out.println("\nLeaderboard Page loaded");
         logInfo("Loading Leaderboard Page");
         load("/app/Leaderboard");
         waitForPageLoaderToDisappear();
@@ -141,6 +142,7 @@ public class LeaderBoardPage extends BasePage {
         waitForPageLoaderToDisappear();
 
         System.out.println("Entering city name in City filter search field");
+        PageLoad.pause();
         sendDelayedKeys(
                 wait.until(ExpectedConditions.elementToBeClickable(SEARCH_BY_CITY)),
                 CITY_NAME
@@ -151,7 +153,7 @@ public class LeaderBoardPage extends BasePage {
         String filteredResult = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(CITY_NAME_RESULT)
         ).getText();
-
+        PageLoad.pause();
         System.out.println("Validating filtered city result");
         Assert.assertEquals(filteredResult, CITY_NAME, "City Name did not match");
 
@@ -191,17 +193,18 @@ public class LeaderBoardPage extends BasePage {
         waitForPageLoaderToDisappear();
 
         System.out.println("Entering group name in Group filter search field");
+        PageLoad.pause();
         sendDelayedKeys(
                 wait.until(ExpectedConditions.elementToBeClickable(SEARCH_BY_GROUP)),
                 FOCUSED_GROUP_NAME
         );
 
-        PageLoad.pauseTenSeconds();
+        PageLoad.pauseFifteenSeconds();
 
         String selectedGroupName = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(GROUP_NAME)
         ).getText();
-
+        
         System.out.println("Validating selected group name");
         Assert.assertEquals(
                 selectedGroupName,

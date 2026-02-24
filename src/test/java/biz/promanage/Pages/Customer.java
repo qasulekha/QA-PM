@@ -56,18 +56,18 @@ public class Customer extends BasePage {
                   //  WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".sk-show > .sk-input")));
                     WebElement element = wait.until(ExpectedConditions.elementToBeClickable(CUSTOMER_INPUT_FOCUS));
                     sendDelayedKeys(element, customerName);
-                    PageLoad.pause();
-
-                   // WebElement customerElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sk-overflow-menu']//ul[@class='sk-overflow-list sk-show']/li[. ='" + customerName + "']")));
-                    WebElement customerElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//ul[@id='skOverflowMenu']/li)[1]")));
+                    PageLoad.pauseFifteenSeconds();
+                    System.out.println(customerName);
+                    //WebElement customerElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sk-overflow-menu']//ul[@class='sk-overflow-list sk-show']/li[. ='" + customerName + "']")));
+                    WebElement customerElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sk-overflow-menu']//li[1]")));
                    customerElement.click();
-
+                   PageLoad.pauseTenSeconds();
                     String selectedCustomerName = wait.until(ExpectedConditions.elementToBeClickable(SELECTED_CUSTOMER_NAME)).getText();
 
                     PageLoad.pause();
-                    
+                 
                     isCustomerChanged = selectedCustomerName.equalsIgnoreCase(customerName);
-
+                    System.out.println("Customer Name" + customerName );
                 } catch (Exception e) {
                     System.out.println("Attempt " + (count + 1) + " failed. Retrying...");
                 }

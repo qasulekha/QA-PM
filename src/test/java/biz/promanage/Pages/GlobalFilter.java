@@ -86,12 +86,14 @@ public class GlobalFilter extends BasePage {
     public GlobalFilter load() {
    	 PageLoad.pauseOneSec();
         takeScreenshot();
-       System.out.println("Home Page: Home Page Loade successfully");
+       
        test.log(Status.INFO, "Home Page Loade successfully");
        return this;
    }
 
    public GlobalFilter clickOnFilter() {
+	   System.out.println("\nTo Create Global Filter : ");
+		System.out.println("\nHome Page Loade successfully");
        waitForPageLoadToComplete();
        PageLoad.pause();
        waitForElementAndClick(FILTER_DDL);
