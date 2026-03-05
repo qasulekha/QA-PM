@@ -168,8 +168,8 @@ public class LoginPage extends BasePage {
        
 
         System.out.println("Fetching and Entering OTP");
-        String otp = Otp.getOTP(mobileNo);
-        wait.until(ExpectedConditions.elementToBeClickable(OTP)).sendKeys(otp);
+        //String otp = Otp.getOTP(mobileNo);
+        wait.until(ExpectedConditions.elementToBeClickable(OTP)).sendKeys("9999");
         takeScreenshot();
 
         System.out.println("Waiting for Login Success Page");

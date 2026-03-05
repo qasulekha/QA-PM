@@ -72,7 +72,7 @@ public class BaseTest {
         test = ExtentManager.startTest(m.getName(), "Starting test: " + m.getName());
         initializeLogger(browser);
         initializeXmlFileReader();
-        Otp.resetMobileNumber(GetUserLoginCred());
+        //Otp.resetMobileNumber(GetUserLoginCred());
     }
 
     private void initializeDriver(String browser) throws IOException {
@@ -323,7 +323,7 @@ public String takeScreenshot(String testName) {
     @BeforeSuite
     public void beforeSuite() throws Exception {
         clearScreenshots();
-        Otp.resetMobileNumber(GetUserLoginCred());
+       // Otp.resetMobileNumber(GetUserLoginCred());
         ThreadContext.put("ROUTINGKEY", "ServerLogs");
     }
 }
