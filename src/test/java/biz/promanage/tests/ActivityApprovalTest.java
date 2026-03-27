@@ -19,9 +19,9 @@ public class ActivityApprovalTest extends BaseTest {
     @Test
     public void activityApproval() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        if (new Customer(getDriver(), test).changeCustomer("Sulekha.com")) {
+        if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
         	 String APPROVED  ="Approved";
-        	 String CMO ="New CMO";
+        	 String CMO ="CMO User";
         	 String POST ="Posts";
         	 ActivityApproval activityApprovalTest = new ActivityApproval(getDriver(), test);
         	 activityApprovalTest

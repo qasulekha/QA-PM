@@ -371,7 +371,7 @@ public class SidebarNavigation extends BasePage {
         String callsPageTitle = driver.findElement(callLogsTitle).getText();
         Assert.assertEquals(callsPageTitle, "Calls", "Calls page title mismatch!");
         System.out.println("Calls Page Title :" + callsPageTitle);
-        PageLoad.pauseThreeSecs();
+        PageLoad.pauseTenSeconds();
         takeScreenshot();
         wait.until(ExpectedConditions.elementToBeClickable(back)).click();
         return this;
@@ -411,7 +411,7 @@ public class SidebarNavigation extends BasePage {
         String chatsPageTitle = driver.findElement(chatTitle).getText();
         Assert.assertEquals(chatsPageTitle, "Chat", "Chats page title mismatch!");
         System.out.println("Chats Page Title :" + chatsPageTitle);
-        PageLoad.pauseThreeSecs();
+        PageLoad.pauseTenSeconds();
         takeScreenshot();
         wait.until(ExpectedConditions.elementToBeClickable(back)).click();
         return this;

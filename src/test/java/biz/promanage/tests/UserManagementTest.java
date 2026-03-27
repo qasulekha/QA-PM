@@ -19,7 +19,7 @@ public class UserManagementTest extends BaseTest {
 	public void userManagementCreation() throws IOException, InterruptedException {
 	    new LoginPage(getDriver(), test).login(GetUserLoginCred());
 
-	    if (new Customer(getDriver(), test).changeCustomer("Sulekha.Com")) {
+	    if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
 
 	        UserManagementPage userManagementPage = new UserManagementPage(getDriver(), test);
 

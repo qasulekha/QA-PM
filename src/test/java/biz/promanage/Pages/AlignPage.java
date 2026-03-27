@@ -25,7 +25,7 @@ public class AlignPage extends BasePage {
 	By CREATE_TASK = By.xpath("//button[@class='sk-button sk-primary sk-fab sk-leading-icon fab-bottom task-fab-btn']");
 	By ENTER_TITLE = By.xpath("//input[@placeholder='Enter title']");
 	By SELECT_CUS = By.xpath("//input[@placeholder='Select Customer']");
-	By SUL = By.xpath("((//ul[@id='skOverflowMenu'])[5]//li)[2]");
+	By SUL = By.xpath("((//ul[@id='skOverflowMenu'])[5]//li)");
 	By Assigned_To = By.xpath("(//input[@placeholder='Assign To'])[2]");
 	By CMO = By.xpath("((//ul[@id='skOverflowMenu'])[6]//li)[1]");
 	By STATUS = By.xpath("(//div[@class='sk-selected-text'])[15]/parent::div");

@@ -17,7 +17,7 @@ public class CustomGroupTest extends BaseTest
 
         CustomGroup CustomGroup = null;
         Customer customerPage = new Customer(getDriver(), test);
-        boolean isCustomerChanged = customerPage.changeCustomer("Sulekha.com");
+        boolean isCustomerChanged = customerPage.changeCustomer("ProManage");
 
         if (isCustomerChanged) {
             CustomGroup = new CustomGroup(getDriver(), test);

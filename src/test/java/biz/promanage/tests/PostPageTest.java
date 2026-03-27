@@ -18,7 +18,7 @@ public class PostPageTest extends BaseTest {
     @Test
     public void createPost() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        if (new Customer(getDriver(), test).changeCustomer("Sulekha.com")) {
+        if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
         	 
             PostPage postPageTest = new PostPage(getDriver(), test);
             postPageTest

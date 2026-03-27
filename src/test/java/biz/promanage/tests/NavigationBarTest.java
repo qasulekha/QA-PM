@@ -17,7 +17,7 @@ public class NavigationBarTest extends BaseTest {
     @Test
     public void testSidebarNavigation() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        if (new Customer(getDriver(), test).changeCustomer("Sulekha.com")) {
+        if (new Customer(getDriver(), test).changeCustomer("Sterling Resorts")) {
         SidebarNavigation sidebarPage = new SidebarNavigation(getDriver(), test);
         
         sidebarPage

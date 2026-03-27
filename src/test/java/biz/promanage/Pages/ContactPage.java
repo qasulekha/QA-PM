@@ -23,8 +23,7 @@ public class ContactPage extends BasePage {
 //	((//div[@class='sk-vertical-menu sk-menu-shrink']/ul/li)[7]//li)[2]
 	By CONTACT_GROUP = By.xpath("//span[text()='Contact Group']/parent::a[1]");
 	By CREATE_GROUP = By.cssSelector(".sk-text-end > .sk-mobile-hide > .sk-ripple-container");
-	By GROUP_NAME = By
-			.xpath("//div[@class='sk-form-label' and text()='Group Name']/following-sibling::div[1]/input[1]");
+	By GROUP_NAME = By.xpath("//div[@class='sk-form-label' and text()='Group Name']/following-sibling::div[1]/input[1]");
 	By STATIC_GROUP = By.cssSelector("li:nth-child(2) > .sk-radio > .sk-check-label");
 	By NEXT_BTN = By.cssSelector(".sk-text-end:nth-child(4) .sk-ripple-container");
 	By SELECT_FILTER = By.cssSelector(".sk-text-select:nth-child(1) .sk-icons");
@@ -47,7 +46,7 @@ public class ContactPage extends BasePage {
 			.cssSelector(".sk-form-row:nth-child(1) > .sk-text-select:nth-child(2) .sk-selected-text");
 	By CONTACT_SOURCE_FILTER_OPTION = By.cssSelector(".sk-show > ul > li:nth-child(1)");
 	By CONTACT_SOURCE_FILTER_2_SELECT = By.cssSelector(".sk-large:nth-child(3) .sk-selected-text");
-	By CONTACT_SOURCE_FILTER_2_OPTION_GOOGLE = By.cssSelector(".sk-show > ul > li:nth-child(1)");
+	By CONTACT_SOURCE_FILTER_2_OPTION_GOOGLE = By.cssSelector(".sk-show > ul > li:nth-child(2)");
 	By DONE_BTN_3 = By.cssSelector(".sk-text-end:nth-child(4) .sk-ripple-container");
 	By SUBMIT_BTN = By.cssSelector(".sk-flex-row > .sk-text-end > .sk-primary > .sk-ripple-container");
 	By CONTACT_GROUP_MENU = By.xpath("//span[text()='Contact Group']/parent::a[1]");

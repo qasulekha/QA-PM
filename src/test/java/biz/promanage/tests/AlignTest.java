@@ -18,9 +18,9 @@ public class AlignTest extends BaseTest {
 	@Test
 	public void alignTaskCreation() throws IOException, InterruptedException {
 		new LoginPage(getDriver(), test).login(GetUserLoginCred());
-		if (new Customer(getDriver(), test).changeCustomer("Sulekha.com")) {
+		if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
 			AlignPage alignPage = new AlignPage(getDriver(), test);
-			alignPage.clickAlign().clickcreaBut().enterTitle("Test Task Creation").enterCus("Sul").enterassignee("CMO")
+			alignPage.clickAlign().clickcreaBut().enterTitle("Test Task Creation").enterCus("ProManage").enterassignee("CMO")
 					.selectStatus().selectTask().proTask().priority().visibility()
 					.description("When we try to upload an image, it is not uploaded correctly.")
 					.includeUser("New CMO").comment("Please Work on this.").save().visibility1().save().showPastDue()

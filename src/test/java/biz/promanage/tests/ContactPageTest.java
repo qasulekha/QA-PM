@@ -14,7 +14,7 @@ public class ContactPageTest extends BaseTest {
     @Test
     public void ContactGroupCreation() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        if (new Customer(getDriver(), test).changeCustomer("Sulekha.com")) {
+        if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
             String groupName = "AutomationTestingGroup";
             ContactPage contactPageTest = new ContactPage(getDriver(), test);
             contactPageTest

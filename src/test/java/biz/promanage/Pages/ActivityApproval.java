@@ -17,8 +17,8 @@ public class ActivityApproval extends BasePage {
     private final By ACTIVITY_APPROVAL = By.xpath("//span[text()='Activity Approval']//parent::a");
     private final By ACTIVITY__TYPE = By.xpath("(//div[@class='sk-flex-row approval-dropdown sk-margin-bottom']/div)[1]");
     private final By ACTIVITY__TYPE_POST = By.xpath("((//div[@class='sk-flex-row approval-dropdown sk-margin-bottom']/div)[1]//child::li)[2]");
-    private final By RESPONDED_BY  = By.xpath("(//div[@class='sk-text-select sk-small'])[1]");
-    private final By C_USER_TEST = By.xpath("//div[@class='sk-overflow-list sk-show']//li[text()='New CMO ']");
+    private final By RESPONDED_BY  = By.xpath("(//div[@class='sk-event-group'])[4]");
+    private final By C_USER_TEST = By.xpath("//div[@class='sk-overflow-list sk-show']//li[text()='CMO User ']");
     private final By RESPONDED_BY_CMO = By.xpath("(((//div[@class='sk-data-table'])[1]//tr)[2]//td)[6]//div");
     private final By STATUS = By.xpath("(//div[@class='sk-event-group'])[5]");
     private final By STATUS_APPROVAL = By.xpath("(//div[@class='sk-overflow-list sk-show']//child::li)[3]");
