@@ -371,7 +371,7 @@ public class SidebarNavigation extends BasePage {
         String callsPageTitle = driver.findElement(callLogsTitle).getText();
         Assert.assertEquals(callsPageTitle, "Calls", "Calls page title mismatch!");
         System.out.println("Calls Page Title :" + callsPageTitle);
-        PageLoad.pauseTenSeconds();
+        PageLoad.pauseFifteenSeconds();
         takeScreenshot();
         wait.until(ExpectedConditions.elementToBeClickable(back)).click();
         return this;

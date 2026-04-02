@@ -9,6 +9,14 @@ public class PageLoad {
             e.printStackTrace();
         }
     }
+    public static void pauseThartySeconds() {
+        try {
+            Thread.sleep(30000);
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+    }
 
     public static void pauseThreeSecs() {
         try {
