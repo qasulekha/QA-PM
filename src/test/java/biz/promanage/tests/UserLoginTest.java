@@ -18,7 +18,7 @@ public class UserLoginTest extends BaseTest {
                     .clickLoginLink()
                     .enterMobileNo(GetUserLoginCred())
                     .clickLoginBtn()
-                    .enterOtp(Otp.getOTP(GetUserLoginCred()))
+                    .enterOtp("9999")
                     .isLoginSuccessful();
 
         } catch (Exception ex) {
