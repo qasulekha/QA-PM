@@ -19,7 +19,7 @@ public class EnterpriseLeadPage extends BasePage {
     By DEMO_BTN = By.xpath("(//button[normalize-space(text()) = 'Request Demo'])[1]");
     By SUBMIT_BTN = By.xpath("(//button[normalize-space(text()) = 'Submit Now'])[1]");
     By SUCCESS_MSG = By.xpath("//h2[. = 'Thank you for your interest!']");
-    private final By otp = By.id("otpField");
+    private final By otp = By.id("otpField ");
 
     public EnterpriseLeadPage(WebDriver driver, ExtentTest test) {
         super(driver, test);

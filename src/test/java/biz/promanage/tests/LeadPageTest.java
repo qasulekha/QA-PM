@@ -35,7 +35,7 @@ public class LeadPageTest extends BaseTest {
                 .enterCityName(enterpriseLead.getCityName())
                 .acceptTermsAndConditions(enterpriseLead.acceptTerms())
                 .submit()
-                .enterOtp(Otp.getOTP(enterpriseLead.getMobileNo()));
+                .enterOtp("9999");
 
         Assert.assertTrue(enterpriseLeadPage.getSuccessMessage().contains("Thank you for your interest!"));
 
@@ -65,10 +65,10 @@ public class LeadPageTest extends BaseTest {
                 .selectProfileCount(smbLead.getGoogleBusinessProfileCount())
                 .selectActiveProfiles(smbLead.getGoogleProfileActive())
                 .clickContinueButtonThree()
-                .enterOtp(Otp.getOTP(smbLead.getMobileNo()));
+                .enterOtp("9999");
 
         Assert.assertTrue(smbLeadPage.getSuccessMessage().contains("Thank you for your interest!"));
-        Otp.resetMobileNumber(GetUserLoginCred());
+    //    Otp.resetMobileNumber(GetUserLoginCred());
 
     }
 
