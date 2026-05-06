@@ -34,9 +34,10 @@ public class ChromeDriverManager extends DriverManager {
 
 	    chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-	    WebDriverManager.chromedriver().driverVersion("145.0.7632.160").setup();
+	    WebDriverManager.chromedriver().driverVersion("147.0.7727.102").setup();
 	    driver = new ChromeDriver(chromeOptions);
 	    
+	   
 	   
 	    // Clean up temp profile directory after test run
 	    Runtime.getRuntime().addShutdownHook(new Thread(() -> {
