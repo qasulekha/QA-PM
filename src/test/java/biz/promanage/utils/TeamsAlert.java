@@ -225,7 +225,7 @@ public class TeamsAlert extends BaseTest {
 	public void mailWithAttachment(String subject, String content) throws IOException {
 
 		final String username = "qa@sulekha.com";
-		final String password = "Testing92025";
+		final String password = "Testing62026";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -278,7 +278,7 @@ public class TeamsAlert extends BaseTest {
 	}
 	public void mailWithAttachmentfile(String subject, String content) throws IOException {
 	    final String username = "qa@sulekha.com";
-	    final String password = "Testing92025";
+	    final String password = "Testing62026";
 
 	    Properties props = new Properties();
 	    props.put("mail.smtp.auth", "true");
