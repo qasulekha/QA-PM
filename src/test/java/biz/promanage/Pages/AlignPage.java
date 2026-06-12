@@ -30,6 +30,7 @@ public class AlignPage extends BasePage {
 	By CMO = By.xpath("((//ul[@id='skOverflowMenu'])[6]//li)[1]");
 	By STATUS = By.xpath("(//div[@class='sk-selected-text'])[15]/parent::div");
 
+	
 	By EDIT_STATUS = By.xpath("(//span[text()='expand_more'])[13]");
 	By EDIT_TASK_TYPE = By.xpath("(//span[text()='expand_more'])[14]");
 	By EDIT_PRIORITY = By.xpath("(//span[text()='expand_more'])[15]");
