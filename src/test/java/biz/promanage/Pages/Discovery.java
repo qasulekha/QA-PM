@@ -48,6 +48,7 @@ public class Discovery extends BasePage {
 		return this;
 		
 	}
+	
 	public void ValidateDiscoveryData() throws InterruptedException, MalformedURLException, IOException {
 		 ArrayList<String> missingDataPoints = new ArrayList<>();//TeamsAlert comonmethods = new TeamsAlert();
 	    ArrayList<String> values = new ArrayList<>();
