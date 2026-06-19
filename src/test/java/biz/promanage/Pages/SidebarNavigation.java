@@ -360,22 +360,21 @@ public class SidebarNavigation extends BasePage {
     }
    
    
-    
-    
     public SidebarNavigation clickCallsPage() {
-    	PageLoad.pauseOneSec();
+    	 PageLoad.pauseTenSeconds();
     	wait.until(ExpectedConditions.elementToBeClickable(interaction)).click();
         test.log(Status.INFO, "Clicking on Calls Title Menu Item");
         wait.until(ExpectedConditions.elementToBeClickable(callLogs)).click();
-        PageLoad.pauseThreeSecs();
+        PageLoad.pauseTenSeconds();
         String callsPageTitle = driver.findElement(callLogsTitle).getText();
         Assert.assertEquals(callsPageTitle, "Calls", "Calls page title mismatch!");
         System.out.println("Calls Page Title :" + callsPageTitle);
-        PageLoad.pauseFifteenSeconds();
+        PageLoad.pauseTwentySeconds();
         takeScreenshot();
         wait.until(ExpectedConditions.elementToBeClickable(back)).click();
         return this;
     }
+    
     public SidebarNavigation clickContactsPage() {
     	PageLoad.pauseOneSec();
     	 wait.until(ExpectedConditions.elementToBeClickable(interaction)).click();
