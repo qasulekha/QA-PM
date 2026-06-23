@@ -54,6 +54,14 @@ public class PageLoad {
         }
     }
 
+    public static void pauseTwentySeconds() {
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+    }
 
     public static void pauseOneSec() {
         try {
