@@ -24,6 +24,7 @@ public class CustomGroup extends BasePage {
 	By LOCATION_SEARCH_BOX = By.cssSelector(".filter-padding .sk-input");
 	By CUSTOM_GROUP_SAVE_BTN = By.xpath("//span[text()='Save Changes']/parent::button[1]");
 	// By CUSTOM_GROUP_SAVE_BTN = By.xpath("((//div[@class='sk-panel-footer'])[33]//parent::button)[2]");
+	
 	By ACTION = By.xpath("//option[.='Action']/parent::select");
 	private Select dropdown;
 	// (//div[@class='sk-text-select'])[2]//span

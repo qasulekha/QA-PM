@@ -14,7 +14,7 @@ public class LeaderBoardPage extends BasePage {
 	
 
     private static final String FOCUSED_GROUP_NAME = "Focused_DHL";
-    private static final String CITY_NAME = "Pimpri-Chinchwad";
+    private static final String CITY_NAME = "Chennai";
     private final By img = By.xpath("//div[@class='table-card table-card-body']//img");
     private final By DATE = By.xpath("(//div[@class='sk-flex-row sk-flex-align-start sk-sticky']//div)[12]");
     private final By SUBMIT_BUTTON = By.xpath("//div[@class='sk-flex-row sk-flex-justify-between sk-flex-align-center sk-no-wrap']//button");
@@ -28,6 +28,7 @@ public class LeaderBoardPage extends BasePage {
     private final By GROUP_NAME = By.xpath("((//div[@class='table-card table-card-body']//div)[1]//div)[4]");
     private final By CITY_NAME_RESULT = By.xpath("((//div[@class='table-card table-card-body']//div)[1]//div)[4]");
 
+    
     public LeaderBoardPage(WebDriver driver, ExtentTest test) {
         super(driver, test);
     }
