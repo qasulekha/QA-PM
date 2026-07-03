@@ -8,7 +8,7 @@ public class PromanageMailAlert {
     public static void SendMail(String subject, String body,String mailTo) {
 
         final String username = "qa@sulekha.com";
-        final String password = "Testing62026";
+        final String password = "Testing72026";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");

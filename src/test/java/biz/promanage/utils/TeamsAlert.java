@@ -225,7 +225,7 @@ public class TeamsAlert extends BaseTest {
 	public void mailWithAttachment(String subject, String content) throws IOException {
 
 		final String username = "qa@sulekha.com";
-		final String password = "Testing62026";
+		final String password = "Testing72026";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -278,7 +278,7 @@ public class TeamsAlert extends BaseTest {
 	}
 	public void mailWithAttachmentfile(String subject, String content) throws IOException {
 	    final String username = "qa@sulekha.com";
-	    final String password = "Testing62026";
+	    final String password = "Testing72026";
 
 	    Properties props = new Properties();
 	    props.put("mail.smtp.auth", "true");
@@ -297,7 +297,7 @@ public class TeamsAlert extends BaseTest {
 	        Message message = new MimeMessage(session);
 	        message.setFrom(new InternetAddress("qa@sulekha.com"));
 	        message.setRecipients(Message.RecipientType.TO,
-	            InternetAddress.parse("MohamedNN@sulekha.com,JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com,Rakeshm@promanage.biz,MohamedAsifM@promanage.biz"));
+	            InternetAddress.parse("JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com,Rakeshm@promanage.biz,MohamedAsifM@promanage.biz"));
 	        message.setSubject(subject);
 
 	        Multipart multipart = new MimeMultipart();
