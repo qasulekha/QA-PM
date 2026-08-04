@@ -75,16 +75,18 @@ public class ReviewListingPage extends BasePage {
 	}
 
 	public ReviewListingPage clickReview() {
-		System.out.println("To click Review");
+		
 		waitForElementAndClick(Reviews);
+		System.out.println("To click Review");
 		test.log(Status.INFO, "Reviews Clicked");
 		takeScreenshot();
 		return this;
 	}
 
 	public ReviewListingPage switcInActiveTab() {
-		System.out.println("Click InActive Tab");
+		
 		wait.until(ExpectedConditions.elementToBeClickable(InActive_Tab)).click();
+		System.out.println("Click InActive Tab");
 		PageLoad.pauseThreeSecs();
 		waitForPageLoaderToDisappear();
 		test.log(Status.INFO, "InActive Tab Clicked");
@@ -93,8 +95,9 @@ public class ReviewListingPage extends BasePage {
 	}
 
 	public ReviewListingPage switchActiveTab() {
-		System.out.println("Click Active Tab");
+		
 		wait.until(ExpectedConditions.elementToBeClickable(Active_Tab)).click();
+		System.out.println("Click Active Tab");
 		PageLoad.pauseThreeSecs();
 		waitForPageLoaderToDisappear();
 		test.log(Status.INFO, "Active Tab Clicked");
@@ -103,9 +106,10 @@ public class ReviewListingPage extends BasePage {
 	}
 
 	public ReviewListingPage clickDateFilter() {
-		System.out.println("Click Date Filter");
+	
 		waitForElementAndClick(Date_Filter);
 		waitForElementAndClick(All);
+		System.out.println("Click Date Filter");
 		test.log(Status.INFO, "Selected Date Filter");
 		takeScreenshot();
 		return this;
@@ -118,13 +122,14 @@ public class ReviewListingPage extends BasePage {
 		 * test.log(Status.INFO, "View Summarize"); takeScreenshot(); return this;
 		 */
 
-		System.out.println("Click Summarize");
+		
 		wait.until(ExpectedConditions.elementToBeClickable(Summarize)).click();
 		PageLoad.pauseThreeSecs();
 		wait.until(ExpectedConditions.elementToBeClickable(ViewMore_CTA)).click();
 		PageLoad.pauseThreeSecs();
+		System.out.println("Clicked Summarize");
 		test.log(Status.INFO, "Clicked Summarize");
-		// takeScreenshot();
+		 takeScreenshot();
 		return this;
 
 	}
@@ -132,18 +137,21 @@ public class ReviewListingPage extends BasePage {
 	
 	  
 	  public ReviewListingPage dismissSummarize() {
-	  System.out.println("Dismiised Summarize");
+	  
 	  waitForElementAndClick(Dismiss_Summarize); 
+	  System.out.println("Dismissed Summarize");
 	  test.log(Status.INFO,
 	  "Dismissed Summarize");
+	  takeScreenshot();
 	  return this; 
 	  }
 	
 	 
 
 	public ReviewListingPage clickReviewFilter() throws InterruptedException {
-		System.out.println("Review Filter Clicked");
+		
 		waitForElementAndClick(Review_Filter);
+		System.out.println("Review Filter Clicked");
 		Thread.sleep(4000);
 		test.log(Status.INFO, "Review Filter clicked");
 		takeScreenshot();
@@ -151,33 +159,37 @@ public class ReviewListingPage extends BasePage {
 	}
 
 	public ReviewListingPage reviewType() {
-		System.out.println("Selecting Review type");
+		
 		waitForElementAndClick(Review_Type);
+		System.out.println("Selecting Review type");
 		test.log(Status.INFO, "Review type selected");
 		takeScreenshot();
 		return this;
 	}
 
 	public ReviewListingPage response() {
-		System.out.println("Selecting Review Response");
+		
 		waitForElementAndClick(Review_Response);
+		System.out.println("Selecting Review Response");
 		test.log(Status.INFO, "Review response selected");
 		takeScreenshot();
 		return this;
 	}
 
 	public ReviewListingPage reviewRating() {
-		System.out.println("Selecting Review Rating");
+		
 		waitForElementAndClick(Rating3);
 		waitForElementAndClick(Rating5);
-		test.log(Status.INFO, "Review response selected");
+		System.out.println("Selected Review Rating");
+		test.log(Status.INFO, "Review Rating selected");
 		takeScreenshot();
 		return this;
 	}
 
 	public ReviewListingPage clickApply() {
-		System.out.println("Clicking Apply button");
+		
 		waitForElementAndClick(Filter_Apply);
+		System.out.println("Clicked Apply button");
 		test.log(Status.INFO, "Filter Applied");
 		PageLoad.pauseThreeSecs();
 		takeScreenshot();
@@ -185,8 +197,9 @@ public class ReviewListingPage extends BasePage {
 	}
 
 	public ReviewListingPage filterReset() {
-		System.out.println("Clicking Reset button");
+		
 		waitForElementAndClick(Filter_Reset);
+		System.out.println("Clicked Reset button");
 		test.log(Status.INFO, "Filter Reset");
 		PageLoad.pauseThreeSecs();
 		takeScreenshot();
@@ -268,8 +281,9 @@ public class ReviewListingPage extends BasePage {
 	}
 	
 	public ReviewListingPage sortBy() {
-		System.out.println("Clicking Sort by");
+		
 		waitForElementAndClick(Sort_By);
+		System.out.println("Clicked Sort by");
 		test.log(Status.INFO, "Sort By");
 		PageLoad.pauseThreeSecs();
 		takeScreenshot();
@@ -277,8 +291,9 @@ public class ReviewListingPage extends BasePage {
 	}
 
 	public ReviewListingPage sortByOld() {
-		System.out.println("Clicking Oldest");
+		
 		waitForElementAndClick(Oldest);
+		System.out.println("Clicked Oldest");
 		test.log(Status.INFO, "Sort By");
 		PageLoad.pauseThreeSecs();
 		takeScreenshot();
@@ -286,8 +301,9 @@ public class ReviewListingPage extends BasePage {
 	}
 	
 	public ReviewListingPage sortByNew() {
-		System.out.println("Clicking Newest");
+		
 		waitForElementAndClick(Newest);
+		System.out.println("Clicked Newest");
 		test.log(Status.INFO, "Sort By");
 		PageLoad.pauseThreeSecs();
 		takeScreenshot();
