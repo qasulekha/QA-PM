@@ -225,7 +225,7 @@ public class TeamsAlert extends BaseTest {
 	public void mailWithAttachment(String subject, String content) throws IOException {
 
 		final String username = "qa@sulekha.com";
-		final String password = "Testing82026";
+		final String password = "QaTesting(2026";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -246,7 +246,7 @@ public class TeamsAlert extends BaseTest {
 //			message.setRecipients(Message.RecipientType.TO,
 //					InternetAddress.parse("MohamedNN@sulekha.com,mohamedjaleel@sulekha.com,manivannanr@sulekha.com,sriniv@sulekha.com,JagadishwaranG@sulekha.com"));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("MohamedNN@sulekha.com,JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com,MohamedAsifM@promanage.biz"));
+					InternetAddress.parse("MohamedNN@sulekha.com,JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com,MohamedAsifM@promanage.biz,Rakeshm@promanage.biz"));
 			message.setSubject(subject);
 			// message.setText(content);
 
@@ -278,7 +278,7 @@ public class TeamsAlert extends BaseTest {
 	}
 	public void mailWithAttachmentfile(String subject, String content) throws IOException {
 	    final String username = "qa@sulekha.com";
-	    final String password = "Testing82026";
+	    final String password = "QaTesting(2026";
 
 	    Properties props = new Properties();
 	    props.put("mail.smtp.auth", "true");
@@ -297,7 +297,7 @@ public class TeamsAlert extends BaseTest {
 	        Message message = new MimeMessage(session);
 	        message.setFrom(new InternetAddress("qa@sulekha.com"));
 	        message.setRecipients(Message.RecipientType.TO,
-	            InternetAddress.parse("JagadishwaranG@sulekha.com,mohamedjaleel@sulekha.com,Rakeshm@promanage.biz,MohamedAsifM@promanage.biz"));
+	            InternetAddress.parse("mohamedjaleel@sulekha.com,Rakeshm@promanage.biz,MohamedAsifM@promanage.biz"));
 	        message.setSubject(subject);
 
 	        Multipart multipart = new MimeMultipart();
@@ -400,7 +400,7 @@ public class TeamsAlert extends BaseTest {
 //			message.setRecipients(Message.RecipientType.TO,
 //					InternetAddress.parse("MohamedNN@sulekha.com,mohamedjaleel@sulekha.com,manivannanr@sulekha.com,sriniv@sulekha.com"));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("MohamedNN@sulekha.com,mohamedjaleel@sulekha.com,JagadishwaranG@sulekha.com"));
+					InternetAddress.parse("mohamedjaleel@sulekha.com"));
 			message.setSubject(subject);
 			message.setContent(content, "text/html");
 			// message.setText(content);
