@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TicketAutomation extends BasePage {
 	private final By settings = By.xpath("//span[text()='Settings']/parent::a[1]");
-	private final By Ticket_Automation = By.xpath("(((//div[@class='sk-tab-menu'])[3]//ul)[4]//li)[3]");
+	private final By Ticket_Automation = By.xpath("(((//div[@class='sk-tab-menu'])[3]//ul)[4]//li)[4]");
 	private final By Create_Rule = By.xpath("//button[@class='sk-button sk-primary sk-fab']");
 	private final By Enter_The_Rule_Name = By.xpath("//div[@class='sk-text-field sk-large']//input");
 	private final By Select_location_Dropdown = By.xpath("(//div[@class='sk-event-group'])[9]//span");
