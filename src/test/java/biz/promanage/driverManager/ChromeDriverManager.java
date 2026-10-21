@@ -29,6 +29,7 @@ public class ChromeDriverManager extends DriverManager {
 	    chromeOptions.addArguments("--disable-extensions");
 	    chromeOptions.addArguments("--remote-allow-origins=*");
 	    
+	    
 
 	    String uniqueUserDataDir = Files.createTempDirectory("chrome_profile_").toString();
 	    chromeOptions.addArguments("--user-data-dir=" + uniqueUserDataDir);

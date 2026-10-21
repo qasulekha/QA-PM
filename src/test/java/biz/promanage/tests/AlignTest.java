@@ -20,17 +20,18 @@ public class AlignTest extends BaseTest {
 		new LoginPage(getDriver(), test).login(GetUserLoginCred());
 		if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
 			AlignPage alignPage = new AlignPage(getDriver(), test);
-			alignPage.clickAlign().clickcreaBut().enterTitle("Test Task Creation").enterCus("ProManage").enterassignee("CMO")
-					.selectStatus().selectTask().proTask().priority().visibility()
+			alignPage.clickAlign().clickcreaBut().enterTitle("Test Task Creation").enterCus("ProManage").visibility1().enterassignee("CMO")
+					.selectStatus().selectTask().proTask().priority()
 					.description("When we try to upload an image, it is not uploaded correctly.")
-					.includeUser("New CMO").comment("Please Work on this.").save().visibility1().save().showPastDue()
+					.includeUser("New CMO").comment("Please Work on this.").visibility().save().visibility1().save().showPastDue()
 					.verifyPastDueTasks().showPastDue1().clickFilter().filterVisibility().taskStatus().taskPriority()
-					.taskType().clickApply().clickSelectCustomer().passCustmoerName("sulekha.com").clickSubmit()
-					.clickFilter().reset().clickApply().searchTask("#SUL-682").editStatus().editTaskType()
+					.taskType().clickApply().clickSelectCustomer().passCustmoerName("ProManage").clickSubmit()
+					.clickFilter().reset().clickApply().searchTask("#PRO-614").editStatus().editTaskType()
 					.editPriority().editComment().updateComment().saveTask();
 
+			
 			String expected = alignPage.getTaskName();
-			Assert.assertEquals("#SUL-682", expected);
+			Assert.assertEquals("#PRO-614", expected);
 
 			String expected3 = alignPage.getSelectedTaskType();
 			Assert.assertEquals("New Feature", expected3);

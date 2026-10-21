@@ -8,7 +8,7 @@ import com.aventstack.extentreports.Status;
 import java.util.List;
 
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -23,7 +23,7 @@ public class TicketAutomation extends BasePage {
 	private final By Select_location_Dropdown = By.xpath("(//div[@class='sk-event-group'])[9]//span");
 	private final By Search_State = By.cssSelector(".filter-padding .sk-input");
 	private final By SELECT_STATE = By.cssSelector(".location-filter-list .sk-check-label");
-	private final By APPLY_BUTTON = By.cssSelector(".sk-flex-align-center .sk-button:nth-child(2) > .sk-ripple-container");
+	private final By APPLY_BUTTON = By.xpath("(//div[contains(@class,'sk-flex-align-center')]//button[2])[2]");
 	private final By Next = By.xpath("((//div[@class='sk-button-group sk-flex-justify-end'])[8]//button)[2]");
 	private final By With_Review_Text = By.xpath("(//div[@class='rating-group sk-show']//label)[3]");
 	private final By Rating = By.xpath("(//div[@class='rating-group sk-show']//label)[7]");
@@ -38,7 +38,7 @@ public class TicketAutomation extends BasePage {
 	private final By Edit = By.xpath("(//div[@class='sk-overflow-list sk-show']//li)[1]");
 	private final By Edit_Rule_Conformation = By.xpath("((//div[@class='sk-button-group sk-flex-justify-end'])[6]//button)[2]");
 	private final By User_Name = By.xpath("(//div[@class='sk-flex-row sk-margin-bottom-small']//label)[2]");
-	private final By Filter = By.xpath("((//div[@class='sk-flex-row sk-no-wrap'])[4]//button)[1]");
+	private final By Filter = By.xpath("((//div[@class='sk-flex-row sk-no-wrap'])[7]//button)[1]");
 	private final By Status = By.xpath("((//div[@class='sk-form-row sk-margin-bottom-large'])[2]//label)[1]");
 	private final By Apply = By.xpath("((//div[@class='sk-button-group sk-flex-justify-end'])[7]//button)[2]");
 	private final By View_History = By.xpath("((//div[@class='sk-surface sk-surface-outlined sk-gutter-base sk-padding-top rule-widget'])[1]//button)[4]");
@@ -49,8 +49,7 @@ public class TicketAutomation extends BasePage {
 	
 	
 	
-	
-	
+
 	
     String comment = "Sample Testing";
     String state = "Tamil Nadu";
@@ -72,6 +71,8 @@ public class TicketAutomation extends BasePage {
         return this;
     }
     public TicketAutomation clickTicketAutomation() {
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, 500);");
     	PageLoad.pauseOneSec();
     	scroll(Ticket_Automation); 
         waitForElementAndClick(Ticket_Automation);

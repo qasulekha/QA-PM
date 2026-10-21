@@ -18,7 +18,7 @@
 		        getDriver().manage().window().maximize();
 	
 		        SonicWallPage sonicwallPage = new SonicWallPage(getDriver(), getTest());
-		       sonicwallPage.login("qa", "QaTesting!2026");
+		       sonicwallPage.login("qa", "qaTesting!)2026");
 		       Thread.sleep(10000);
 		        
 		    }

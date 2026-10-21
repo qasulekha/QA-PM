@@ -22,7 +22,9 @@ import biz.promanage.utils.PageLoad;
 public class AlignPage extends BasePage {
 
 	By A_L_I_G_N = By.xpath("(//span[@class='sk-ripple-container'])[3]/parent::a");
-	By CREATE_TASK = By.xpath("//button[@class='sk-button sk-primary sk-fab sk-leading-icon fab-bottom task-fab-btn']");
+	//By CREATE_TASK = By.xpath("//button[@class='sk-button sk-primary sk-fab sk-leading-icon fab-bottom task-fab-btn']");
+	By CREATE = By.xpath("//button[@class='sk-button sk-primary sk-fab sk-leading-icon fab-bottom']");
+	By Task = By.xpath("//button[@title='Create new task']");
 	By ENTER_TITLE = By.xpath("//input[@placeholder='Enter title']");
 	By SELECT_CUS = By.xpath("//input[@placeholder='Select Customer']");
 	By SUL = By.xpath("((//ul[@id='skOverflowMenu'])[5]//li)");
@@ -59,7 +61,7 @@ public class AlignPage extends BasePage {
 	By FILTER_VISIBILITY = By.xpath("(//div[@class='sk-checkbox sk-show'])[57]");
 	By FILTER_TASK_STATUS = By.xpath("(//div[@class='sk-checkbox sk-show'])[58]");
 	By FILTER_PRIORITY = By.xpath("(//div[@class='sk-checkbox sk-show'])[64]");
-	By FILTER_TASK_TYPE = By.xpath("(//div[@class='sk-checkbox sk-show'])[67]");
+	By FILTER_TASK_TYPE = By.xpath("(//div[@class='sk-radio'])[4]");
 	By FILTER_APPLY = By.xpath("(//button[@class='sk-button sk-primary'])[7]");
 	By RESET = By.xpath("(//button[@class='sk-button sk-button-link'])[3]");
 	By SELECT_CUSTOMER = By.xpath("(//div[@class='sk-selected-text'])[6]/parent::div");
@@ -77,7 +79,9 @@ public class AlignPage extends BasePage {
 		super(driver, test);
 	}
 
+	
 	public AlignPage clickAlign() {
+		
 		System.out.println("\nTo Create Align Task :");
 		System.out.println("\nAim to Click Align");
 		waitForElementAndClick(A_L_I_G_N);
@@ -104,7 +108,8 @@ public class AlignPage extends BasePage {
 
 	public AlignPage clickcreaBut() {
 		System.out.println("Aiming to Click Create button");
-		waitForElementAndClick(CREATE_TASK);
+		waitForElementAndClick(CREATE);
+		waitForElementAndClick(Task);
 		test.log(Status.INFO, "Create Task Clicked");
 		return this;
 	}
@@ -318,7 +323,7 @@ public class AlignPage extends BasePage {
 
 	public String getTaskName() {
 		PageLoad.pauseThreeSecs();
-		String taskName = driver.findElement(By.xpath("//div[text()='#SUL-682']")).getText();
+		String taskName = driver.findElement(By.xpath("//div[text()='#PRO-614']")).getText();
 		System.out.println("Task Name : "+taskName);
 		test.log(Status.INFO, "Retrieved Task Name");
 		return taskName;
