@@ -14,7 +14,7 @@ public class RatingGoalsTest extends BaseTest {
     @Test
     public void RatingGoalsPageTest() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        if (new Customer(getDriver(), test).changeCustomer("ProManage ")) {
+        if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
         	RatingGoals ratingGoals = new RatingGoals(getDriver(), test);
         	ratingGoals.load().clickGroupGoals().clickStoreWiseGoals().clickViewHistory();
         }
