@@ -19,7 +19,7 @@ public class ReviewListingTest extends BaseTest{
 	public void reviewListingPage() throws IOException, InterruptedException {
 		
 		new LoginPage(getDriver(), test).login(GetUserLoginCred());
-		if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
+		if (new Customer(getDriver(), test).changeCustomer("ProManage ")) {
 		/*	ReviewListingPage reviewPage = new ReviewListingPage(getDriver(), test);
 			reviewPage.clickReputation().clickReview().switcInActiveTab().switchActiveTab().clickDateFilter().clickReviewFilter().reviewType().response().reviewRating().clickApply().clickReviewFilter().filterReset().clickApply().clickSummarize();
 			

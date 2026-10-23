@@ -19,7 +19,7 @@ public class UserSettingTest extends BaseTest {
     @Test
     public void createUserSetting() throws IOException, InterruptedException {
         new LoginPage(getDriver(), test).login(GetUserLoginCred());
-        if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
+        if (new Customer(getDriver(), test).changeCustomer("ProManage ")) {
         	 
         	UserSettings userSettingTest = new UserSettings(getDriver(), test);
         	userSettingTest.clickUserSettings()

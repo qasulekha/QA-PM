@@ -22,7 +22,7 @@ public class TicketAutomationTest extends BaseTest {
  
 	    new LoginPage(getDriver(), test).login(GetUserLoginCred());
  
-	    if (new Customer(getDriver(), test).changeCustomer("ProManage")) {
+	    if (new Customer(getDriver(), test).changeCustomer("ProManage ")) {
  
 	        TicketAutomation page = new TicketAutomation(getDriver(), test);
  
