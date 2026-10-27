@@ -9,6 +9,7 @@
 		<parameter name="browser" value="CHROME" />
 		<classes>
 
+
 	        <class name="biz.promanage.tests.LeadPageTest" />
 			<class name="biz.promanage.tests.UserLoginTest" />
 		    <class name="biz.promanage.tests.GlobalFilterTest" />
@@ -22,6 +23,7 @@
 			<class name="biz.promanage.tests.ReviewListingTest" />
 			<class name="biz.promanage.tests.RatingGoalsTest" />
 		    <class name="biz.promanage.tests.UserSettingTest" />
+		    <class name="biz.promanage.tests.InsightsCallsTest" />
 
 
 		</classes>
