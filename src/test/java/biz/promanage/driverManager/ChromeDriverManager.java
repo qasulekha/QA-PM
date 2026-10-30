@@ -20,6 +20,12 @@ public class ChromeDriverManager extends DriverManager {
 	protected void startDriver() throws IOException {
 	    ChromeOptions chromeOptions = new ChromeOptions();
 	    
+	    String keepBrowserOpen = System.getProperty("keepBrowserOpen", "false");
+
+	    if (keepBrowserOpen.equalsIgnoreCase("true")) {
+	        chromeOptions.setExperimentalOption("detach", true);
+	    }
+	    
 	    chromeOptions.addArguments("--headless=new");
 	    chromeOptions.addArguments("--disable-gpu");
 	    chromeOptions.addArguments("--incognito");
@@ -36,7 +42,7 @@ public class ChromeDriverManager extends DriverManager {
 
 	    chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-	    WebDriverManager.chromedriver().driverVersion("152.0.7977.83").setup();
+	    WebDriverManager.chromedriver().driverVersion("154.0.8037.57").setup();
 	    driver = new ChromeDriver(chromeOptions);
 	    
 	   
