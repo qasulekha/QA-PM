@@ -42,7 +42,7 @@ public class ChromeDriverManager extends DriverManager {
 
 	    chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-	    WebDriverManager.chromedriver().driverVersion("154.0.8037.57").setup();
+	    WebDriverManager.chromedriver().driverVersion("156.0.8078.48").setup();
 	    driver = new ChromeDriver(chromeOptions);
 	    
 	   
